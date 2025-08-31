@@ -1,100 +1,113 @@
-body {
-  font-family: 'Open Sans', sans-serif;
-  text-align: center;
-  background-image: linear-gradient(
-    to left top,
-    #ffffff,
-    #f5f5f5,
-    #eaeaea,
-    #e0e0e0,
-    #d6d6d6
-  );
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  min-height: 100vh;
-  min-width: 100vw;
-  overflow-x: hidden;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 340 100% 99.5%;
+    --foreground: 336 10% 27%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 336 10% 27%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 336 10% 27%;
+
+    --primary: 330 100% 70%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 324 100% 95%;
+    --secondary-foreground: 336 15% 25%;
+
+    --muted: 324 50% 95%;
+    --muted-foreground: 336 5% 45%;
+
+    --accent: 324 100% 95%;
+    --accent-foreground: 265 15% 30%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 340 30% 92%;
+    --input: 340 30% 92%;
+    --ring: 330 100% 70%;
+
+    --radius: 0.875rem;
+  }
+
+  * {
+    @apply border-border scroll-smooth;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-salon-text-dark antialiased;
+    font-family: "Inter", sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
 }
 
-h1,
-h2 {
-  font-family: 'Oswald', sans-serif;
-}
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+  }
 
-h1 {
-  font-size: 3rem;
-  /* margin: 5rem 0; */
-}
-h2 {
-  min-width: 18rem;
-  font-size: 2rem;
-  opacity: 0.3;
-}
-h3 {
-  font-size: 1.5rem;
-  opacity: 0.5;
-}
+  /* Chrome-specific fixes for navbar */
+  @supports (backdrop-filter: blur(1px)) {
+    .navbar-backdrop-blur {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+  }
 
-p {
-  line-height: 1.65em;
-}
-p:nth-child(2) {
-  font-style: italic;
-  opacity: 0.65;
-  margin-top: 1rem;
-}
+  @supports not (backdrop-filter: blur(1px)) {
+    .navbar-backdrop-blur {
+      background-color: rgba(255, 255, 255, 0.95) !important;
+    }
+  }
 
-a.github {
-  position: fixed;
-  top: 0.5rem;
-  right: 0.75rem;
-  font-size: 4rem;
-  color: #888;
-  opacity: 0.8;
-}
-a.github:hover {
-  opacity: 1;
-}
+  .highlight-link {
+    @apply relative inline-block overflow-hidden;
+  }
 
-button {
-  display: inline-block;
-  vertical-align: bottom;
-  outline: 0;
-  text-decoration: none;
-  cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.5);
-  box-sizing: border-box;
-  font-size: 1em;
-  font-family: inherit;
-  border-radius: 3px;
-  transition: box-shadow 0.2s ease;
-  user-select: none;
-  line-height: 2.5em;
-  min-height: 40px;
-  padding: 0 0.8em;
-  border: 0;
-  color: inherit;
-  position: relative;
-  transform: translateZ(0);
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-  margin: 0.8rem;
-}
+  .highlight-link::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-[2px] bg-salon-pink transition-all duration-300 ease-bounce-soft;
+  }
 
-button:hover,
-button:focus {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
-}
+  .highlight-link:hover::after {
+    @apply w-full;
+  }
 
-main {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-}
-footer {
-  background-color: rgba(255, 255, 255, 0.5);
-  width: 100vw;
-  padding: 3rem 0;
+  .glass-card {
+    @apply bg-white/50 backdrop-blur-sm border border-white/50 rounded-2xl shadow-soft;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:shadow-soft-lg hover:bg-white/70 hover:scale-[1.02] ease-bounce-soft;
+  }
+
+  .btn-primary {
+    @apply bg-salon-pink text-white rounded-full px-8 py-3 font-medium shadow-soft transition-all duration-300 hover:shadow-glow-pink hover:bg-opacity-90 ease-bounce-soft flex items-center justify-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply bg-salon-lavender text-salon-text-dark rounded-full px-8 py-3 font-medium shadow-soft transition-all duration-300 hover:shadow-soft-lg hover:bg-opacity-90 ease-bounce-soft flex items-center justify-center gap-2;
+  }
+
+  .btn-outline {
+    @apply border-2 border-salon-pink text-salon-pink rounded-full px-8 py-3 font-medium transition-all duration-300 hover:bg-salon-softer-pink hover:shadow-soft ease-bounce-soft flex items-center justify-center gap-2;
+  }
 }

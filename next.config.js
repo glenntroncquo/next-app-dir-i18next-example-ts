@@ -5,6 +5,6 @@ const nextConfig = {
   //   // Required: for next 13
   //   appDir: true
   // }
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
