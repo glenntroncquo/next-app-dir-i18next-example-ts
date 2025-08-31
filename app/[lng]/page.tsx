@@ -14,6 +14,7 @@ import {
   Heart,
 } from "lucide-react";
 import { Metadata } from "next";
+import Image from "next/image";
 
 // Generate metadata for SEO
 export async function generateMetadata({
@@ -78,6 +79,17 @@ export async function generateMetadata({
     },
     verification: {
       google: process.env.GOOGLE_SITE_VERIFICATION,
+    },
+    other: {
+      "theme-color": "#FF8FB2",
+      "color-scheme": "light",
+      "apple-mobile-web-app-capable": "yes",
+      "apple-mobile-web-app-status-bar-style": "default",
+      "apple-mobile-web-app-title": "D'Ana Hair",
+      "format-detection": "telephone=no",
+      "mobile-web-app-capable": "yes",
+      "msapplication-TileColor": "#FF8FB2",
+      "msapplication-config": "/browserconfig.xml",
     },
   };
 }
@@ -240,14 +252,54 @@ export default async function Page({
         }}
       />
 
+      {/* Preload critical resources */}
+      <link
+        rel="preload"
+        href={getImageUrl("/hero2.jpg")}
+        as="image"
+        type="image/jpeg"
+      />
+      <link
+        rel="preload"
+        href={getImageUrl("/logo.svg")}
+        as="image"
+        type="image/svg+xml"
+      />
+
+      {/* Additional meta tags for better SEO */}
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, viewport-fit=cover"
+      />
+      <meta name="format-detection" content="telephone=no" />
+      <meta name="theme-color" content="#FF8FB2" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+      <meta name="apple-mobile-web-app-title" content="D'Ana Hair" />
+      <meta name="mobile-web-app-capable" content="yes" />
+      <meta name="msapplication-TileColor" content="#FF8FB2" />
+      <meta name="msapplication-config" content="/browserconfig.xml" />
+
+      {/* DNS prefetch for external resources */}
+      <link rel="dns-prefetch" href="//maps.google.com" />
+      <link rel="dns-prefetch" href="//www.instagram.com" />
+      <link rel="dns-prefetch" href="//www.facebook.com" />
+
+      {/* Preconnect to external domains */}
+      <link rel="preconnect" href="https://maps.google.com" />
+      <link rel="preconnect" href="https://www.instagram.com" />
+      <link rel="preconnect" href="https://www.facebook.com" />
+
       <div className="min-h-screen overflow-hidden">
         {/* Critical LCP Image - Load immediately */}
-        <img
+        <Image
           src={getImageUrl("/hero2.jpg")}
           alt="Two professional hair stylists in pink blazers with positive affirmations in the background - D'Ana Hair Salon"
           className="hidden"
-          width="509"
-          height="592"
+          width={509}
+          height={592}
+          priority
+          quality={90}
         />
 
         <Navbar lng={lng} />
@@ -338,14 +390,17 @@ export default async function Page({
               <div className="relative z-10">
                 {/* Main image with shadow and border */}
                 <div className="rounded-2xl overflow-hidden border-4 border-white shadow-soft-lg bg-white h-[600px]">
-                  <img
+                  <Image
                     src={getImageUrl("/hero2.jpg")}
                     alt="Two professional hair stylists in pink blazers with positive affirmations in the background - D'Ana Hair Salon"
                     className="w-full h-full object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    width="509"
-                    height="592"
-                    loading="eager"
+                    width={509}
+                    height={592}
+                    priority
+                    quality={90}
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                   />
                 </div>
 
@@ -397,12 +452,16 @@ export default async function Page({
               <div className="md:w-1/2 relative">
                 <div className="relative z-10">
                   <div className="rounded-2xl overflow-hidden border-4 border-white shadow-soft-lg">
-                    <img
+                    <Image
                       src={getImageUrl("/placeholdertest.jpg")}
                       alt="Professional hair salon stylists at D'Ana Hair Salon working with clients"
                       className="w-full max-h-[550px] h-auto object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      loading="lazy"
+                      width={600}
+                      height={550}
+                      quality={85}
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                     />
                   </div>
                 </div>
@@ -858,14 +917,18 @@ export default async function Page({
                           aria-hidden="true"
                         />
                       ) : (
-                        <img
+                        <Image
                           src={image.url}
                           alt={`Instagram post ${
                             index + 1
                           } from D'Ana Hair Salon`}
                           className="w-full h-full object-cover transition-transform duration-700 ease-bounce-soft group-hover:scale-110"
-                          loading="lazy"
+                          width={300}
+                          height={300}
                           sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 16vw"
+                          quality={80}
+                          placeholder="blur"
+                          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                         />
                       )}
 

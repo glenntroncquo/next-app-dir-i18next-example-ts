@@ -110,4 +110,31 @@
   .btn-outline {
     @apply border-2 border-salon-pink text-salon-pink rounded-full px-8 py-3 font-medium transition-all duration-300 hover:bg-salon-softer-pink hover:shadow-soft ease-bounce-soft flex items-center justify-center gap-2;
   }
+
+  /* Image loading animations */
+  .image-loading {
+    @apply opacity-0 transition-opacity duration-300 ease-in-out;
+  }
+
+  .image-loaded {
+    @apply opacity-100;
+  }
+
+  /* Performance optimizations */
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  .will-change-opacity {
+    will-change: opacity;
+  }
+
+  /* Smooth image loading */
+  .smooth-image-load {
+    @apply transition-all duration-500 ease-out;
+  }
+
+  .smooth-image-load:hover {
+    @apply scale-105;
+  }
 }

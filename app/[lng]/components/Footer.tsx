@@ -1,5 +1,6 @@
 import { Mail, Phone, MapPin, Clock, Instagram, Facebook } from "lucide-react";
 import { getImageUrl } from "../../../lib/imageUrl";
+import Image from "next/image";
 
 interface FooterProps {
   lng: string;
@@ -12,15 +13,18 @@ const Footer = ({ lng }: FooterProps) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center space-x-2 mb-6">
-              <img
+              <Image
                 src={getImageUrl("/logo.svg")}
                 alt="D'Ana Hair"
                 className="w-[200px]"
+                width={200}
+                height={60}
+                priority
               />
             </div>
             <p className="text-salon-text-medium mb-6">
-              Your expert in Brazilian keratin and hair botox treatments in Merelbeke. 
-              Service for Gent, Oudenaarde and surrounding areas.
+              Your expert in Brazilian keratin and hair botox treatments in
+              Merelbeke. Service for Gent, Oudenaarde and surrounding areas.
             </p>
             <div className="flex space-x-4">
               <a

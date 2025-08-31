@@ -4,19 +4,12 @@ Allow: /
 # Sitemap
 Sitemap: https://danahair.be/sitemap.xml
 
-# Crawl-delay for respectful crawling
-Crawl-delay: 1
-
 # Disallow admin or private areas (if any exist)
 Disallow: /admin/
 Disallow: /private/
-Disallow: /api/
 
-# Allow important pages
-Allow: /en/
-Allow: /nl/
-Allow: /fr/
-Allow: /pt/
-Allow: /services/
-Allow: /appointment/
-Allow: /about/
+# Allow all other content
+Allow: /
+
+# Crawl delay (optional)
+Crawl-delay: 1

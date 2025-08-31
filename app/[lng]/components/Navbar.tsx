@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { getImageUrl } from "../../../lib/imageUrl";
 import LanguageSwitcher from "./LanguageSwitcher";
+import Image from "next/image";
 
 interface NavbarProps {
   lng: string;
@@ -82,15 +83,21 @@ const Navbar = ({ lng }: NavbarProps) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4 md:py-6">
           <a href={`/${lng}`} className="flex items-center space-x-2 group">
-            <img
+            <Image
               src={getImageUrl("/logo.svg")}
               alt="D'Ana Hair logo"
               className="w-40 h-20 absolute hidden lg:block"
+              width={160}
+              height={80}
+              priority
             />
-            <img
+            <Image
               src={getImageUrl("/logo-no-text.svg")}
               alt="D'Ana Hair logo"
               className="w-14 h-14 absolute lg:hidden"
+              width={56}
+              height={56}
+              priority
             />
           </a>
 
