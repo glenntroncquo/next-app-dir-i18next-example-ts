@@ -13,6 +13,74 @@ import {
   Star,
   Heart,
 } from "lucide-react";
+import { Metadata } from "next";
+
+// Generate metadata for SEO
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lng: string }>;
+}): Promise<Metadata> {
+  const { lng } = await params;
+  const { t } = await getT();
+
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://danahair.be";
+  const currentUrl = `${baseUrl}/${lng}`;
+
+  return {
+    title: t("seoTitle"),
+    description: t("heroDesc"),
+    keywords: t("seoKeywords"),
+    authors: [{ name: "D'Ana Hair" }],
+    creator: "D'Ana Hair",
+    publisher: "D'Ana Hair",
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+    alternates: {
+      canonical: currentUrl,
+      languages: {
+        nl: `${baseUrl}/nl`,
+        en: `${baseUrl}/en`,
+        fr: `${baseUrl}/fr`,
+        pt: `${baseUrl}/pt`,
+      },
+    },
+    openGraph: {
+      title: t("seoTitle"),
+      description: t("heroDesc"),
+      url: currentUrl,
+      siteName: t("siteName") || "D'Ana Hair",
+      locale: lng,
+      type: "website",
+      images: [
+        {
+          url: `${baseUrl}/hero2.jpg`,
+          width: 1200,
+          height: 630,
+          alt: "Two stylists in pink blazers with affirmations in the background",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("seoTitle"),
+      description: t("heroDesc"),
+      images: [`${baseUrl}/hero2.jpg`],
+    },
+    verification: {
+      google: process.env.GOOGLE_SITE_VERIFICATION,
+    },
+  };
+}
 
 export default async function Page({
   params,
@@ -21,6 +89,7 @@ export default async function Page({
 }) {
   const { lng } = await params;
   const { t } = await getT();
+
   // Sample reviews data (this was hardcoded in the React app)
   const reviews = [
     {
@@ -46,7 +115,7 @@ export default async function Page({
       rating: 5,
       relative_time_description: "8 maanden geleden",
       text: "Was al heel lang aan het twijfelen om een keratine behandeling te laten doen maar was nooit helemaal overtuigd of dit wel goed zou zijn voor mijn haar en het wel iets voor mij zou zijn. Toen ik resultaten zag van andere mensen heb ik toch een afspraak gemaakt. Wist nog altijd niet goed wat ik er van moest verwachten maar wauwwww!!!\nIk heb mijn haar 2 dagen nadien gewassen en gewoon los gedroogd met de haardroger en heb er niets van werk aan gehad. Voelde super zacht en glad aan. Alle krul eruit zonder moeite te moeten doen! Geweldig!\n\nBen echt meeega content! Super bedankt. Ik kom sowieso terug! 🤩",
-      time: 1722885471,
+      time: 1736457445,
     },
     {
       author_name: "Allisen Hoste",
@@ -66,15 +135,116 @@ export default async function Page({
   const rating = 5;
   const reviewCount = 37;
 
+  // Structured data for local business
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "HairSalon",
+    name: "D'Ana Hair",
+    description: t("heroDesc"),
+    url: `${process.env.NEXT_PUBLIC_BASE_URL || "https://danahair.be"}/${lng}`,
+    telephone: "+32 477 37 10 71",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Hundelgemsesteenweg 73",
+      addressLocality: "Merelbeke-Melle",
+      postalCode: "9820",
+      addressCountry: "BE",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 51.01490464198777,
+      longitude: 3.7532758684587,
+    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: "Wednesday",
+        opens: "13:30",
+        closes: "21:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: "Friday",
+        opens: "09:00",
+        closes: "18:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: "Saturday",
+        opens: "09:00",
+        closes: "16:00",
+      },
+    ],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: rating,
+      reviewCount: reviewCount,
+      bestRating: 5,
+      worstRating: 1,
+    },
+    review: reviews.slice(0, 3).map((review) => ({
+      "@type": "Review",
+      author: {
+        "@type": "Person",
+        name: review.author_name,
+      },
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: review.rating,
+        bestRating: 5,
+      },
+      reviewBody: review.text,
+      datePublished: new Date(review.time * 1000).toISOString(),
+    })),
+    service: [
+      {
+        "@type": "Service",
+        name: t("serviceKeratinTitle"),
+        description: t("serviceKeratinDescription"),
+        offers: {
+          "@type": "Offer",
+          price: "150",
+          priceCurrency: "EUR",
+        },
+      },
+      {
+        "@type": "Service",
+        name: t("serviceBotoxTitle"),
+        description: t("serviceBotoxDescription"),
+        offers: {
+          "@type": "Offer",
+          price: "150",
+          priceCurrency: "EUR",
+        },
+      },
+      {
+        "@type": "Service",
+        name: t("serviceRitualTitle"),
+        description: t("serviceRitualDescription"),
+        offers: {
+          "@type": "Offer",
+          price: "60",
+          priceCurrency: "EUR",
+        },
+      },
+    ],
+  };
+
   return (
     <>
-      {/* Head meta will be handled by Next.js metadata API in layout or generateMetadata */}
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData),
+        }}
+      />
 
       <div className="min-h-screen overflow-hidden">
         {/* Critical LCP Image - Load immediately */}
         <img
           src={getImageUrl("/hero2.jpg")}
-          alt="Two stylists in pink blazers with affirmations in the background"
+          alt="Two professional hair stylists in pink blazers with positive affirmations in the background - D'Ana Hair Salon"
           className="hidden"
           width="509"
           height="592"
@@ -82,11 +252,8 @@ export default async function Page({
 
         <Navbar lng={lng} />
 
-        {/* Hero Section - TODO: Port Hero component */}
-        {/* <Hero rating={Number(rating).toFixed(1)} reviewCount={reviewCount} /> */}
-
         {/* Hero Section */}
-        <div id="home" className="min-h-[85vh] relative overflow-hidden">
+        <main id="home" className="min-h-[85vh] relative overflow-hidden">
           {/* Background Elements */}
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-salon-softer-pink via-white to-salon-lavender/30 opacity-70 z-0"></div>
           <div className="absolute top-1/4 -left-10 w-56 h-56 bg-salon-light-pink rounded-full filter blur-3xl opacity-30 animate-pulse-soft"></div>
@@ -99,18 +266,21 @@ export default async function Page({
           <div
             className="absolute top-1/4 left-1/4 animate-pulse-soft"
             style={{ animationDelay: "0.5s" }}
+            aria-hidden="true"
           >
             <Star size={24} className="text-salon-pink opacity-30" />
           </div>
           <div
             className="absolute top-1/3 right-1/3 animate-pulse-soft"
             style={{ animationDelay: "1.5s" }}
+            aria-hidden="true"
           >
             <Star size={16} className="text-salon-pink opacity-20" />
           </div>
           <div
             className="absolute bottom-1/4 left-1/3 animate-pulse-soft"
             style={{ animationDelay: "2s" }}
+            aria-hidden="true"
           >
             <Star size={20} className="text-salon-pink opacity-25" />
           </div>
@@ -120,13 +290,17 @@ export default async function Page({
             <div className="md:w-1/2 text-center md:text-left mb-12 md:mb-0">
               <div className="inline-block mb-4 px-4 py-1.5 bg-white/70 backdrop-blur-md rounded-full shadow-soft">
                 <div className="flex items-center">
-                  <div className="flex">
+                  <div
+                    className="flex"
+                    aria-label={`${rating} out of 5 stars rating`}
+                  >
                     {[1, 2, 3, 4, 5].map((star) => (
                       <Star
                         key={star}
                         size={14}
                         fill="#FF8FB2"
                         className="text-salon-pink mr-0.5"
+                        aria-hidden="true"
                       />
                     ))}
                   </div>
@@ -151,7 +325,8 @@ export default async function Page({
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                 <Link href="/appointment" className="btn-primary">
-                  {t("bookAppointment")} <ChevronRight size={18} />
+                  {t("bookAppointment")}{" "}
+                  <ChevronRight size={18} aria-hidden="true" />
                 </Link>
                 <Link href="/#services" className="btn-outline">
                   {t("exploreServices")}
@@ -165,11 +340,12 @@ export default async function Page({
                 <div className="rounded-2xl overflow-hidden border-4 border-white shadow-soft-lg bg-white h-[600px]">
                   <img
                     src={getImageUrl("/hero2.jpg")}
-                    alt="Two stylists in pink blazers with affirmations in the background"
+                    alt="Two professional hair stylists in pink blazers with positive affirmations in the background - D'Ana Hair Salon"
                     className="w-full h-full object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
                     width="509"
                     height="592"
+                    loading="eager"
                   />
                 </div>
 
@@ -177,7 +353,7 @@ export default async function Page({
                 <div className="absolute -top-5 -left-5 glass-card p-4 shadow-soft">
                   <div className="flex items-center space-x-2">
                     <div className="h-10 w-10 rounded-full bg-salon-pink flex items-center justify-center text-white">
-                      <Heart size={16} fill="white" />
+                      <Heart size={16} fill="white" aria-hidden="true" />
                     </div>
                     <div>
                       <p className="font-medium text-salon-text-dark text-sm">
@@ -189,16 +365,32 @@ export default async function Page({
               </div>
 
               {/* Background decorative elements */}
-              <div className="absolute -top-10 -right-10 w-32 h-32 bg-salon-lavender rounded-full filter blur-2xl opacity-30 z-0"></div>
-              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-salon-light-pink rounded-full filter blur-2xl opacity-40 z-0"></div>
+              <div
+                className="absolute -top-10 -right-10 w-32 h-32 bg-salon-lavender rounded-full filter blur-2xl opacity-30 z-0"
+                aria-hidden="true"
+              ></div>
+              <div
+                className="absolute -bottom-10 -left-10 w-40 h-40 bg-salon-light-pink rounded-full filter blur-2xl opacity-40 z-0"
+                aria-hidden="true"
+              ></div>
             </div>
           </div>
-        </div>
+        </main>
 
         {/* About Section */}
-        <section className="relative" id="about">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-salon-lavender rounded-full filter blur-3xl opacity-20 z-0"></div>
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-salon-light-pink rounded-full filter blur-3xl opacity-20 z-0"></div>
+        <section
+          className="relative"
+          id="about"
+          aria-labelledby="about-heading"
+        >
+          <div
+            className="absolute top-0 right-0 w-64 h-64 bg-salon-lavender rounded-full filter blur-3xl opacity-20 z-0"
+            aria-hidden="true"
+          ></div>
+          <div
+            className="absolute bottom-0 left-0 w-80 h-80 bg-salon-light-pink rounded-full filter blur-3xl opacity-20 z-0"
+            aria-hidden="true"
+          ></div>
 
           <div className="section-container relative z-10">
             <div className="flex flex-col-reverse md:flex-row items-center gap-12">
@@ -207,9 +399,10 @@ export default async function Page({
                   <div className="rounded-2xl overflow-hidden border-4 border-white shadow-soft-lg">
                     <img
                       src={getImageUrl("/placeholdertest.jpg")}
-                      alt="Hair salon stylists"
+                      alt="Professional hair salon stylists at D'Ana Hair Salon working with clients"
                       className="w-full max-h-[550px] h-auto object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
+                      loading="lazy"
                     />
                   </div>
                 </div>
@@ -220,7 +413,10 @@ export default async function Page({
                   {t("aboutOurSalon")}
                 </div>
 
-                <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 leading-tight">
+                <h2
+                  id="about-heading"
+                  className="text-3xl md:text-4xl font-display font-bold mb-6 leading-tight"
+                >
                   {t("ourRoots")}{" "}
                   <span className="text-salon-pink">{t("ourStory")}</span>
                 </h2>
@@ -240,7 +436,7 @@ export default async function Page({
 
           <div className="text-center mt-12">
             <Link href="/wie-is-wie" className="btn-primary inline-flex">
-              {t("aboutUs")} <ChevronRight size={18} />
+              {t("aboutUs")} <ChevronRight size={18} aria-hidden="true" />
             </Link>
           </div>
         </section>
@@ -249,9 +445,16 @@ export default async function Page({
         <section
           id="services"
           className="bg-salon-softer-pink py-20 mt-20 relative"
+          aria-labelledby="services-heading"
         >
-          <div className="absolute top-0 left-1/4 w-64 h-64 bg-salon-light-pink rounded-full filter blur-3xl opacity-30 z-0"></div>
-          <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-salon-lavender rounded-full filter blur-3xl opacity-30 z-0"></div>
+          <div
+            className="absolute top-0 left-1/4 w-64 h-64 bg-salon-light-pink rounded-full filter blur-3xl opacity-30 z-0"
+            aria-hidden="true"
+          ></div>
+          <div
+            className="absolute bottom-0 right-1/4 w-64 h-64 bg-salon-lavender rounded-full filter blur-3xl opacity-30 z-0"
+            aria-hidden="true"
+          ></div>
 
           <div className="section-container relative z-10">
             <div className="text-center mb-16">
@@ -259,7 +462,10 @@ export default async function Page({
                 {t("ourPremiumServices")}
               </div>
 
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
+              <h2
+                id="services-heading"
+                className="text-3xl md:text-4xl font-display font-bold mb-6"
+              >
                 <span className="text-salon-text-dark">{t("yourLook")}</span>{" "}
                 <span className="text-salon-pink">{t("ourPassion")}</span>
               </h2>
@@ -275,7 +481,13 @@ export default async function Page({
                 description={t("serviceKeratinDescription")}
                 price="€150"
                 imageSrc={getImageUrl("/keratine.webp")}
-                iconSrc={<Scissors size={16} className="text-white" />}
+                iconSrc={
+                  <Scissors
+                    size={16}
+                    className="text-white"
+                    aria-hidden="true"
+                  />
+                }
                 delay={0}
                 link="/services#keratine"
                 lng={lng}
@@ -288,7 +500,13 @@ export default async function Page({
                 price="€150"
                 imageSrc=""
                 videoSrc={getImageUrl("/botox.mp4")}
-                iconSrc={<Paintbrush size={16} className="text-white" />}
+                iconSrc={
+                  <Paintbrush
+                    size={16}
+                    className="text-white"
+                    aria-hidden="true"
+                  />
+                }
                 delay={100}
                 link="/services#botox"
                 lng={lng}
@@ -300,7 +518,13 @@ export default async function Page({
                 description={t("serviceRitualDescription")}
                 price="€60"
                 imageSrc={getImageUrl("/led.jpg")}
-                iconSrc={<Sparkles size={16} className="text-white" />}
+                iconSrc={
+                  <Sparkles
+                    size={16}
+                    className="text-white"
+                    aria-hidden="true"
+                  />
+                }
                 delay={200}
                 link="/services#ritual"
                 lng={lng}
@@ -310,16 +534,26 @@ export default async function Page({
 
             <div className="text-center mt-12">
               <Link href="/appointment" className="btn-primary inline-flex">
-                {t("bookAppointment")} <ChevronRight size={18} />
+                {t("bookAppointment")}{" "}
+                <ChevronRight size={18} aria-hidden="true" />
               </Link>
             </div>
           </div>
         </section>
 
         {/* Testimonials Section */}
-        <section className="bg-salon-off-white relative py-20">
-          <div className="absolute top-0 left-0 w-64 h-64 bg-salon-lavender rounded-full filter blur-3xl opacity-20 z-0"></div>
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-salon-light-pink rounded-full filter blur-3xl opacity-20 z-0"></div>
+        <section
+          className="bg-salon-off-white relative py-20"
+          aria-labelledby="testimonials-heading"
+        >
+          <div
+            className="absolute top-0 left-0 w-64 h-64 bg-salon-lavender rounded-full filter blur-3xl opacity-20 z-0"
+            aria-hidden="true"
+          ></div>
+          <div
+            className="absolute bottom-0 right-0 w-80 h-80 bg-salon-light-pink rounded-full filter blur-3xl opacity-20 z-0"
+            aria-hidden="true"
+          ></div>
 
           <div className="section-container relative z-10">
             <div className="text-center mb-16">
@@ -327,7 +561,10 @@ export default async function Page({
                 {t("clientTestimonials")}
               </div>
 
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
+              <h2
+                id="testimonials-heading"
+                className="text-3xl md:text-4xl font-display font-bold mb-6"
+              >
                 <span className="text-salon-text-dark">
                   {t("whatOurClients")}
                 </span>{" "}
@@ -352,13 +589,20 @@ export default async function Page({
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="bg-salon-softer-pink py-20 relative">
+        <section
+          id="contact"
+          className="bg-salon-softer-pink py-20 relative"
+          aria-labelledby="contact-heading"
+        >
           <div className="section-container">
             <div className="text-center mb-12">
               <div className="inline-block px-4 py-1 rounded-full bg-white text-salon-pink text-sm font-medium mb-4">
                 {t("questions")}
               </div>
-              <h2 className="text-3xl md:text-4xl font-display font-bold leading-tight">
+              <h2
+                id="contact-heading"
+                className="text-3xl md:text-4xl font-display font-bold leading-tight"
+              >
                 <span className="text-salon-text-dark">
                   {t("readyToTransformYourLook")}{" "}
                 </span>
@@ -372,10 +616,10 @@ export default async function Page({
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                   {/* Contact Information */}
                   <div>
-                    <h4 className="font-display font-semibold text-xl mb-6 text-salon-pink">
+                    <h3 className="font-display font-semibold text-xl mb-6 text-salon-pink">
                       {t("contactInformation")}
-                    </h4>
-                    <div className="space-y-4">
+                    </h3>
+                    <address className="space-y-4 not-italic">
                       <div className="flex items-start space-x-3">
                         <div className="h-8 w-8 rounded-full bg-salon-pink/20 flex items-center justify-center flex-shrink-0 mt-1">
                           <svg
@@ -383,6 +627,7 @@ export default async function Page({
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
+                            aria-hidden="true"
                           >
                             <path
                               strokeLinecap="round"
@@ -414,6 +659,7 @@ export default async function Page({
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
+                            aria-hidden="true"
                           >
                             <path
                               strokeLinecap="round"
@@ -428,69 +674,74 @@ export default async function Page({
                             {t("phone")}
                           </p>
                           <p className="text-salon-text-medium">
-                            +32 477 37 10 71
+                            <a
+                              href="tel:+32477371071"
+                              className="hover:text-salon-pink transition-colors"
+                            >
+                              +32 477 37 10 71
+                            </a>
                           </p>
                         </div>
                       </div>
-                    </div>
+                    </address>
                   </div>
 
                   {/* Opening Hours */}
                   <div>
-                    <h4 className="font-display font-semibold text-xl mb-6 text-salon-pink">
+                    <h3 className="font-display font-semibold text-xl mb-6 text-salon-pink">
                       {t("openingHours")}
-                    </h4>
-                    <div className="space-y-3">
+                    </h3>
+                    <dl className="space-y-3">
                       <div className="flex justify-between items-center py-2 border-b border-salon-pink/20">
-                        <span className="text-salon-text-medium">
+                        <dt className="text-salon-text-medium">
                           {t("monday")}
-                        </span>
-                        <span className="font-medium text-salon-text-dark">
+                        </dt>
+                        <dd className="font-medium text-salon-text-dark">
                           {t("closed")}
-                        </span>
+                        </dd>
                       </div>
                       <div className="flex justify-between items-center py-2 border-b border-salon-pink/20">
-                        <span className="text-salon-text-medium">
+                        <dt className="text-salon-text-medium">
                           {t("tuesday")}
-                        </span>
-                        <span className="font-medium text-salon-text-dark">
+                        </dt>
+                        <dd className="font-medium text-salon-text-dark">
                           {t("closed")}
-                        </span>
+                        </dd>
                       </div>
                       <div className="flex justify-between items-center py-2 border-b border-salon-pink/20">
-                        <span className="text-salon-text-medium">
+                        <dt className="text-salon-text-medium">
                           {t("wednesday")}
-                        </span>
-                        <span className="font-medium text-salon-text-dark">
+                        </dt>
+                        <dd className="font-medium text-salon-text-dark">
                           13:30 - 21:00
-                        </span>
+                        </dd>
                       </div>
                       <div className="flex justify-between items-center py-2 border-b border-salon-pink/20">
-                        <span className="text-salon-text-medium">
+                        <dt className="text-salon-text-medium">
                           {t("friday")}
-                        </span>
-                        <span className="font-medium text-salon-text-dark">
+                        </dt>
+                        <dd className="font-medium text-salon-text-dark">
                           9:00 - 18:00
-                        </span>
+                        </dd>
                       </div>
                       <div className="flex justify-between items-center py-2 border-b border-salon-pink/20">
-                        <span className="text-salon-text-medium">
+                        <dt className="text-salon-text-medium">
                           {t("saturday")}
-                        </span>
-                        <span className="font-medium text-salon-text-dark">
+                        </dt>
+                        <dd className="font-medium text-salon-text-dark">
                           9:00 - 16:00
-                        </span>
+                        </dd>
                       </div>
-                    </div>
+                    </dl>
                   </div>
                 </div>
               </div>
 
               {/* Google Maps */}
               <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6">
-                <h4 className="font-display font-semibold text-xl mb-6 text-salon-pink">
+                <h3 className="font-display font-semibold text-xl mb-6 text-salon-pink">
                   {t("findUs")}
-                </h4>
+                </h3>
                 <div className="rounded-lg overflow-hidden h-80 bg-salon-cream/20">
                   <iframe
                     src="https://maps.google.com/maps?q=51.01490464198777,3.7532758684587&hl=en&z=15&output=embed"
@@ -499,7 +750,8 @@ export default async function Page({
                     style={{ border: 0 }}
                     allowFullScreen
                     loading="lazy"
-                    title="D'Ana Hair Location"
+                    title="D'Ana Hair Salon Location - Hundelgemsesteenweg 73, 9820 Merelbeke-Melle"
+                    aria-label="Interactive map showing D'Ana Hair Salon location"
                   ></iframe>
                 </div>
               </div>
@@ -508,10 +760,16 @@ export default async function Page({
         </section>
 
         {/* Instagram Feed Section */}
-        <section className=" relative py-20">
+        <section
+          className=" relative py-20"
+          aria-labelledby="instagram-heading"
+        >
           <div className="section-container">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
+              <h2
+                id="instagram-heading"
+                className="text-3xl md:text-4xl font-display font-bold mb-6"
+              >
                 <span className="text-salon-text-dark">{t("followOur")}</span>{" "}
                 <span className="text-salon-pink">{t("creativeJourney")}</span>
               </h2>
@@ -581,6 +839,9 @@ export default async function Page({
                       href={image.instagram}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`View Instagram post ${
+                        index + 1
+                      } on Instagram`}
                     >
                       {isVideoFile ? (
                         <video
@@ -594,11 +855,14 @@ export default async function Page({
                           loop
                           autoPlay
                           playsInline
+                          aria-hidden="true"
                         />
                       ) : (
                         <img
                           src={image.url}
-                          alt={`Instagram post ${index + 1}`}
+                          alt={`Instagram post ${
+                            index + 1
+                          } from D'Ana Hair Salon`}
                           className="w-full h-full object-cover transition-transform duration-700 ease-bounce-soft group-hover:scale-110"
                           loading="lazy"
                           sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 16vw"
@@ -609,7 +873,12 @@ export default async function Page({
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                         <div className="p-3 text-white">
                           <div className="flex items-center text-xs">
-                            <Heart size={12} fill="white" className="mr-1" />
+                            <Heart
+                              size={12}
+                              fill="white"
+                              className="mr-1"
+                              aria-hidden="true"
+                            />
                           </div>
                         </div>
                       </div>
@@ -625,6 +894,7 @@ export default async function Page({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-outline inline-flex"
+                aria-label="Follow D'Ana Hair Salon on Instagram"
               >
                 {t("followOnInstagram")}
               </a>

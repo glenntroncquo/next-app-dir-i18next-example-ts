@@ -46,6 +46,26 @@ const Navbar = ({ lng }: NavbarProps) => {
     return pathname.includes(path);
   };
 
+  // Handle smooth scrolling for hash links
+  const handleHashClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    hash: string
+  ) => {
+    e.preventDefault();
+
+    // Close mobile menu if open
+    setIsMenuOpen(false);
+
+    // Smooth scroll to the section
+    const element = document.querySelector(hash);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -78,7 +98,8 @@ const Navbar = ({ lng }: NavbarProps) => {
           <nav className="hidden md:flex items-center space-x-8">
             <a
               href="/#home"
-              className={`highlight-link font-medium ${
+              onClick={(e) => handleHashClick(e, "#home")}
+              className={`highlight-link font-medium cursor-pointer ${
                 isActive("/")
                   ? "text-salon-pink"
                   : "text-salon-text-dark hover:text-salon-text-medium transition-colors"
@@ -98,7 +119,8 @@ const Navbar = ({ lng }: NavbarProps) => {
             </a>
             <a
               href="/#services"
-              className={`highlight-link font-medium ${
+              onClick={(e) => handleHashClick(e, "#services")}
+              className={`highlight-link font-medium cursor-pointer ${
                 isActive("/services")
                   ? "text-salon-pink"
                   : "text-salon-text-dark hover:text-salon-text-medium transition-colors"
@@ -108,7 +130,8 @@ const Navbar = ({ lng }: NavbarProps) => {
             </a>
             <a
               href="/#contact"
-              className={`highlight-link font-medium ${
+              onClick={(e) => handleHashClick(e, "#contact")}
+              className={`highlight-link font-medium cursor-pointer ${
                 isActive("/contact")
                   ? "text-salon-pink"
                   : "text-salon-text-dark hover:text-salon-text-medium transition-colors"
@@ -120,10 +143,7 @@ const Navbar = ({ lng }: NavbarProps) => {
 
           <div className="hidden md:flex items-center gap-4">
             <LanguageSwitcher currentLng={lng} />
-            <a
-              href={`/${lng}/appointment`}
-              className="btn-primary"
-            >
+            <a href={`/${lng}/appointment`} className="btn-primary">
               Book Appointment
             </a>
           </div>
@@ -157,7 +177,8 @@ const Navbar = ({ lng }: NavbarProps) => {
         <nav className="flex flex-col space-y-3 p-6 w-full">
           <a
             href="/#home"
-            className={`py-2 px-4 rounded-lg ${
+            onClick={(e) => handleHashClick(e, "#home")}
+            className={`py-2 px-4 rounded-lg cursor-pointer ${
               isActive("/") ? "text-salon-text-dark" : "text-salon-text-dark "
             }`}
           >
@@ -175,7 +196,8 @@ const Navbar = ({ lng }: NavbarProps) => {
           </a>
           <a
             href="/#services"
-            className={`py-2 px-4 rounded-lg ${
+            onClick={(e) => handleHashClick(e, "#services")}
+            className={`py-2 px-4 rounded-lg cursor-pointer ${
               isActive("/services")
                 ? "bg-salon-softer-pink text-salon-pink"
                 : "text-salon-text-dark"
@@ -185,7 +207,8 @@ const Navbar = ({ lng }: NavbarProps) => {
           </a>
           <a
             href="/#contact"
-            className={`py-2 px-4 rounded-lg ${
+            onClick={(e) => handleHashClick(e, "#contact")}
+            className={`py-2 px-4 rounded-lg cursor-pointer ${
               isActive("/contact")
                 ? "bg-salon-softer-pink text-salon-pink"
                 : "text-salon-text-dark"
@@ -193,10 +216,7 @@ const Navbar = ({ lng }: NavbarProps) => {
           >
             Contact
           </a>
-          <a
-            href={`/${lng}/appointment`}
-            className="btn-primary mt-2 w-full"
-          >
+          <a href={`/${lng}/appointment`} className="btn-primary mt-2 w-full">
             Book Appointment
           </a>
         </nav>
