@@ -23,11 +23,11 @@
   "ourPassion": "Our Passion",
   "ourServicesDesc": "From Brazilian keratin treatments to hair botox, our services are designed to enhance your natural beauty.",
   "serviceKeratinTitle": "Keratin Treatment",
-  "serviceKeratinDescription": "Professional Brazilian keratin treatment for smooth, manageable hair.",
-  "serviceBotoxTitle": "Hair Botox",
-  "serviceBotoxDescription": "Deep conditioning treatment that repairs and rejuvenates damaged hair.",
-  "serviceRitualTitle": "LED Ritual",
-  "serviceRitualDescription": "Relaxing LED light therapy for scalp health and hair growth.",
+  "serviceKeratinDescription": "Transform your hair with our Brazilian keratin treatment for smooth, frizz-free and manageable hair. This revolutionary treatment penetrates deep into the hair shaft and provides long-lasting smoothness and shine.",
+  "serviceBotoxTitle": "Botox Treatment",
+  "serviceBotoxDescription": "Repair and strengthen your hair with our advanced botox treatment for damaged and weak hair. This intensive treatment rebuilds hair structure and provides deep nourishment for healthier, stronger hair.",
+  "serviceRitualTitle": "Ritual Nutrition – Nuance Brazil + LED Light Therapy",
+  "serviceRitualDescription": "Nourish your hair with our premium Brazilian nutrition ritual combined with advanced LED light therapy. This comprehensive treatment provides deep nourishment and stimulates hair growth and repair.",
   "clientTestimonials": "Client Testimonials",
   "whatOurClients": "What Our Clients",
   "clientsSay": "Say",
@@ -50,5 +50,6 @@
   "findUs": "Find Us",
   "followOur": "Follow Our",
   "creativeJourney": "Creative Journey",
-  "followOnInstagram": "Follow us on Instagram"
+  "followOnInstagram": "Follow us on Instagram",
+  "learnMore": "Learn More"
 }

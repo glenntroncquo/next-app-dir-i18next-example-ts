@@ -23,11 +23,11 @@
   "ourPassion": "Onze Passie",
   "ourServicesDesc": "Van Braziliaanse keratinebehandelingen tot hair botox, onze diensten zijn ontworpen om je natuurlijke schoonheid te versterken.",
   "serviceKeratinTitle": "Keratine Behandeling",
-  "serviceKeratinDescription": "Professionele Braziliaanse keratinebehandeling voor glad, handelbaar haar.",
-  "serviceBotoxTitle": "Botox Behandeling",
-  "serviceBotoxDescription": "Diepgaande conditioneringsbehandeling die beschadigd haar herstelt en verjongt.",
-  "serviceRitualTitle": "LED Ritueel",
-  "serviceRitualDescription": "Ontspannende LED-lichttherapie voor hoofdhuidgezondheid en haargroei.",
+  "serviceKeratinDescription": "Transformeer je haar met onze Braziliaanse keratinebehandeling voor glad, pluisvrij en handelbaar haar. Deze revolutionaire behandeling dringt diep door in de haarschacht en zorgt voor langdurige gladheid en glans.",
+  "serviceBotoxTitle": "Botox Behandeling", 
+  "serviceBotoxDescription": "Herstel en versterk je haar met onze geavanceerde botoxbehandeling voor beschadigd en zwak haar. Deze intensieve behandeling herbouwt de haarstructuur en zorgt voor diepe voeding voor gezonder, sterker haar.",
+  "serviceRitualTitle": "Ritual Nutrition – Nuance Brazil + LED-lichttherapie",
+  "serviceRitualDescription": "Voed je haar met ons premium Braziliaanse voedingsritueel gecombineerd met geavanceerde LED-lichttherapie. Deze uitgebreide behandeling zorgt voor diepe voeding en stimuleert haargroei en herstel.",
   "clientTestimonials": "Klant Getuigenissen",
   "whatOurClients": "Wat Onze Klanten",
   "clientsSay": "Zeggen",
@@ -49,6 +49,7 @@
   "closed": "Gesloten",
   "findUs": "Vind Ons",
   "followOur": "Volg Ons",
-  "creativeJourney": "Verhaal",
-  "followOnInstagram": "Volg ons op Instagram"
+  "creativeJourney": "Verhaal", 
+  "followOnInstagram": "Volg ons op Instagram",
+  "learnMore": "Zie Meer"
 }

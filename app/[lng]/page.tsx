@@ -14,7 +14,11 @@ import {
   Heart,
 } from "lucide-react";
 
-export default async function Page({ params }: { params: Promise<{ lng: string }> }) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ lng: string }>;
+}) {
   const { lng } = await params;
   const { t } = await getT();
   // Sample reviews data (this was hardcoded in the React app)
@@ -82,10 +86,7 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
         {/* <Hero rating={Number(rating).toFixed(1)} reviewCount={reviewCount} /> */}
 
         {/* Hero Section */}
-        <div
-          id="home"
-          className="min-h-[85vh] relative overflow-hidden"
-        >
+        <div id="home" className="min-h-[85vh] relative overflow-hidden">
           {/* Background Elements */}
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-salon-softer-pink via-white to-salon-lavender/30 opacity-70 z-0"></div>
           <div className="absolute top-1/4 -left-10 w-56 h-56 bg-salon-light-pink rounded-full filter blur-3xl opacity-30 animate-pulse-soft"></div>
@@ -130,7 +131,10 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
                     ))}
                   </div>
                   <span className="ml-2 text-sm font-medium text-salon-text-dark">
-                    {t("ourRating", { rating: rating.toFixed(1), count: reviewCount })}
+                    {t("ourRating", {
+                      rating: rating.toFixed(1),
+                      count: reviewCount,
+                    })}
                   </span>
                 </div>
               </div>
@@ -146,10 +150,7 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <Link
-                  href="/appointment"
-                  className="btn-primary"
-                >
+                <Link href="/appointment" className="btn-primary">
                   {t("bookAppointment")} <ChevronRight size={18} />
                 </Link>
                 <Link href="/#services" className="btn-outline">
@@ -220,16 +221,15 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
                 </div>
 
                 <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 leading-tight">
-                  {t("ourRoots")} <span className="text-salon-pink">{t("ourStory")}</span>
+                  {t("ourRoots")}{" "}
+                  <span className="text-salon-pink">{t("ourStory")}</span>
                 </h2>
 
                 <p className="text-salon-text-medium mb-6">
                   {t("ourStoryDesc")}
                 </p>
 
-                <p className="text-salon-text-medium mb-8">
-                  {t("aboutDesc3")}
-                </p>
+                <p className="text-salon-text-medium mb-8">{t("aboutDesc3")}</p>
 
                 <p className="text-3xl md:text-2xl font-handwritten font-bold mb-6 leading-tight text-salon-pink">
                   {t("aboutDesc4")}
@@ -279,6 +279,7 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
                 delay={0}
                 link="/services#keratine"
                 lng={lng}
+                learnMoreText={t("learnMore")}
               />
 
               <ServiceCard
@@ -291,6 +292,7 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
                 delay={100}
                 link="/services#botox"
                 lng={lng}
+                learnMoreText={t("learnMore")}
               />
 
               <ServiceCard
@@ -302,6 +304,7 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
                 delay={200}
                 link="/services#ritual"
                 lng={lng}
+                learnMoreText={t("learnMore")}
               />
             </div>
 
@@ -325,7 +328,9 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
               </div>
 
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
-                <span className="text-salon-text-dark">{t("whatOurClients")}</span>{" "}
+                <span className="text-salon-text-dark">
+                  {t("whatOurClients")}
+                </span>{" "}
                 <span className="text-salon-pink">{t("clientsSay")}</span>
               </h2>
             </div>
@@ -437,13 +442,17 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
                     </h4>
                     <div className="space-y-3">
                       <div className="flex justify-between items-center py-2 border-b border-salon-pink/20">
-                        <span className="text-salon-text-medium">{t("monday")}</span>
+                        <span className="text-salon-text-medium">
+                          {t("monday")}
+                        </span>
                         <span className="font-medium text-salon-text-dark">
                           {t("closed")}
                         </span>
                       </div>
                       <div className="flex justify-between items-center py-2 border-b border-salon-pink/20">
-                        <span className="text-salon-text-medium">{t("tuesday")}</span>
+                        <span className="text-salon-text-medium">
+                          {t("tuesday")}
+                        </span>
                         <span className="font-medium text-salon-text-dark">
                           {t("closed")}
                         </span>
@@ -457,13 +466,17 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
                         </span>
                       </div>
                       <div className="flex justify-between items-center py-2 border-b border-salon-pink/20">
-                        <span className="text-salon-text-medium">{t("friday")}</span>
+                        <span className="text-salon-text-medium">
+                          {t("friday")}
+                        </span>
                         <span className="font-medium text-salon-text-dark">
                           9:00 - 18:00
                         </span>
                       </div>
                       <div className="flex justify-between items-center py-2 border-b border-salon-pink/20">
-                        <span className="text-salon-text-medium">{t("saturday")}</span>
+                        <span className="text-salon-text-medium">
+                          {t("saturday")}
+                        </span>
                         <span className="font-medium text-salon-text-dark">
                           9:00 - 16:00
                         </span>
@@ -523,23 +536,32 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
               {[
                 {
                   url: getImageUrl("/story5.jpg"),
-                  instagram: "https://www.instagram.com/p/DGIe1VPNJns/?igsh=MTI2cXo5bGE3aGp5dw%3D%3D",
+                  instagram:
+                    "https://www.instagram.com/p/DGIe1VPNJns/?igsh=MTI2cXo5bGE3aGp5dw%3D%3D",
                 },
                 {
                   url: getImageUrl("/story4.mp4"),
-                  instagram: "https://www.instagram.com/p/DLPhNfLtSWC/?igsh=bXlxZWpjOHNyc29r&img_index=1",
+                  instagram:
+                    "https://www.instagram.com/p/DLPhNfLtSWC/?igsh=bXlxZWpjOHNyc29r&img_index=1",
                 },
                 {
                   url: getImageUrl("/story1.jpg"),
-                  instagram: "https://www.instagram.com/p/DNC_qWpMS9b/?img_index=1",
+                  instagram:
+                    "https://www.instagram.com/p/DNC_qWpMS9b/?img_index=1",
                 },
                 {
                   url: getImageUrl("/story2.mp4"),
-                  instagram: "https://www.instagram.com/reel/DNQO2eXsVUL/?igsh=MTdybjFjbzA3aWlndg%3D%3D",
+                  instagram:
+                    "https://www.instagram.com/reel/DNQO2eXsVUL/?igsh=MTdybjFjbzA3aWlndg%3D%3D",
                 },
                 {
                   url: getImageUrl("/story3.jpg"),
-                  instagram: "https://www.instagram.com/p/DMqQLpJMxmS/?igsh=MTFsZGw0cWw5a2VrbA%3D%3D",
+                  instagram:
+                    "https://www.instagram.com/p/DMqQLpJMxmS/?igsh=MTFsZGw0cWw5a2VrbA%3D%3D",
+                },
+                {
+                  url: getImageUrl("/story6.mp4"),
+                  instagram: "https://www.instagram.com/p/DK_tGQ4s8Pm/",
                 },
               ].map((image, index) => {
                 const isVideo = (url: string) => {
@@ -563,7 +585,10 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
                       {isVideoFile ? (
                         <video
                           src={image.url}
-                          poster={image.url.replace(/\.(mp4|webm|ogg|mov)$/i, ".jpg")}
+                          poster={image.url.replace(
+                            /\.(mp4|webm|ogg|mov)$/i,
+                            ".jpg"
+                          )}
                           className="w-full h-full object-cover transition-transform duration-700 ease-bounce-soft group-hover:scale-110"
                           muted
                           loop
@@ -601,7 +626,7 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
                 rel="noopener noreferrer"
                 className="btn-outline inline-flex"
               >
-{t("followOnInstagram")}
+                {t("followOnInstagram")}
               </a>
             </div>
           </div>

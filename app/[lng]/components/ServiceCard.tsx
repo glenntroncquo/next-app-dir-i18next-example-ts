@@ -13,6 +13,7 @@ interface ServiceCardProps {
   delay?: number;
   link: string;
   lng: string;
+  learnMoreText: string;
 }
 
 const ServiceCard = ({
@@ -25,6 +26,7 @@ const ServiceCard = ({
   delay = 0,
   link,
   lng,
+  learnMoreText,
 }: ServiceCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -92,17 +94,14 @@ const ServiceCard = ({
       </div>
 
       <div className="p-6 pt-8">
-        <div className="flex items-center mb-3">
-          {iconSrc && <div className="mr-2">{iconSrc}</div>}
-          <h3 className="text-xl font-display font-semibold">{title}</h3>
-        </div>
+        <h3 className="text-xl font-display font-semibold mb-3">{title}</h3>
         <p className="text-salon-text-medium mb-4">{description}</p>
 
         <a
           href={`/${lng}${link}`}
           className="flex items-center font-medium text-salon-pink transition-all duration-300 ease-bounce-soft"
         >
-          Learn More
+          {learnMoreText}
           <ChevronRight
             size={16}
             className={`ml-1 transition-transform duration-300 ${

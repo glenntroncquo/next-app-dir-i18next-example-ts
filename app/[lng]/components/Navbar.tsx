@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { getImageUrl } from "../../../lib/imageUrl";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 interface NavbarProps {
   lng: string;
@@ -118,7 +119,7 @@ const Navbar = ({ lng }: NavbarProps) => {
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
-            {/* TODO: Port LanguageSwitcher component */}
+            <LanguageSwitcher currentLng={lng} />
             <a
               href={`/${lng}/appointment`}
               className="btn-primary"
@@ -129,7 +130,7 @@ const Navbar = ({ lng }: NavbarProps) => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-3">
-            {/* TODO: Port LanguageSwitcher component */}
+            <LanguageSwitcher currentLng={lng} />
             <button
               className="p-2 rounded-full bg-white/80 shadow-soft"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
