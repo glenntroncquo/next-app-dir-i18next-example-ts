@@ -1,14 +1,22 @@
 import { Link } from "./components/Link";
 import { getImageUrl } from "../../lib/imageUrl";
+import Navbar from "./components/Navbar";
+import ServiceCard from "./components/ServiceCard";
+import TestimonialCard from "./components/TestimonialCard";
+import Footer from "./components/Footer";
+import { getT } from "../i18n";
 import {
   ChevronRight,
   Scissors,
   Paintbrush,
   Sparkles,
   Star,
+  Heart,
 } from "lucide-react";
 
-export default async function Page() {
+export default async function Page({ params }: { params: Promise<{ lng: string }> }) {
+  const { lng } = await params;
+  const { t } = await getT();
   // Sample reviews data (this was hardcoded in the React app)
   const reviews = [
     {
@@ -36,6 +44,19 @@ export default async function Page() {
       text: "Was al heel lang aan het twijfelen om een keratine behandeling te laten doen maar was nooit helemaal overtuigd of dit wel goed zou zijn voor mijn haar en het wel iets voor mij zou zijn. Toen ik resultaten zag van andere mensen heb ik toch een afspraak gemaakt. Wist nog altijd niet goed wat ik er van moest verwachten maar wauwwww!!!\nIk heb mijn haar 2 dagen nadien gewassen en gewoon los gedroogd met de haardroger en heb er niets van werk aan gehad. Voelde super zacht en glad aan. Alle krul eruit zonder moeite te moeten doen! Geweldig!\n\nBen echt meeega content! Super bedankt. Ik kom sowieso terug! 🤩",
       time: 1722885471,
     },
+    {
+      author_name: "Allisen Hoste",
+      author_url:
+        "https://www.google.com/maps/contrib/103706470601092772607/reviews",
+      language: "nl",
+      profile_photo_url:
+        "https://lh3.googleusercontent.com/a-/ALV-UjU1ydb-HZW6xo1nH816_cbPUvszLEY4diwE1cUxaoLjxf4tyH4n=s128-c0x00000000-cc-rp-mo",
+      rating: 5,
+      relative_time_description: "3 maanden geleden",
+      text: "Vorige week keratine behandeling laten doen. Super vriendelijk onthaald! Super lieve vrouw en doet haar werk met heel veel liefde, voel je ook aan mijn haar! Heb de shampoo + maskertje's + olie erbij gekocht (op aanraden van haar) en tot nu toe super content ermee, mij zie je zeker terug!! 🤍",
+      time: 1736457445,
+      height: "320px",
+    },
   ];
 
   const rating = 5;
@@ -55,8 +76,7 @@ export default async function Page() {
           height="592"
         />
 
-        {/* Navbar Component - TODO: Port from React app */}
-        {/* <Navbar /> */}
+        <Navbar lng={lng} />
 
         {/* Hero Section - TODO: Port Hero component */}
         {/* <Hero rating={Number(rating).toFixed(1)} reviewCount={reviewCount} /> */}
@@ -110,7 +130,7 @@ export default async function Page() {
                     ))}
                   </div>
                   <span className="ml-2 text-sm font-medium text-salon-text-dark">
-                    {rating.toFixed(1)} • More than {reviewCount} satisfied customers
+                    {t("ourRating", { rating: rating.toFixed(1), count: reviewCount })}
                   </span>
                 </div>
               </div>
@@ -156,11 +176,11 @@ export default async function Page() {
                 <div className="absolute -top-5 -left-5 glass-card p-4 shadow-soft">
                   <div className="flex items-center space-x-2">
                     <div className="h-10 w-10 rounded-full bg-salon-pink flex items-center justify-center text-white">
-                      <ChevronRight size={16} />
+                      <Heart size={16} fill="white" />
                     </div>
                     <div>
                       <p className="font-medium text-salon-text-dark text-sm">
-                        Loved by our customers
+                        {t("topRated")}
                       </p>
                     </div>
                   </div>
@@ -179,7 +199,7 @@ export default async function Page() {
           <div className="absolute top-0 right-0 w-64 h-64 bg-salon-lavender rounded-full filter blur-3xl opacity-20 z-0"></div>
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-salon-light-pink rounded-full filter blur-3xl opacity-20 z-0"></div>
 
-          <div className="container mx-auto px-4 py-20 relative z-10">
+          <div className="section-container relative z-10">
             <div className="flex flex-col-reverse md:flex-row items-center gap-12">
               <div className="md:w-1/2 relative">
                 <div className="relative z-10">
@@ -223,7 +243,7 @@ export default async function Page() {
           </div>
 
           <div className="text-center mt-12">
-            <Link href="/wie-is-wie" className="btn-primary">
+            <Link href="/wie-is-wie" className="btn-primary inline-flex">
               About Us <ChevronRight size={18} />
             </Link>
           </div>
@@ -237,7 +257,7 @@ export default async function Page() {
           <div className="absolute top-0 left-1/4 w-64 h-64 bg-salon-light-pink rounded-full filter blur-3xl opacity-30 z-0"></div>
           <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-salon-lavender rounded-full filter blur-3xl opacity-30 z-0"></div>
 
-          <div className="container mx-auto px-4 relative z-10">
+          <div className="section-container relative z-10">
             <div className="text-center mb-16">
               <div className="inline-block px-4 py-1 rounded-full bg-white text-salon-pink text-sm font-medium mb-4">
                 Our Services
@@ -255,68 +275,43 @@ export default async function Page() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Service Cards - TODO: Port ServiceCard component */}
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <img
-                  src={getImageUrl("/keratine.webp")}
-                  alt="Keratin Treatment"
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-6">
-                  <div className="flex items-center mb-2">
-                    <Scissors size={16} className="text-salon-pink mr-2" />
-                    <h3 className="text-xl font-semibold">Keratin Treatment</h3>
-                  </div>
-                  <p className="text-gray-600 mb-4">
-                    Professional Brazilian keratin treatment for smooth,
-                    manageable hair.
-                  </p>
-                  <div className="text-2xl font-bold text-salon-pink">€150</div>
-                </div>
-              </div>
+              <ServiceCard
+                title="Keratin Treatment"
+                description="Professional Brazilian keratin treatment for smooth, manageable hair."
+                price="€150"
+                imageSrc={getImageUrl("/keratine.webp")}
+                iconSrc={<Scissors size={16} className="text-white" />}
+                delay={0}
+                link="/services#keratine"
+                lng={lng}
+              />
 
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <video
-                  src={getImageUrl("/botox.mp4")}
-                  className="w-full h-48 object-cover"
-                  muted
-                  loop
-                  autoPlay
-                />
-                <div className="p-6">
-                  <div className="flex items-center mb-2">
-                    <Paintbrush size={16} className="text-salon-pink mr-2" />
-                    <h3 className="text-xl font-semibold">Hair Botox</h3>
-                  </div>
-                  <p className="text-gray-600 mb-4">
-                    Deep conditioning treatment that repairs and rejuvenates
-                    damaged hair.
-                  </p>
-                  <div className="text-2xl font-bold text-salon-pink">€150</div>
-                </div>
-              </div>
+              <ServiceCard
+                title="Hair Botox"
+                description="Deep conditioning treatment that repairs and rejuvenates damaged hair."
+                price="€150"
+                imageSrc=""
+                videoSrc={getImageUrl("/botox.mp4")}
+                iconSrc={<Paintbrush size={16} className="text-white" />}
+                delay={100}
+                link="/services#botox"
+                lng={lng}
+              />
 
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <img
-                  src={getImageUrl("/led.jpg")}
-                  alt="LED Therapy"
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-6">
-                  <div className="flex items-center mb-2">
-                    <Sparkles size={16} className="text-salon-pink mr-2" />
-                    <h3 className="text-xl font-semibold">LED Ritual</h3>
-                  </div>
-                  <p className="text-gray-600 mb-4">
-                    Relaxing LED light therapy for scalp health and hair growth.
-                  </p>
-                  <div className="text-2xl font-bold text-salon-pink">€60</div>
-                </div>
-              </div>
+              <ServiceCard
+                title="LED Ritual"
+                description="Relaxing LED light therapy for scalp health and hair growth."
+                price="€60"
+                imageSrc={getImageUrl("/led.jpg")}
+                iconSrc={<Sparkles size={16} className="text-white" />}
+                delay={200}
+                link="/services#ritual"
+                lng={lng}
+              />
             </div>
 
             <div className="text-center mt-12">
-              <Link href="/appointment" className="btn-primary">
+              <Link href="/appointment" className="btn-primary inline-flex">
                 Book Appointment <ChevronRight size={18} />
               </Link>
             </div>
@@ -324,11 +319,11 @@ export default async function Page() {
         </section>
 
         {/* Testimonials Section */}
-        <section className="relative py-20">
+        <section className="bg-salon-off-white relative py-20">
           <div className="absolute top-0 left-0 w-64 h-64 bg-salon-lavender rounded-full filter blur-3xl opacity-20 z-0"></div>
           <div className="absolute bottom-0 right-0 w-80 h-80 bg-salon-light-pink rounded-full filter blur-3xl opacity-20 z-0"></div>
 
-          <div className="container mx-auto px-4 relative z-10">
+          <div className="section-container relative z-10">
             <div className="text-center mb-16">
               <div className="inline-block px-4 py-1 rounded-full bg-salon-light-pink text-salon-pink text-sm font-medium mb-4">
                 Client Testimonials
@@ -342,27 +337,15 @@ export default async function Page() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {reviews.slice(0, 3).map((review, index) => (
-                <div key={index} className="bg-white rounded-lg shadow-lg p-6">
-                  <div className="flex items-center mb-4">
-                    <img
-                      src={review.profile_photo_url || "/default-avatar.jpg"}
-                      alt={review.author_name}
-                      className="w-12 h-12 rounded-full mr-4"
-                    />
-                    <div>
-                      <h4 className="font-semibold">{review.author_name}</h4>
-                      <div className="flex items-center">
-                        {[...Array(review.rating)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className="w-4 h-4 fill-yellow-400 text-yellow-400"
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  <p className="text-gray-600 text-sm">{review.text}</p>
-                </div>
+                <TestimonialCard
+                  key={index}
+                  name={review.author_name}
+                  text={review.text}
+                  rating={review.rating}
+                  imageSrc={review.profile_photo_url || "/default-avatar.jpg"}
+                  delay={index * 100}
+                  height={review.height}
+                />
               ))}
             </div>
           </div>
@@ -370,7 +353,7 @@ export default async function Page() {
 
         {/* Contact Section */}
         <section id="contact" className="bg-salon-softer-pink py-20 relative">
-          <div className="container mx-auto px-4">
+          <div className="section-container">
             <div className="text-center mb-12">
               <div className="inline-block px-4 py-1 rounded-full bg-white text-salon-pink text-sm font-medium mb-4">
                 Questions?
@@ -516,8 +499,120 @@ export default async function Page() {
           </div>
         </section>
 
-        {/* Footer Component - TODO: Port from React app */}
-        {/* <Footer /> */}
+        {/* Instagram Feed Section */}
+        <section className=" relative py-20">
+          <div className="section-container">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
+                <span className="text-salon-text-dark">Follow Our</span>{" "}
+                <span className="text-salon-pink">Creative Journey</span>
+              </h2>
+
+              <div className="flex flex-wrap justify-center gap-2">
+                <div className="inline-block px-4 py-1 rounded-full bg-salon-light-pink text-salon-pink text-sm font-medium mb-4">
+                  #IAmBeautiful
+                </div>
+                <div className="inline-block px-4 py-1 rounded-full bg-salon-light-pink text-salon-pink text-sm font-medium mb-4">
+                  #IAmWorthy
+                </div>
+                <div className="inline-block px-4 py-1 rounded-full bg-salon-light-pink text-salon-pink text-sm font-medium mb-4">
+                  #IAmAbundant
+                </div>
+                <div className="inline-block px-4 py-1 rounded-full bg-salon-light-pink text-salon-pink text-sm font-medium mb-4">
+                  #IAmEnough
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-5">
+              {[
+                {
+                  url: getImageUrl("/story5.jpg"),
+                  instagram: "https://www.instagram.com/p/DGIe1VPNJns/?igsh=MTI2cXo5bGE3aGp5dw%3D%3D",
+                },
+                {
+                  url: getImageUrl("/story4.mp4"),
+                  instagram: "https://www.instagram.com/p/DLPhNfLtSWC/?igsh=bXlxZWpjOHNyc29r&img_index=1",
+                },
+                {
+                  url: getImageUrl("/story1.jpg"),
+                  instagram: "https://www.instagram.com/p/DNC_qWpMS9b/?img_index=1",
+                },
+                {
+                  url: getImageUrl("/story2.mp4"),
+                  instagram: "https://www.instagram.com/reel/DNQO2eXsVUL/?igsh=MTdybjFjbzA3aWlndg%3D%3D",
+                },
+                {
+                  url: getImageUrl("/story3.jpg"),
+                  instagram: "https://www.instagram.com/p/DMqQLpJMxmS/?igsh=MTFsZGw0cWw5a2VrbA%3D%3D",
+                },
+              ].map((image, index) => {
+                const isVideo = (url: string) => {
+                  const videoExtensions = ["mp4", "webm", "ogg", "mov"];
+                  const extension = url.split(".").pop()?.toLowerCase();
+                  return videoExtensions.includes(extension || "");
+                };
+                const isVideoFile = isVideo(image.url);
+
+                return (
+                  <div
+                    key={index}
+                    className="group relative overflow-hidden rounded-lg aspect-square shadow-soft"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <a
+                      href={image.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {isVideoFile ? (
+                        <video
+                          src={image.url}
+                          poster={image.url.replace(/\.(mp4|webm|ogg|mov)$/i, ".jpg")}
+                          className="w-full h-full object-cover transition-transform duration-700 ease-bounce-soft group-hover:scale-110"
+                          muted
+                          loop
+                          autoPlay
+                          playsInline
+                        />
+                      ) : (
+                        <img
+                          src={image.url}
+                          alt={`Instagram post ${index + 1}`}
+                          className="w-full h-full object-cover transition-transform duration-700 ease-bounce-soft group-hover:scale-110"
+                          loading="lazy"
+                          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 16vw"
+                        />
+                      )}
+
+                      {/* Heart icon overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div className="p-3 text-white">
+                          <div className="flex items-center text-xs">
+                            <Heart size={12} fill="white" className="mr-1" />
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="text-center mt-12">
+              <a
+                href="https://www.instagram.com/dana.hair.official/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline inline-flex"
+              >
+                Follow us on Instagram
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <Footer lng={lng} />
       </div>
     </>
   );
