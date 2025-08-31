@@ -136,13 +136,13 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-6 tracking-tight">
-                <span className="text-salon-text-dark">D&apos;Ana Hair,</span>
+                <span className="text-salon-text-dark">{t("heroTitle1")}</span>
                 <br />
-                <span className="text-salon-pink">Radiant hair starts here</span>
+                <span className="text-salon-pink">{t("heroTitle2")}</span>
               </h1>
 
               <p className="text-salon-text-medium text-md md:text-xl mb-8 md:max-w-md">
-                For us, it&apos;s all about your hair and your story. Our Brazilian keratin and botox treatments give your hair the care it needs to truly shine again.
+                {t("heroDesc")}
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
@@ -150,10 +150,10 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
                   href="/appointment"
                   className="btn-primary"
                 >
-                  Book Appointment <ChevronRight size={18} />
+                  {t("bookAppointment")} <ChevronRight size={18} />
                 </Link>
                 <Link href="/#services" className="btn-outline">
-                  Explore Services
+                  {t("exploreServices")}
                 </Link>
               </div>
             </div>
@@ -216,27 +216,23 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
 
               <div className="md:w-1/2">
                 <div className="inline-block px-4 py-1 rounded-full bg-salon-light-pink text-salon-pink text-sm font-medium mb-4">
-                  Our Story
+                  {t("aboutOurSalon")}
                 </div>
 
                 <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 leading-tight">
-                  Our Roots <span className="text-salon-pink">Our Story</span>
+                  {t("ourRoots")} <span className="text-salon-pink">{t("ourStory")}</span>
                 </h2>
 
                 <p className="text-salon-text-medium mb-6">
-                  The story begins in Brazil, where Daniela discovered her
-                  passion for hair care at a young age. With her own difficult
-                  hair, she learned how important good care is.
+                  {t("ourStoryDesc")}
                 </p>
 
                 <p className="text-salon-text-medium mb-8">
-                  In Belgium, I started my own business, supported by the
-                  Brazilian brand Nuance. Today we work together as mother and
-                  daughter, with a combination of experience and fresh ideas.
+                  {t("aboutDesc3")}
                 </p>
 
                 <p className="text-3xl md:text-2xl font-handwritten font-bold mb-6 leading-tight text-salon-pink">
-                  Daniela & Ana Paula
+                  {t("aboutDesc4")}
                 </p>
               </div>
             </div>
@@ -244,7 +240,7 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
 
           <div className="text-center mt-12">
             <Link href="/wie-is-wie" className="btn-primary inline-flex">
-              About Us <ChevronRight size={18} />
+              {t("aboutUs")} <ChevronRight size={18} />
             </Link>
           </div>
         </section>
@@ -260,24 +256,23 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
           <div className="section-container relative z-10">
             <div className="text-center mb-16">
               <div className="inline-block px-4 py-1 rounded-full bg-white text-salon-pink text-sm font-medium mb-4">
-                Our Services
+                {t("ourPremiumServices")}
               </div>
 
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
-                <span className="text-salon-text-dark">Your Look</span>{" "}
-                <span className="text-salon-pink">Our Passion</span>
+                <span className="text-salon-text-dark">{t("yourLook")}</span>{" "}
+                <span className="text-salon-pink">{t("ourPassion")}</span>
               </h2>
 
               <p className="text-salon-text-medium max-w-2xl mx-auto">
-                From Brazilian keratin treatments to hair botox, our services
-                are designed to enhance your natural beauty.
+                {t("ourServicesDesc")}
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <ServiceCard
-                title="Keratin Treatment"
-                description="Professional Brazilian keratin treatment for smooth, manageable hair."
+                title={t("serviceKeratinTitle")}
+                description={t("serviceKeratinDescription")}
                 price="€150"
                 imageSrc={getImageUrl("/keratine.webp")}
                 iconSrc={<Scissors size={16} className="text-white" />}
@@ -287,8 +282,8 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
               />
 
               <ServiceCard
-                title="Hair Botox"
-                description="Deep conditioning treatment that repairs and rejuvenates damaged hair."
+                title={t("serviceBotoxTitle")}
+                description={t("serviceBotoxDescription")}
                 price="€150"
                 imageSrc=""
                 videoSrc={getImageUrl("/botox.mp4")}
@@ -299,8 +294,8 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
               />
 
               <ServiceCard
-                title="LED Ritual"
-                description="Relaxing LED light therapy for scalp health and hair growth."
+                title={t("serviceRitualTitle")}
+                description={t("serviceRitualDescription")}
                 price="€60"
                 imageSrc={getImageUrl("/led.jpg")}
                 iconSrc={<Sparkles size={16} className="text-white" />}
@@ -312,7 +307,7 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
 
             <div className="text-center mt-12">
               <Link href="/appointment" className="btn-primary inline-flex">
-                Book Appointment <ChevronRight size={18} />
+                {t("bookAppointment")} <ChevronRight size={18} />
               </Link>
             </div>
           </div>
@@ -326,12 +321,12 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
           <div className="section-container relative z-10">
             <div className="text-center mb-16">
               <div className="inline-block px-4 py-1 rounded-full bg-salon-light-pink text-salon-pink text-sm font-medium mb-4">
-                Client Testimonials
+                {t("clientTestimonials")}
               </div>
 
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
-                <span className="text-salon-text-dark">What Our Clients</span>{" "}
-                <span className="text-salon-pink">Say</span>
+                <span className="text-salon-text-dark">{t("whatOurClients")}</span>{" "}
+                <span className="text-salon-pink">{t("clientsSay")}</span>
               </h2>
             </div>
 
@@ -356,13 +351,13 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
           <div className="section-container">
             <div className="text-center mb-12">
               <div className="inline-block px-4 py-1 rounded-full bg-white text-salon-pink text-sm font-medium mb-4">
-                Questions?
+                {t("questions")}
               </div>
               <h2 className="text-3xl md:text-4xl font-display font-bold leading-tight">
                 <span className="text-salon-text-dark">
-                  Ready to transform your look?{" "}
+                  {t("readyToTransformYourLook")}{" "}
                 </span>
-                <span className="text-salon-pink">But have questions?</span>
+                <span className="text-salon-pink">{t("butQuestions")}</span>
               </h2>
             </div>
 
@@ -373,7 +368,7 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
                   {/* Contact Information */}
                   <div>
                     <h4 className="font-display font-semibold text-xl mb-6 text-salon-pink">
-                      Contact Information
+                      {t("contactInformation")}
                     </h4>
                     <div className="space-y-4">
                       <div className="flex items-start space-x-3">
@@ -400,7 +395,7 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
                         </div>
                         <div>
                           <p className="font-medium text-salon-text-dark">
-                            Address
+                            {t("address")}
                           </p>
                           <p className="text-salon-text-medium">
                             Hundelgemsesteenweg 73, 9820 Merelbeke-Melle
@@ -425,7 +420,7 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
                         </div>
                         <div>
                           <p className="font-medium text-salon-text-dark">
-                            Phone
+                            {t("phone")}
                           </p>
                           <p className="text-salon-text-medium">
                             +32 477 37 10 71
@@ -438,37 +433,37 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
                   {/* Opening Hours */}
                   <div>
                     <h4 className="font-display font-semibold text-xl mb-6 text-salon-pink">
-                      Opening Hours
+                      {t("openingHours")}
                     </h4>
                     <div className="space-y-3">
                       <div className="flex justify-between items-center py-2 border-b border-salon-pink/20">
-                        <span className="text-salon-text-medium">Monday</span>
+                        <span className="text-salon-text-medium">{t("monday")}</span>
                         <span className="font-medium text-salon-text-dark">
-                          Closed
+                          {t("closed")}
                         </span>
                       </div>
                       <div className="flex justify-between items-center py-2 border-b border-salon-pink/20">
-                        <span className="text-salon-text-medium">Tuesday</span>
+                        <span className="text-salon-text-medium">{t("tuesday")}</span>
                         <span className="font-medium text-salon-text-dark">
-                          Closed
+                          {t("closed")}
                         </span>
                       </div>
                       <div className="flex justify-between items-center py-2 border-b border-salon-pink/20">
                         <span className="text-salon-text-medium">
-                          Wednesday
+                          {t("wednesday")}
                         </span>
                         <span className="font-medium text-salon-text-dark">
                           13:30 - 21:00
                         </span>
                       </div>
                       <div className="flex justify-between items-center py-2 border-b border-salon-pink/20">
-                        <span className="text-salon-text-medium">Friday</span>
+                        <span className="text-salon-text-medium">{t("friday")}</span>
                         <span className="font-medium text-salon-text-dark">
                           9:00 - 18:00
                         </span>
                       </div>
                       <div className="flex justify-between items-center py-2 border-b border-salon-pink/20">
-                        <span className="text-salon-text-medium">Saturday</span>
+                        <span className="text-salon-text-medium">{t("saturday")}</span>
                         <span className="font-medium text-salon-text-dark">
                           9:00 - 16:00
                         </span>
@@ -481,7 +476,7 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
               {/* Google Maps */}
               <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6">
                 <h4 className="font-display font-semibold text-xl mb-6 text-salon-pink">
-                  Find Us
+                  {t("findUs")}
                 </h4>
                 <div className="rounded-lg overflow-hidden h-80 bg-salon-cream/20">
                   <iframe
@@ -504,8 +499,8 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
           <div className="section-container">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
-                <span className="text-salon-text-dark">Follow Our</span>{" "}
-                <span className="text-salon-pink">Creative Journey</span>
+                <span className="text-salon-text-dark">{t("followOur")}</span>{" "}
+                <span className="text-salon-pink">{t("creativeJourney")}</span>
               </h2>
 
               <div className="flex flex-wrap justify-center gap-2">
@@ -606,7 +601,7 @@ export default async function Page({ params }: { params: Promise<{ lng: string }
                 rel="noopener noreferrer"
                 className="btn-outline inline-flex"
               >
-                Follow us on Instagram
+{t("followOnInstagram")}
               </a>
             </div>
           </div>
