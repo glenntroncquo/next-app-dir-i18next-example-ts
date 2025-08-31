@@ -104,7 +104,7 @@ const Navbar = ({ lng }: NavbarProps) => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <a
-              href="/#home"
+              href={`/${lng}#home`}
               onClick={(e) => handleHashClick(e, "#home")}
               className={`highlight-link font-medium cursor-pointer ${
                 isActive("/")
@@ -125,7 +125,7 @@ const Navbar = ({ lng }: NavbarProps) => {
               About
             </a>
             <a
-              href="/#services"
+              href={`/${lng}#services`}
               onClick={(e) => handleHashClick(e, "#services")}
               className={`highlight-link font-medium cursor-pointer ${
                 isActive("/services")
@@ -136,7 +136,7 @@ const Navbar = ({ lng }: NavbarProps) => {
               Services
             </a>
             <a
-              href="/#contact"
+              href={`/${lng}#contact`}
               onClick={(e) => handleHashClick(e, "#contact")}
               className={`highlight-link font-medium cursor-pointer ${
                 isActive("/contact")
@@ -183,7 +183,7 @@ const Navbar = ({ lng }: NavbarProps) => {
       >
         <nav className="flex flex-col space-y-3 p-6 w-full">
           <a
-            href="/#home"
+            href={`/${lng}#home`}
             onClick={(e) => handleHashClick(e, "#home")}
             className={`py-2 px-4 rounded-lg cursor-pointer ${
               isActive("/") ? "text-salon-text-dark" : "text-salon-text-dark "
@@ -202,7 +202,7 @@ const Navbar = ({ lng }: NavbarProps) => {
             About
           </a>
           <a
-            href="/#services"
+            href={`/${lng}#services`}
             onClick={(e) => handleHashClick(e, "#services")}
             className={`py-2 px-4 rounded-lg cursor-pointer ${
               isActive("/services")
@@ -213,7 +213,7 @@ const Navbar = ({ lng }: NavbarProps) => {
             Services
           </a>
           <a
-            href="/#contact"
+            href={`/${lng}#contact`}
             onClick={(e) => handleHashClick(e, "#contact")}
             className={`py-2 px-4 rounded-lg cursor-pointer ${
               isActive("/contact")

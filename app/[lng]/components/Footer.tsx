@@ -53,7 +53,7 @@ const Footer = ({ lng }: FooterProps) => {
             <ul className="space-y-3">
               <li>
                 <a
-                  href={`/${lng}`}
+                  href={`/${lng}#home`}
                   className="text-salon-text-medium hover:text-salon-pink transition-colors flex items-center"
                 >
                   <span className="w-1.5 h-1.5 bg-salon-pink rounded-full mr-2"></span>
@@ -62,7 +62,7 @@ const Footer = ({ lng }: FooterProps) => {
               </li>
               <li>
                 <a
-                  href="/#about"
+                  href={`/${lng}#about`}
                   className="text-salon-text-medium hover:text-salon-pink transition-colors flex items-center"
                 >
                   <span className="w-1.5 h-1.5 bg-salon-pink rounded-full mr-2"></span>
@@ -71,7 +71,7 @@ const Footer = ({ lng }: FooterProps) => {
               </li>
               <li>
                 <a
-                  href="/#services"
+                  href={`/${lng}#services`}
                   className="text-salon-text-medium hover:text-salon-pink transition-colors flex items-center"
                 >
                   <span className="w-1.5 h-1.5 bg-salon-pink rounded-full mr-2"></span>
@@ -80,7 +80,7 @@ const Footer = ({ lng }: FooterProps) => {
               </li>
               <li>
                 <a
-                  href="/#contact"
+                  href={`/${lng}#contact`}
                   className="text-salon-text-medium hover:text-salon-pink transition-colors flex items-center"
                 >
                   <span className="w-1.5 h-1.5 bg-salon-pink rounded-full mr-2"></span>
