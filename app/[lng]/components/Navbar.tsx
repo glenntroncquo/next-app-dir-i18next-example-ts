@@ -2,16 +2,17 @@
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { getImageUrl } from "../../../lib/imageUrl";
 import LanguageSwitcher from "./LanguageSwitcher";
 import Image from "next/image";
 
 interface NavbarProps {
-  lng: string;
+  currentLng: string;
 }
 
-const Navbar = ({ lng }: NavbarProps) => {
+const Navbar = ({ currentLng: lng }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
@@ -47,25 +48,6 @@ const Navbar = ({ lng }: NavbarProps) => {
     return pathname.includes(path);
   };
 
-  // Handle smooth scrolling for hash links
-  const handleHashClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    hash: string
-  ) => {
-    e.preventDefault();
-
-    // Close mobile menu if open
-    setIsMenuOpen(false);
-
-    // Smooth scroll to the section
-    const element = document.querySelector(hash);
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  };
 
   return (
     <header
@@ -82,7 +64,7 @@ const Navbar = ({ lng }: NavbarProps) => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4 md:py-6">
-          <a href={`/${lng}`} className="flex items-center space-x-2 group">
+          <Link href={`/${lng}`} className="flex items-center space-x-2 group">
             <Image
               src={getImageUrl("/logo.svg")}
               alt="D'Ana Hair logo"
@@ -99,34 +81,32 @@ const Navbar = ({ lng }: NavbarProps) => {
               height={56}
               priority
             />
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a
-              href={`/${lng}#home`}
-              onClick={(e) => handleHashClick(e, "#home")}
+            <Link
+              href={`/${lng}`}
               className={`highlight-link font-medium cursor-pointer ${
-                isActive("/")
+                isActive("/") && pathname === `/${lng}`
                   ? "text-salon-pink"
                   : "text-salon-text-dark hover:text-salon-text-medium transition-colors"
               }`}
             >
               Home
-            </a>
-            <a
-              href={`/${lng}/wie-is-wie`}
+            </Link>
+            <Link
+              href={`/${lng}/about`}
               className={`highlight-link font-medium ${
-                isActive("/wie-is-wie")
+                isActive("/about")
                   ? "text-salon-pink"
                   : "text-salon-text-dark hover:text-salon-text-medium transition-colors"
               }`}
             >
               About
-            </a>
-            <a
-              href={`/${lng}#services`}
-              onClick={(e) => handleHashClick(e, "#services")}
+            </Link>
+            <Link
+              href={`/${lng}/services`}
               className={`highlight-link font-medium cursor-pointer ${
                 isActive("/services")
                   ? "text-salon-pink"
@@ -134,10 +114,9 @@ const Navbar = ({ lng }: NavbarProps) => {
               }`}
             >
               Services
-            </a>
-            <a
-              href={`/${lng}#contact`}
-              onClick={(e) => handleHashClick(e, "#contact")}
+            </Link>
+            <Link
+              href={`/${lng}/contact`}
               className={`highlight-link font-medium cursor-pointer ${
                 isActive("/contact")
                   ? "text-salon-pink"
@@ -145,14 +124,14 @@ const Navbar = ({ lng }: NavbarProps) => {
               }`}
             >
               Contact
-            </a>
+            </Link>
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
             <LanguageSwitcher currentLng={lng} />
-            <a href={`/${lng}/appointment`} className="btn-primary">
+            <Link href={`/${lng}/appointment`} className="btn-primary">
               Book Appointment
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -182,17 +161,18 @@ const Navbar = ({ lng }: NavbarProps) => {
         }}
       >
         <nav className="flex flex-col space-y-3 p-6 w-full">
-          <a
-            href={`/${lng}#home`}
-            onClick={(e) => handleHashClick(e, "#home")}
+          <Link
+            href={`/${lng}`}
             className={`py-2 px-4 rounded-lg cursor-pointer ${
-              isActive("/") ? "text-salon-text-dark" : "text-salon-text-dark "
+              pathname === `/${lng}`
+                ? "bg-salon-softer-pink text-salon-pink"
+                : "text-salon-text-dark"
             }`}
           >
             Home
-          </a>
-          <a
-            href={`/${lng}/wie-is-wie`}
+          </Link>
+          <Link
+            href={`/${lng}/about`}
             className={`py-2 px-4 rounded-lg ${
               isActive("/about")
                 ? "bg-salon-softer-pink text-salon-pink"
@@ -200,10 +180,9 @@ const Navbar = ({ lng }: NavbarProps) => {
             }`}
           >
             About
-          </a>
-          <a
-            href={`/${lng}#services`}
-            onClick={(e) => handleHashClick(e, "#services")}
+          </Link>
+          <Link
+            href={`/${lng}/services`}
             className={`py-2 px-4 rounded-lg cursor-pointer ${
               isActive("/services")
                 ? "bg-salon-softer-pink text-salon-pink"
@@ -211,10 +190,9 @@ const Navbar = ({ lng }: NavbarProps) => {
             }`}
           >
             Services
-          </a>
-          <a
-            href={`/${lng}#contact`}
-            onClick={(e) => handleHashClick(e, "#contact")}
+          </Link>
+          <Link
+            href={`/${lng}/contact`}
             className={`py-2 px-4 rounded-lg cursor-pointer ${
               isActive("/contact")
                 ? "bg-salon-softer-pink text-salon-pink"
@@ -222,10 +200,13 @@ const Navbar = ({ lng }: NavbarProps) => {
             }`}
           >
             Contact
-          </a>
-          <a href={`/${lng}/appointment`} className="btn-primary mt-2 w-full">
+          </Link>
+          <Link
+            href={`/${lng}/appointment`}
+            className="btn-primary mt-2 w-full"
+          >
             Book Appointment
-          </a>
+          </Link>
         </nav>
       </div>
     </header>

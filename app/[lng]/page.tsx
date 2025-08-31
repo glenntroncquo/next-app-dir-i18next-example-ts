@@ -302,7 +302,7 @@ export default async function Page({
           quality={90}
         />
 
-        <Navbar lng={lng} />
+        <Navbar currentLng={lng} />
 
         {/* Hero Section */}
         <main id="home" className="min-h-[85vh] relative overflow-hidden">
@@ -494,7 +494,7 @@ export default async function Page({
           </div>
 
           <div className="text-center mt-12">
-            <Link href="/wie-is-wie" className="btn-primary inline-flex">
+            <Link href={`/${lng}/about`} className="btn-primary inline-flex">
               {t("aboutUs")} <ChevronRight size={18} aria-hidden="true" />
             </Link>
           </div>
@@ -548,7 +548,7 @@ export default async function Page({
                   />
                 }
                 delay={0}
-                link="/services#keratine"
+                link="/services/keratine"
                 lng={lng}
                 learnMoreText={t("learnMore")}
               />
@@ -567,7 +567,7 @@ export default async function Page({
                   />
                 }
                 delay={100}
-                link="/services#botox"
+                link="/services/botox"
                 lng={lng}
                 learnMoreText={t("learnMore")}
               />
@@ -585,7 +585,7 @@ export default async function Page({
                   />
                 }
                 delay={200}
-                link="/services#ritual"
+                link="/services/ritual"
                 lng={lng}
                 learnMoreText={t("learnMore")}
               />
