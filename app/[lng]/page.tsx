@@ -376,7 +376,7 @@ export default async function Page({
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <Link href="/appointment" className="btn-primary">
+                <Link href={`/${lng}/booking`} className="btn-primary">
                   {t("bookAppointment")}{" "}
                   <ChevronRight size={18} aria-hidden="true" />
                 </Link>
@@ -592,7 +592,7 @@ export default async function Page({
             </div>
 
             <div className="text-center mt-12">
-              <Link href="/appointment" className="btn-primary inline-flex">
+              <Link href={`/${lng}/booking`} className="btn-primary inline-flex">
                 {t("bookAppointment")}{" "}
                 <ChevronRight size={18} aria-hidden="true" />
               </Link>

@@ -129,7 +129,8 @@ const Navbar = ({ currentLng: lng }: NavbarProps) => {
 
           <div className="hidden md:flex items-center gap-4">
             <LanguageSwitcher currentLng={lng} />
-            <Link href={`/${lng}/appointment`} className="btn-primary">
+
+            <Link href={`/${lng}/booking`} className="btn-primary">
               Book Appointment
             </Link>
           </div>
@@ -202,7 +203,7 @@ const Navbar = ({ currentLng: lng }: NavbarProps) => {
             Contact
           </Link>
           <Link
-            href={`/${lng}/appointment`}
+            href={`/${lng}/booking`}
             className="btn-primary mt-2 w-full"
           >
             Book Appointment
