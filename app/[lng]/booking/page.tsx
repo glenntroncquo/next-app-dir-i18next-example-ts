@@ -88,15 +88,13 @@ export default async function BookingPage({ params }: PageProps) {
       />
 
       <div className="min-h-screen bg-gradient-to-b from-salon-off-white to-salon-softer-pink">
-        {/* <Navbar currentLng={lng} /> */}
-
-        {/* Hero Section */}
-        <section className="relative md:pt-32 pt-24 pb-16">
-          <BookingClient
-          />
-        </section>
-
-        {/* <Footer lng={lng} /> */}
+        <Navbar currentLng={lng} />
+        <div className="section-container pt-20 lg:pt-32">
+          <div className="max-w-4xl mx-auto">
+            <BookingClient />
+          </div>
+        </div>
+        <Footer lng={lng} />
       </div>
     </>
   );
