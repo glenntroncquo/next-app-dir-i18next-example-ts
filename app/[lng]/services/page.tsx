@@ -101,17 +101,6 @@ export default async function ServicesPage({ params }: PageProps) {
         {/* Hero Section */}
         <section className="md:pt-32 pt-24 pb-20">
           <div className="max-w-4xl mx-auto px-6">
-            {/* Large Image */}
-            <div className="mb-8">
-              <div className="rounded-2xl overflow-hidden">
-                <img
-                  src={getImageUrl("/hero.webp")}
-                  alt={t("ourPremiumServices")}
-                  className="w-full h-96 object-cover"
-                />
-              </div>
-            </div>
-
             {/* Content Section */}
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-5xl font-display font-bold text-salon-text-dark mb-6">
@@ -204,7 +193,7 @@ export default async function ServicesPage({ params }: PageProps) {
                     {/* Learn More Button */}
                     <Link
                       href={`/${lng}/services/${service.id}`}
-                      className="w-full btn-outline text-sm py-2 px-4 rounded-full inline-flex items-center justify-center group-hover:btn-primary transition-all duration-300"
+                      className="w-full btn-outline text-sm py-2 px-4 rounded-full inline-flex items-center justify-center group-hover:btn- transition-all duration-300"
                     >
                       {t("learnMore")}
                       <ChevronRight size={14} className="ml-1" />
