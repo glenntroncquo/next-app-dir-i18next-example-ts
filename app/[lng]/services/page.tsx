@@ -95,7 +95,7 @@ export default async function ServicesPage({ params }: PageProps) {
 
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-b from-salon-off-white to-white">
+      <div className="min-h-screen  ">
         <Navbar currentLng={lng} />
 
         {/* Hero Section */}

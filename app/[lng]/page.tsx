@@ -30,7 +30,7 @@ export async function generateMetadata({
 
   return {
     title: t("seoTitle"),
-    description: t("heroDesc"),
+    description: t("seoDescription"),
     keywords: t("seoKeywords"),
     authors: [{ name: "D'Ana Hair" }],
     creator: "D'Ana Hair",
@@ -592,7 +592,10 @@ export default async function Page({
             </div>
 
             <div className="text-center mt-12">
-              <Link href={`/${lng}/booking`} className="btn-primary inline-flex">
+              <Link
+                href={`/${lng}/booking`}
+                className="btn-primary inline-flex"
+              >
                 {t("bookAppointment")}{" "}
                 <ChevronRight size={18} aria-hidden="true" />
               </Link>
@@ -602,7 +605,7 @@ export default async function Page({
 
         {/* Testimonials Section */}
         <section
-          className="bg-salon-off-white relative py-20"
+          className=" relative py-20"
           aria-labelledby="testimonials-heading"
         >
           <div
@@ -738,6 +741,37 @@ export default async function Page({
                               className="hover:text-salon-pink transition-colors"
                             >
                               +32 477 37 10 71
+                            </a>
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <div className="h-8 w-8 rounded-full bg-salon-pink/20 flex items-center justify-center flex-shrink-0 mt-1">
+                          <svg
+                            className="h-4 w-4 text-salon-pink"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                            />
+                          </svg>
+                        </div>
+                        <div>
+                          <p className="font-medium text-salon-text-dark">
+                            {t("email")}
+                          </p>
+                          <p className="text-salon-text-medium">
+                            <a
+                              href="mailto:info@danahair.be"
+                              className="hover:text-salon-pink transition-colors"
+                            >
+                              info@danahair.be
                             </a>
                           </p>
                         </div>

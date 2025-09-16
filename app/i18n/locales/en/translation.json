@@ -76,6 +76,9 @@
   "featureConsultationAftercare": "Professional consultation and aftercare",
   "startingPrice": "Starting price",
   "duration": "Duration",
+  "lastsUpTo": "Lasts up to",
+  "durationTime": "2-3 hours",
+  "durationMonths": "3-6 months",
   "durationKeratin": "2-3 hours",
   "durationBotox": "2-3 hours",
   "durationRitual": "2-2.5 hours",
@@ -181,5 +184,16 @@
   "pricingSubtitle": "Professional keratin treatment with premium Brazilian products",
   "seoTitle": "D'Ana Hair: Your expert in Brazilian keratin treatments & hair botox. Specialist for Ghent, Oudenaarde and surrounding areas.",
   "siteName": "D'Ana Hair",
-  "seoKeywords": "hair salon, keratin treatment, botox treatment, hair styling, Brazilian kerattin treatment, Brazilian keratin treatment Ghent, Merelbeke, Melle, Belgium, hair care, beauty salon, hair coloring, Brazilian keratin, hair botox, hair specialist, salon Merelbeke, hair care Ghent, keratin treatment Oudenaarde"
+  "seoKeywords": "hair salon, keratin treatment, botox treatment, hair styling, Brazilian kerattin treatment, Brazilian keratin treatment Ghent, Merelbeke, Melle, Belgium, hair care, beauty salon, hair coloring, Brazilian keratin, hair botox, hair specialist, salon Merelbeke, hair care Ghent, keratin treatment Oudenaarde",
+  "processDescription": "Our professional 5-step process ensures perfect results every time",
+  "afterCareDescription": "Follow these simple steps to maximize your keratin treatment results",
+  "faqDescription": "Get answers to the most common questions about keratin treatments",
+  "localSeoTitle": "Keratin Treatment in Merelbeke",
+  "callUs": "Call Us",
+  "whyChooseUs": "Why Choose D'Ana Hair?",
+  "expertise": "10+ years Brazilian keratin expertise",
+  "premiumProducts": "Formaldehyde-free premium products",
+  "personalizedConsultation": "Personalized consultation included",
+  "satisfiedClients": "200+ satisfied clients",
+  "viewAllServices": "View All Services"
 }

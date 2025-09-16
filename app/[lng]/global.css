@@ -48,6 +48,7 @@
   body {
     @apply text-salon-text-dark antialiased;
     font-family: "Inter", sans-serif;
+    background: linear-gradient(135deg, #fffcfd 0%, #fff0f7 100%);
   }
 
   h1,

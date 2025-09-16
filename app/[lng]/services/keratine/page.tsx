@@ -154,7 +154,7 @@ export default async function KeratinePage({ params }: PageProps) {
     offers: {
       "@type": "Offer",
       priceCurrency: "EUR",
-      price: "150-280+",
+      price: "150",
     },
   };
 
@@ -188,7 +188,7 @@ export default async function KeratinePage({ params }: PageProps) {
                   </h2>
                 </div>
 
-                <p className="text-xl text-salon-text-medium leading-relaxed max-w-2xl">
+                <p className="text-xl text-salon-text-dark leading-relaxed max-w-2xl">
                   {t("keratinIntroText")}
                 </p>
 
@@ -196,7 +196,7 @@ export default async function KeratinePage({ params }: PageProps) {
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-soft border border-white/50">
                     <div className="text-3xl font-bold text-salon-pink mb-1">
-                      €150-€280+
+                      €150
                     </div>
                     <div className="text-sm text-salon-text-medium">
                       {t("startingPrice")}
@@ -204,7 +204,7 @@ export default async function KeratinePage({ params }: PageProps) {
                   </div>
                   <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-soft border border-white/50">
                     <div className="text-3xl font-bold text-salon-pink mb-1">
-                      2-3uur
+                      {t("durationTime")}
                     </div>
                     <div className="text-sm text-salon-text-medium">
                       {t("duration")}
@@ -212,10 +212,10 @@ export default async function KeratinePage({ params }: PageProps) {
                   </div>
                   <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-soft border border-white/50 col-span-2 md:col-span-1">
                     <div className="text-3xl font-bold text-salon-pink mb-1">
-                      3-6m
+                      {t("durationMonths")}
                     </div>
                     <div className="text-sm text-salon-text-medium">
-                      Lasts up to
+                      {t("lastsUpTo")}
                     </div>
                   </div>
                 </div>
@@ -238,14 +238,14 @@ export default async function KeratinePage({ params }: PageProps) {
                   {t("whatIsKeratin")}
                 </h2>
                 <div className="space-y-6">
-                  <p className="text-lg text-salon-text-medium leading-relaxed text-center">
+                  <p className="text-lg text-salon-text-dark leading-relaxed text-center">
                     {t("whatIsKeratinText")}
                   </p>
                   <div className="bg-salon-off-white rounded-2xl p-8">
                     <h3 className="text-2xl font-display font-semibold text-salon-pink mb-4">
                       {t("howItWorks")}
                     </h3>
-                    <p className="text-salon-text-medium leading-relaxed">
+                    <p className="text-salon-text-dark leading-relaxed">
                       {t("howItWorksText")}
                     </p>
                   </div>
@@ -270,9 +270,9 @@ export default async function KeratinePage({ params }: PageProps) {
                 {t("pricingTitle")}
               </h2>
               <div className="text-6xl font-bold text-salon-pink mb-4">
-                €150 - €280+
+                €150
               </div>
-              <p className="text-xl text-salon-text-medium">
+              <p className="text-xl text-salon-text-dark">
                 {t("pricingSubtitle")}
               </p>
             </div>
@@ -285,7 +285,7 @@ export default async function KeratinePage({ params }: PageProps) {
                 {costFactors.map((factor, index) => (
                   <div key={index} className="flex items-center gap-3">
                     <div className="w-3 h-3 bg-salon-pink rounded-full"></div>
-                    <span className="text-salon-text-medium">{factor}</span>
+                    <span className="text-salon-text-dark">{factor}</span>
                   </div>
                 ))}
               </div>
@@ -300,7 +300,6 @@ export default async function KeratinePage({ params }: PageProps) {
               <h2 className="text-4xl md:text-5xl font-display font-bold text-salon-text-dark mb-6">
                 {t("keratinBenefits")}
               </h2>
-
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -316,7 +315,7 @@ export default async function KeratinePage({ params }: PageProps) {
                     <h3 className="text-xl font-display font-bold text-salon-text-dark mb-4">
                       {benefit.title}
                     </h3>
-                    <p className="text-salon-text-medium leading-relaxed">
+                    <p className="text-salon-text-dark leading-relaxed">
                       {benefit.desc}
                     </p>
                   </div>
@@ -327,15 +326,14 @@ export default async function KeratinePage({ params }: PageProps) {
         </section>
 
         {/* Process - Step by Step */}
-        <section className="py-20 bg-white">
+        {/* <section className="py-20 bg-white">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-display font-bold text-salon-text-dark mb-6">
                 {t("ourKeratinProcess")}
               </h2>
               <p className="text-xl text-salon-text-medium">
-                Our professional 5-step process ensures perfect results every
-                time
+                {t("processDescription")}
               </p>
             </div>
 
@@ -360,83 +358,66 @@ export default async function KeratinePage({ params }: PageProps) {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
-        {/* Before & After Gallery */}
+        {/* Before & After Gallery - Masonry Layout */}
         <section className="py-20 bg-gradient-to-br from-salon-off-white to-salon-cream">
-          <div className="max-w-6xl mx-auto px-6">
+          <div className="max-w-5xl mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-display font-bold text-salon-text-dark mb-6">
                 {t("beforeAfterTitle")}
               </h2>
-              <p className="text-xl text-salon-text-medium">
-                {t("beforeAfterSubtitle")}
-              </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Before/After Cards */}
-              <div className="bg-white rounded-3xl overflow-hidden shadow-soft">
-                <div className="relative">
-                  <img
-                    src={getImageUrl("/keratine.webp")}
-                    alt="Keratin treatment before after results Merelbeke - frizzy curly hair to smooth straight hair transformation"
-                    className="w-full h-64 object-cover"
-                  />
-                  <div className="absolute top-4 left-4 bg-salon-pink text-white px-4 py-2 rounded-full text-sm font-semibold">
-                    {t("beforeText")} / {t("afterText")}
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="font-display font-bold text-salon-text-dark mb-2">
-                    Curly to Smooth
-                  </h3>
-                  <p className="text-salon-text-medium text-sm">
-                    Dramatic frizz reduction and smoothing
-                  </p>
-                </div>
+            {/* Masonry Grid */}
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+              {/* Full Height Image - spans full height of the grid */}
+              <div className="break-inside-avoid mb-6">
+                <img
+                  src={getImageUrl("/keratine.webp")}
+                  alt="Keratin treatment before after - dramatic hair transformation"
+                  className="w-full object-cover shadow-soft"
+                  style={{ aspectRatio: "1/2" }}
+                />
               </div>
 
-              <div className="bg-white rounded-3xl overflow-hidden shadow-soft">
-                <div className="relative">
-                  <img
-                    src={getImageUrl("/botox.mp4")}
-                    alt="Brazilian keratin treatment results Ghent - damaged hair restoration before after D'Ana Hair salon"
-                    className="w-full h-64 object-cover"
-                  />
-                  <div className="absolute top-4 left-4 bg-salon-pink text-white px-4 py-2 rounded-full text-sm font-semibold">
-                    {t("beforeText")} / {t("afterText")}
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="font-display font-bold text-salon-text-dark mb-2">
-                    Damage Repair
-                  </h3>
-                  <p className="text-salon-text-medium text-sm">
-                    Restored health and shine
-                  </p>
-                </div>
+              {/* Square Image */}
+              <div className="break-inside-avoid mb-6">
+                <img
+                  src={getImageUrl("/keratine.webp")}
+                  alt="Brazilian keratin results - smooth hair transformation"
+                  className="w-full object-cover shadow-soft aspect-square"
+                />
               </div>
 
-              <div className="bg-white rounded-3xl overflow-hidden shadow-soft md:col-span-2 lg:col-span-1">
-                <div className="relative">
-                  <img
-                    src={getImageUrl("/led.jpg")}
-                    alt="Keratin hair smoothing treatment Oudenaarde - professional Brazilian keratin application results"
-                    className="w-full h-64 object-cover"
-                  />
-                  <div className="absolute top-4 left-4 bg-salon-pink text-white px-4 py-2 rounded-full text-sm font-semibold">
-                    {t("beforeText")} / {t("afterText")}
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="font-display font-bold text-salon-text-dark mb-2">
-                    Frizz Control
-                  </h3>
-                  <p className="text-salon-text-medium text-sm">
-                    Humidity-proof smoothness
-                  </p>
-                </div>
+              {/* Landscape Image */}
+              <div className="break-inside-avoid mb-6">
+                <img
+                  src={getImageUrl("/keratine.webp")}
+                  alt="Hair transformation results - frizz control"
+                  className="w-full object-cover shadow-soft"
+                  style={{ aspectRatio: "4/3" }}
+                />
+              </div>
+
+              {/* Portrait Image */}
+              <div className="break-inside-avoid mb-6">
+                <img
+                  src={getImageUrl("/keratine.webp")}
+                  alt="Professional keratin treatment results"
+                  className="w-full object-cover shadow-soft"
+                  style={{ aspectRatio: "3/4" }}
+                />
+              </div>
+
+              {/* Medium Landscape */}
+              <div className="break-inside-avoid mb-6">
+                <img
+                  src={getImageUrl("/keratine.webp")}
+                  alt="Smooth silky hair after keratin treatment"
+                  className="w-full object-cover shadow-soft"
+                  style={{ aspectRatio: "3/2" }}
+                />
               </div>
             </div>
           </div>
@@ -449,9 +430,8 @@ export default async function KeratinePage({ params }: PageProps) {
               <h2 className="text-4xl md:text-5xl font-display font-bold text-salon-text-dark mb-6">
                 {t("afterCare")}
               </h2>
-              <p className="text-xl text-salon-text-medium">
-                Follow these simple steps to maximize your keratin treatment
-                results
+              <p className="text-xl text-salon-text-dark">
+                {t("afterCareDescription")}
               </p>
             </div>
 
@@ -481,7 +461,7 @@ export default async function KeratinePage({ params }: PageProps) {
               <h2 className="text-4xl md:text-5xl font-display font-bold text-salon-text-dark mb-6">
                 {t("risksAndSafety")}
               </h2>
-              <p className="text-xl text-salon-text-medium max-w-3xl mx-auto">
+              <p className="text-xl text-salon-text-dark max-w-3xl mx-auto">
                 {t("safetyText")}
               </p>
             </div>
@@ -499,7 +479,7 @@ export default async function KeratinePage({ params }: PageProps) {
                   {perfectFor.map((item, index) => (
                     <li key={index} className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-salon-pink rounded-full"></div>
-                      <span className="text-salon-text-medium">{item}</span>
+                      <span className="text-salon-text-dark">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -517,7 +497,7 @@ export default async function KeratinePage({ params }: PageProps) {
                   {notFor.map((item, index) => (
                     <li key={index} className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                      <span className="text-salon-text-medium">{item}</span>
+                      <span className="text-salon-text-dark">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -533,9 +513,8 @@ export default async function KeratinePage({ params }: PageProps) {
               <h2 className="text-4xl md:text-5xl font-display font-bold text-salon-text-dark mb-6">
                 {t("keratinFAQ")}
               </h2>
-              <p className="text-xl text-salon-text-medium">
-                Get answers to the most common questions about keratin
-                treatments
+              <p className="text-xl text-salon-text-dark">
+                {t("faqDescription")}
               </p>
             </div>
 
@@ -563,14 +542,14 @@ export default async function KeratinePage({ params }: PageProps) {
         </section>
 
         {/* Local SEO Section */}
-        <section className="py-20 bg-white">
+        {/* <section className="py-20 bg-white">
           <div className="max-w-6xl mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
                 <h2 className="text-4xl md:text-5xl font-display font-bold text-salon-text-dark mb-8">
-                  Keratin Treatment in Merelbeke
+                  {t("localSeoTitle")}
                 </h2>
-                <p className="text-lg text-salon-text-medium leading-relaxed mb-8">
+                <p className="text-lg text-salon-text-dark leading-relaxed mb-8">
                   {t("localSeoText")}
                 </p>
 
@@ -578,10 +557,10 @@ export default async function KeratinePage({ params }: PageProps) {
                   <div className="flex items-start gap-4">
                     <MapPin className="w-6 h-6 text-salon-pink flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-semibold text-salon-text-dark mb-1">
+                      <h3 className="font-semibold text-salon-pink mb-1">
                         {t("visitUs")}
                       </h3>
-                      <p className="text-salon-text-medium">
+                      <p className="text-salon-text-dark">
                         {t("salonAddress")}
                       </p>
                     </div>
@@ -589,13 +568,13 @@ export default async function KeratinePage({ params }: PageProps) {
                   <div className="flex items-start gap-4">
                     <Phone className="w-6 h-6 text-salon-pink flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-semibold text-salon-text-dark mb-1">
-                        Call Us
+                      <h3 className="font-semibold text-salon-pink mb-1">
+                        {t("callUs")}
                       </h3>
-                      <p className="text-salon-text-medium">+32 9 222 00 00</p>
+                      <p className="text-salon-text-dark">+32 9 222 00 00</p>
                     </div>
                   </div>
-                  <p className="text-sm text-salon-text-light italic">
+                  <p className="text-sm text-salon-text-dark italic">
                     {t("servingAreas")}
                   </p>
                 </div>
@@ -604,31 +583,31 @@ export default async function KeratinePage({ params }: PageProps) {
               <div className="relative">
                 <div className="bg-gradient-to-br from-salon-pink to-salon-rose rounded-3xl p-8 text-white shadow-glow-pink">
                   <h3 className="text-2xl font-display font-bold mb-6">
-                    Why Choose D&apos;Ana Hair?
+                    {t("whyChooseUs")}
                   </h3>
                   <ul className="space-y-4">
                     <li className="flex items-center gap-3">
                       <Check className="w-5 h-5" />
-                      <span>10+ years Brazilian keratin expertise</span>
+                      <span>{t("expertise")}</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <Check className="w-5 h-5" />
-                      <span>Formaldehyde-free premium products</span>
+                      <span>{t("premiumProducts")}</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <Check className="w-5 h-5" />
-                      <span>Personalized consultation included</span>
+                      <span>{t("personalizedConsultation")}</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <Check className="w-5 h-5" />
-                      <span>200+ satisfied clients</span>
+                      <span>{t("satisfiedClients")}</span>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Final CTA */}
         <section className="py-20 bg-gradient-to-r from-salon-pink via-salon-rose to-salon-lavender text-white">
@@ -651,7 +630,7 @@ export default async function KeratinePage({ params }: PageProps) {
                 href={`/${lng}/services`}
                 className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-salon-pink transition-colors duration-200 text-lg"
               >
-                View All Services
+                {t("viewAllServices")}
               </Link>
             </div>
           </div>
