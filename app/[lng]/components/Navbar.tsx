@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 import { getImageUrl } from "../../../lib/imageUrl";
 import LanguageSwitcher from "./LanguageSwitcher";
 import Image from "next/image";
+import { useT } from "../../i18n/client";
 
 interface NavbarProps {
   currentLng: string;
@@ -16,6 +17,7 @@ const Navbar = ({ currentLng: lng }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const { t } = useT("translation");
 
   useEffect(() => {
     let ticking = false;
@@ -47,7 +49,6 @@ const Navbar = ({ currentLng: lng }: NavbarProps) => {
   const isActive = (path: string) => {
     return pathname.includes(path);
   };
-
 
   return (
     <header
@@ -93,7 +94,7 @@ const Navbar = ({ currentLng: lng }: NavbarProps) => {
                   : "text-salon-text-dark hover:text-salon-text-medium transition-colors"
               }`}
             >
-              Home
+              {t("home")}
             </Link>
             <Link
               href={`/${lng}/about`}
@@ -103,7 +104,7 @@ const Navbar = ({ currentLng: lng }: NavbarProps) => {
                   : "text-salon-text-dark hover:text-salon-text-medium transition-colors"
               }`}
             >
-              About
+              {t("about")}
             </Link>
             <Link
               href={`/${lng}/services`}
@@ -113,7 +114,7 @@ const Navbar = ({ currentLng: lng }: NavbarProps) => {
                   : "text-salon-text-dark hover:text-salon-text-medium transition-colors"
               }`}
             >
-              Services
+              {t("services")}
             </Link>
             <Link
               href={`/${lng}/contact`}
@@ -123,7 +124,7 @@ const Navbar = ({ currentLng: lng }: NavbarProps) => {
                   : "text-salon-text-dark hover:text-salon-text-medium transition-colors"
               }`}
             >
-              Contact
+              {t("contact")}
             </Link>
           </nav>
 
@@ -131,7 +132,7 @@ const Navbar = ({ currentLng: lng }: NavbarProps) => {
             <LanguageSwitcher currentLng={lng} />
 
             <Link href={`/${lng}/booking`} className="btn-primary">
-              Book Appointment
+              {t("bookAppointment")}
             </Link>
           </div>
 
@@ -170,7 +171,7 @@ const Navbar = ({ currentLng: lng }: NavbarProps) => {
                 : "text-salon-text-dark"
             }`}
           >
-            Home
+            {t("home")}
           </Link>
           <Link
             href={`/${lng}/about`}
@@ -180,7 +181,7 @@ const Navbar = ({ currentLng: lng }: NavbarProps) => {
                 : "text-salon-text-dark"
             }`}
           >
-            About
+            {t("about")}
           </Link>
           <Link
             href={`/${lng}/services`}
@@ -190,7 +191,7 @@ const Navbar = ({ currentLng: lng }: NavbarProps) => {
                 : "text-salon-text-dark"
             }`}
           >
-            Services
+            {t("services")}
           </Link>
           <Link
             href={`/${lng}/contact`}
@@ -200,13 +201,10 @@ const Navbar = ({ currentLng: lng }: NavbarProps) => {
                 : "text-salon-text-dark"
             }`}
           >
-            Contact
+            {t("contact")}
           </Link>
-          <Link
-            href={`/${lng}/booking`}
-            className="btn-primary mt-2 w-full"
-          >
-            Book Appointment
+          <Link href={`/${lng}/booking`} className="btn-primary mt-2 w-full">
+            {t("bookAppointment")}
           </Link>
         </nav>
       </div>
