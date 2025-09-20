@@ -270,7 +270,7 @@ export default async function KeratinePage({ params }: PageProps) {
                 {t("pricingTitle")}
               </h2>
               <div className="text-6xl font-bold text-salon-pink mb-4">
-                €150
+                €150 - €300
               </div>
               <p className="text-xl text-salon-text-dark">
                 {t("pricingSubtitle")}
@@ -455,7 +455,7 @@ export default async function KeratinePage({ params }: PageProps) {
         </section>
 
         {/* Risks & Safety */}
-        <section className="py-20 bg-salon-off-white">
+        {/* <section className="py-20 bg-salon-off-white">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-display font-bold text-salon-text-dark mb-6">
@@ -467,7 +467,7 @@ export default async function KeratinePage({ params }: PageProps) {
             </div>
 
             <div className="grid lg:grid-cols-2 gap-12">
-              {/* Perfect For */}
+             
               <div className="bg-white rounded-3xl p-8 shadow-soft">
                 <div className="flex items-center gap-3 mb-6">
                   <Check className="w-8 h-8 text-green-500" />
@@ -485,7 +485,6 @@ export default async function KeratinePage({ params }: PageProps) {
                 </ul>
               </div>
 
-              {/* Not Recommended For */}
               <div className="bg-white rounded-3xl p-8 shadow-soft">
                 <div className="flex items-center gap-3 mb-6">
                   <AlertTriangle className="w-8 h-8 text-orange-500" />
@@ -504,10 +503,10 @@ export default async function KeratinePage({ params }: PageProps) {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* FAQ Section */}
-        <section className="py-20 bg-salon-off-white">
+        {/* <section className="py-20 bg-salon-off-white">
           <div className="max-w-4xl mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-display font-bold text-salon-text-dark mb-6">
@@ -539,7 +538,7 @@ export default async function KeratinePage({ params }: PageProps) {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Local SEO Section */}
         {/* <section className="py-20 bg-white">

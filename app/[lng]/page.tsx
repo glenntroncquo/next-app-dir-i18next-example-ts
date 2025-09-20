@@ -768,10 +768,10 @@ export default async function Page({
                           </p>
                           <p className="text-salon-text-medium">
                             <a
-                              href="mailto:info@danahair.be"
+                              href="mailto:info.danahair@gmail.com"
                               className="hover:text-salon-pink transition-colors"
                             >
-                              info@danahair.be
+                              info.danahair@gmail.com
                             </a>
                           </p>
                         </div>

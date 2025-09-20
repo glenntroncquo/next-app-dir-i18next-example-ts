@@ -50,7 +50,7 @@ export default async function ServicesPage({ params }: PageProps) {
       id: "keratine",
       title: t("serviceKeratinTitle"),
       description: t("serviceKeratinDescription"),
-      price: "€150-€250",
+      price: "€150",
       duration: t("durationKeratin"),
       image: getImageUrl("/keratine.webp"),
       features: [
@@ -65,7 +65,7 @@ export default async function ServicesPage({ params }: PageProps) {
       id: "botox",
       title: t("serviceBotoxTitle"),
       description: t("serviceBotoxDescription"),
-      price: "€150-€250",
+      price: "€150",
       duration: t("durationBotox"),
       image: getImageUrl("/botox.mp4"),
       features: [
@@ -104,7 +104,8 @@ export default async function ServicesPage({ params }: PageProps) {
             {/* Content Section */}
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-5xl font-display font-bold text-salon-text-dark mb-6">
-                {t("ourPremiumServices")}
+                {t("our")}{" "}
+                <span className="text-salon-pink">{t("services")}</span>
               </h1>
 
               <p className="text-lg text-salon-text-medium leading-relaxed max-w-3xl mx-auto">
@@ -125,7 +126,7 @@ export default async function ServicesPage({ params }: PageProps) {
                 >
                   {/* Service Image */}
                   <div className="relative h-48 overflow-hidden">
-                    {service.image.endsWith('.mp4') ? (
+                    {service.image.endsWith(".mp4") ? (
                       <video
                         autoPlay
                         muted
@@ -180,7 +181,9 @@ export default async function ServicesPage({ params }: PageProps) {
                       {service.features.slice(0, 3).map((feature, index) => (
                         <div key={index} className="flex items-center text-xs">
                           <div className="w-1.5 h-1.5 bg-salon-pink rounded-full mr-2 flex-shrink-0"></div>
-                          <span className="text-salon-text-medium">{feature}</span>
+                          <span className="text-salon-text-medium">
+                            {feature}
+                          </span>
                         </div>
                       ))}
                       {service.features.length > 3 && (
