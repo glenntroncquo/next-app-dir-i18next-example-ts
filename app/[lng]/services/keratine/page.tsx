@@ -360,6 +360,37 @@ export default async function KeratinePage({ params }: PageProps) {
           </div>
         </section> */}
 
+        {/* Aftercare */}
+        <section className="py-20 bg-white">
+          <div className="max-w-4xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-display font-bold text-salon-text-dark mb-6">
+                {t("afterCare")}
+              </h2>
+              <p className="text-xl text-salon-text-dark">
+                {t("afterCareDescription")}
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-br from-salon-off-white to-salon-cream rounded-3xl p-8 md:p-12">
+              <div className="grid md:grid-cols-2 gap-8">
+                {afterCare.map((instruction, index) => (
+                  <div key={index} className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-8 h-8 bg-salon-pink rounded-full flex items-center justify-center">
+                      <Check className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-salon-text-dark font-medium">
+                        {instruction}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Before & After Gallery - Masonry Layout */}
         <section className="py-20 bg-gradient-to-br from-salon-off-white to-salon-cream">
           <div className="max-w-5xl mx-auto px-6">
@@ -418,37 +449,6 @@ export default async function KeratinePage({ params }: PageProps) {
                   className="w-full object-cover shadow-soft"
                   style={{ aspectRatio: "3/2" }}
                 />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Aftercare */}
-        <section className="py-20 bg-white">
-          <div className="max-w-4xl mx-auto px-6">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-display font-bold text-salon-text-dark mb-6">
-                {t("afterCare")}
-              </h2>
-              <p className="text-xl text-salon-text-dark">
-                {t("afterCareDescription")}
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-br from-salon-off-white to-salon-cream rounded-3xl p-8 md:p-12">
-              <div className="grid md:grid-cols-2 gap-8">
-                {afterCare.map((instruction, index) => (
-                  <div key={index} className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 bg-salon-pink rounded-full flex items-center justify-center">
-                      <Check className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-salon-text-dark font-medium">
-                        {instruction}
-                      </p>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>
@@ -609,7 +609,7 @@ export default async function KeratinePage({ params }: PageProps) {
         </section> */}
 
         {/* Final CTA */}
-        <section className="py-20 bg-gradient-to-r from-salon-pink via-salon-rose to-salon-lavender text-white">
+        <section className="py-20 bg-gradient-to-r from-salon-pink to-salon-rose text-white">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
               {t("bookingCTA")}

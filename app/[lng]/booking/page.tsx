@@ -4,21 +4,11 @@ import { languages } from "../../i18n/settings";
 import { getT } from "../../i18n";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { companyId } from "../../../lib/company_id";
-import { supabase } from "../../../lib/supabase";
 import BookingClient from "./BookingClient";
 
 interface PageProps {
   params: Promise<{ lng: string }>;
 }
-const salonTheme = {
-  primary: "#FF8FB2",
-  primaryHover: "#FFBDD4",
-  primaryLight: "#FFF0F7",
-  secondary: "#FFBDD4",
-  text: "#4A3F45",
-  background: "#FF8FB2",
-};
 
 export async function generateMetadata({
   params,

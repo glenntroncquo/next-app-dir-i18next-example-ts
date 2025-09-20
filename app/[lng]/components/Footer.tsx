@@ -1,12 +1,17 @@
+"use client";
+
 import { Mail, Phone, MapPin, Clock, Instagram, Facebook } from "lucide-react";
 import { getImageUrl } from "../../../lib/imageUrl";
 import Image from "next/image";
+import { useT } from "../../i18n/client";
 
 interface FooterProps {
   lng: string;
 }
 
 const Footer = ({ lng }: FooterProps) => {
+  const { t } = useT("translation");
+
   return (
     <footer className="bg-salon-softer-pink pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,8 +28,7 @@ const Footer = ({ lng }: FooterProps) => {
               />
             </div>
             <p className="text-salon-text-medium mb-6">
-              Your expert in Brazilian keratin and hair botox treatments in
-              Merelbeke. Service for Gent, Oudenaarde and surrounding areas.
+              {t("footerDescription")}
             </p>
             <div className="flex space-x-4">
               <a
@@ -48,7 +52,7 @@ const Footer = ({ lng }: FooterProps) => {
 
           <div>
             <h3 className="font-display font-semibold text-lg mb-6">
-              Quick Links
+              {t("quickLinks")}
             </h3>
             <ul className="space-y-3">
               <li>
@@ -57,7 +61,7 @@ const Footer = ({ lng }: FooterProps) => {
                   className="text-salon-text-medium hover:text-salon-pink transition-colors flex items-center"
                 >
                   <span className="w-1.5 h-1.5 bg-salon-pink rounded-full mr-2"></span>
-                  Home
+                  {t("home")}
                 </a>
               </li>
               <li>
@@ -66,7 +70,7 @@ const Footer = ({ lng }: FooterProps) => {
                   className="text-salon-text-medium hover:text-salon-pink transition-colors flex items-center"
                 >
                   <span className="w-1.5 h-1.5 bg-salon-pink rounded-full mr-2"></span>
-                  About
+                  {t("about")}
                 </a>
               </li>
               <li>
@@ -75,7 +79,7 @@ const Footer = ({ lng }: FooterProps) => {
                   className="text-salon-text-medium hover:text-salon-pink transition-colors flex items-center"
                 >
                   <span className="w-1.5 h-1.5 bg-salon-pink rounded-full mr-2"></span>
-                  Services
+                  {t("services")}
                 </a>
               </li>
               <li>
@@ -84,7 +88,7 @@ const Footer = ({ lng }: FooterProps) => {
                   className="text-salon-text-medium hover:text-salon-pink transition-colors flex items-center"
                 >
                   <span className="w-1.5 h-1.5 bg-salon-pink rounded-full mr-2"></span>
-                  Contact Us
+                  {t("contact")}
                 </a>
               </li>
             </ul>
@@ -92,7 +96,7 @@ const Footer = ({ lng }: FooterProps) => {
 
           <div>
             <h3 className="font-display font-semibold text-lg mb-6">
-              Services
+              {t("services")}
             </h3>
             <ul className="space-y-3">
               <li>
@@ -101,7 +105,7 @@ const Footer = ({ lng }: FooterProps) => {
                   className="text-salon-text-medium hover:text-salon-pink transition-colors flex items-center"
                 >
                   <span className="w-1.5 h-1.5 bg-salon-pink rounded-full mr-2"></span>
-                  Keratine Behandeling
+                  {t("serviceKeratinFooter")}
                 </a>
               </li>
               <li>
@@ -110,7 +114,7 @@ const Footer = ({ lng }: FooterProps) => {
                   className="text-salon-text-medium hover:text-salon-pink transition-colors flex items-center"
                 >
                   <span className="w-1.5 h-1.5 bg-salon-pink rounded-full mr-2"></span>
-                  Botox Behandeling
+                  {t("serviceBotoxFooter")}
                 </a>
               </li>
               <li>
@@ -119,7 +123,7 @@ const Footer = ({ lng }: FooterProps) => {
                   className="text-salon-text-medium hover:text-salon-pink transition-colors flex items-center"
                 >
                   <span className="w-1.5 h-1.5 bg-salon-pink rounded-full mr-2"></span>
-                  Ritual Nutrition – Nuance Brazil + LED-lichttherapie
+                  {t("serviceRitualFooter")}
                 </a>
               </li>
             </ul>
@@ -127,7 +131,7 @@ const Footer = ({ lng }: FooterProps) => {
 
           <div>
             <h3 className="font-display font-semibold text-lg mb-6">
-              Contact Info
+              {t("contactInfo")}
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start">
@@ -174,11 +178,13 @@ const Footer = ({ lng }: FooterProps) => {
                   className="text-salon-pink mt-1 mr-3 flex-shrink-0"
                 />
                 <div>
-                  <p className="text-salon-text-medium">Ma-Di: Gesloten</p>
-                  <p className="text-salon-text-medium">Wo: 13:30 - 21:00</p>
-                  <p className="text-salon-text-medium">Do: 17:00 - 21:00</p>
-                  <p className="text-salon-text-medium">Vr-Za: 09:00 - 17:00</p>
-                  <p className="text-salon-text-medium">Zo: Gesloten</p>
+                  <p className="text-salon-text-medium">{t("mondayTuesday")}</p>
+                  <p className="text-salon-text-medium">{t("wednesday")}</p>
+                  <p className="text-salon-text-medium">{t("thursday")}</p>
+                  <p className="text-salon-text-medium">
+                    {t("fridaySaturday")}
+                  </p>
+                  <p className="text-salon-text-medium">{t("sunday")}</p>
                 </div>
               </li>
             </ul>
@@ -188,26 +194,27 @@ const Footer = ({ lng }: FooterProps) => {
         <div className="mt-12 pt-8 border-t border-salon-pink/20">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-salon-text-medium text-sm">
-              © {new Date().getFullYear()} D&apos;Ana Hair. All rights reserved.
+              © {new Date().getFullYear()} D&apos;Ana Hair.{" "}
+              {t("allRightsReserved")}.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a
                 href="#"
                 className="text-sm text-salon-text-medium hover:text-salon-pink transition-colors"
               >
-                Privacy Policy
+                {t("privacyPolicy")}
               </a>
               <a
                 href="#"
                 className="text-sm text-salon-text-medium hover:text-salon-pink transition-colors"
               >
-                Terms of Service
+                {t("termsOfService")}
               </a>
               <a
                 href="#"
                 className="text-sm text-salon-text-medium hover:text-salon-pink transition-colors"
               >
-                Cookie Policy
+                {t("cookiePolicy")}
               </a>
             </div>
           </div>
