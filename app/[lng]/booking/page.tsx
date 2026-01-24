@@ -5,6 +5,9 @@ import { getT } from "../../i18n";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import BookingClient from "./BookingClient";
+import { SUPABASE_ANON_KEY, SUPABASE_URL } from "@/lib/supabase";
+import IframeWidget from "../widget-test/IframeWidget";
+import { companyId } from "@/lib/company_id";
 
 interface PageProps {
   params: Promise<{ lng: string }>;
@@ -20,7 +23,7 @@ export async function generateMetadata({
     title: `${t("bookAppointment")} - D'Ana Hair Merelbeke`,
     description: `Book your appointment at D'Ana Hair Merelbeke. Professional Brazilian keratin and botox treatments. Easy online booking system. Call +32 9 222 00 00 or book online.`,
     keywords: `book appointment hair salon Merelbeke, D'Ana Hair booking, keratin treatment appointment, hair salon online booking, Brazilian keratin booking Ghent, ${t(
-      "seoKeywords"
+      "seoKeywords",
     )}`,
     openGraph: {
       title: `Book Your Appointment - D'Ana Hair Merelbeke`,
@@ -81,7 +84,14 @@ export default async function BookingPage({ params }: PageProps) {
         <Navbar currentLng={lng} />
         <div className="section-container pt-20 lg:pt-32">
           <div className="max-w-4xl mx-auto">
-            <BookingClient />
+            {/* <BookingClient /> */}
+
+            <IframeWidget
+              companyId={companyId || undefined}
+              supabaseUrl={SUPABASE_URL || undefined}
+              supabaseKey={SUPABASE_ANON_KEY || undefined}
+              widgetDomain={process.env.NEXT_PUBLIC_WIDGET_DOMAIN || undefined}
+            />
           </div>
         </div>
         <Footer lng={lng} />
