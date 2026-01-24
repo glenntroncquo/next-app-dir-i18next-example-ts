@@ -31,6 +31,8 @@ export default function IframeWidget({
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [iframeHeight, setIframeHeight] = useState<number>(800); // Default height, will be updated by widget
+  const [widgetReady, setWidgetReady] = useState(false);
+  const [iframeLoaded, setIframeLoaded] = useState(false);
 
   // Build the iframe URL with query parameters
   const buildWidgetUrl = (useRoot = false) => {
@@ -60,6 +62,7 @@ export default function IframeWidget({
       if (event.data.type === "salonify-widget-ready" && iframeRef.current) {
         console.log("✅ Widget ready! Sending theme configuration...");
         setHasError(false); // Clear any previous errors
+        setWidgetReady(true);
 
         // Widget is ready, send theme configuration via PostMessage
         iframeRef.current.contentWindow?.postMessage(
@@ -82,7 +85,10 @@ export default function IframeWidget({
       }
 
       // Listen for height updates from the widget
-      if (event.data.type === "salonify-widget-height" && typeof event.data.height === "number") {
+      if (
+        event.data.type === "salonify-widget-height" &&
+        typeof event.data.height === "number"
+      ) {
         const newHeight = event.data.height;
         console.log("📏 Widget height update:", newHeight);
         setIframeHeight(newHeight);
@@ -107,6 +113,7 @@ export default function IframeWidget({
 
       const handleLoad = () => {
         console.log("🔄 Iframe loaded, waiting for widget ready...");
+        setIframeLoaded(true);
 
         // Clear error state on successful load
         setHasError(false);
@@ -120,13 +127,15 @@ export default function IframeWidget({
               const bodyText = iframe.contentDocument.body?.innerText || "";
               // If we see common 404 indicators, treat as error
               if (bodyText.includes("404") || bodyText.includes("Not Found")) {
-                handleLoadError();
+                handleLoadError("Widget returned a 404 error page", true);
               }
             }
           } catch (e) {
             // Cross-origin restrictions - can't check content
             // This is normal for iframes from different domains
-            console.log("ℹ️ Cannot check iframe content (cross-origin)");
+            console.log(
+              "ℹ️ Cannot check iframe content (cross-origin) - this is normal",
+            );
           }
         }, 2000);
 
@@ -152,8 +161,23 @@ export default function IframeWidget({
         }, 500);
       };
 
-      const handleLoadError = () => {
-        console.error("❌ Failed to load widget from:", widgetUrl);
+      const handleLoadError = (
+        specificError?: string,
+        isActualError: boolean = true,
+      ) => {
+        // Only log as error if it's an actual failure, not just missing communication
+        if (isActualError) {
+          console.error("❌ Failed to load widget from:", widgetUrl);
+          if (specificError) {
+            console.error("Specific error:", specificError);
+          }
+        } else {
+          // Just a warning for missing communication - widget might still work
+          console.warn(
+            "⚠️ Widget communication issue:",
+            specificError || "Widget did not send ready message",
+          );
+        }
 
         // Try root path as fallback if we haven't already
         if (!triedRoot && widgetUrl.includes("/widget")) {
@@ -162,21 +186,66 @@ export default function IframeWidget({
           setWidgetUrl(rootUrl);
           setTriedRoot(true);
           setHasError(false);
-        } else {
+          setIframeLoaded(false); // Reset for new URL
+          setWidgetReady(false); // Reset ready state
+        } else if (isActualError) {
+          // Only set error state for actual failures
           setHasError(true);
-          setErrorMessage(
-            `Failed to load widget from ${widgetDomain}. This could be due to:\n- CORS restrictions\n- Widget not deployed at this domain\n- Network connectivity issues\n\nPlease verify the widget is accessible and check the browser console for detailed errors.`,
-          );
+
+          // Provide more specific error message based on what we know
+          if (iframeLoaded && !widgetReady) {
+            // This shouldn't happen with isActualError=true, but just in case
+            setErrorMessage(
+              `Widget iframe loaded but did not send ready message. This usually means:\n- The widget is not sending the "salonify-widget-ready" postMessage event\n- The widget version may be incompatible\n- Check browser console for CORS or X-Frame-Options errors\n\nWidget URL: ${widgetUrl}\n\nTry checking:\n1. Browser console for CORS/X-Frame-Options errors\n2. Network tab to verify the widget URL loads successfully\n3. Widget documentation for correct postMessage API`,
+            );
+          } else if (!iframeLoaded) {
+            setErrorMessage(
+              `Failed to load widget iframe from ${widgetDomain}. This could be due to:\n- CORS/X-Frame-Options blocking iframe embedding\n- Widget not deployed at this domain\n- Network connectivity issues\n- Invalid URL\n\nWidget URL: ${widgetUrl}\n\nPlease verify:\n1. The widget is accessible at the URL above\n2. The widget allows iframe embedding (no X-Frame-Options: DENY)\n3. Check browser console for detailed error messages`,
+            );
+          } else {
+            setErrorMessage(
+              `Failed to load widget from ${widgetDomain}. ${specificError || "Unknown error"}\n\nWidget URL: ${widgetUrl}\n\nPlease verify the widget is accessible and check the browser console for detailed errors.`,
+            );
+          }
         }
+        // If isActualError is false, don't set error state - widget might still work
       };
 
-      // Set a timeout to detect if widget never loads
+      // Set a timeout to detect if widget never sends ready message
       const timeout = setTimeout(() => {
-        // If we haven't received a ready message and haven't tried root, try root
-        if (!triedRoot && widgetUrl.includes("/widget")) {
-          handleLoadError();
+        // If iframe loaded but widget never sent ready message, it might be a communication issue
+        if (iframeLoaded && !widgetReady) {
+          console.warn(
+            "⚠️ Iframe loaded but widget never sent ready message. Widget may be incompatible or not responding.",
+          );
+          console.warn(
+            "⚠️ Widget may still be functional - the iframe loaded successfully.",
+          );
+          // Don't treat this as a hard error - widget might still work, just not communicating
+          // Only try root path if we haven't already
+          if (!triedRoot && widgetUrl.includes("/widget")) {
+            console.log("🔄 Trying root path as fallback...");
+            handleLoadError(
+              "Widget loaded but did not send ready message - trying root path",
+              false,
+            );
+          } else {
+            // Widget loaded but not communicating - this is not necessarily a failure
+            // The widget might work without the postMessage API
+            console.log(
+              "ℹ️ Widget iframe loaded successfully. It may work without postMessage communication.",
+            );
+            // Don't set error state - let the widget display even without ready message
+          }
+        } else if (!iframeLoaded) {
+          // Iframe never loaded - this is a real error
+          if (!triedRoot && widgetUrl.includes("/widget")) {
+            handleLoadError("Iframe failed to load - trying root path", true);
+          } else {
+            handleLoadError("Iframe failed to load", true);
+          }
         }
-      }, 5000);
+      }, 8000); // Increased timeout to 8 seconds to give widget more time
 
       iframe.addEventListener("load", handleLoad);
 
@@ -192,7 +261,7 @@ export default function IframeWidget({
     return () => {
       window.removeEventListener("message", handleMessage);
     };
-  }, [widgetUrl, triedRoot, widgetDomain]);
+  }, [widgetUrl, triedRoot, widgetDomain, iframeLoaded, widgetReady]);
 
   if (hasError && errorMessage) {
     return (
@@ -249,11 +318,11 @@ export default function IframeWidget({
         src={widgetUrl}
         width="100%"
         height={iframeHeight}
-        style={{ 
-          border: "none", 
+        style={{
+          border: "none",
           borderRadius: "8px",
           minHeight: "600px",
-          transition: "height 0.3s ease-in-out"
+          transition: "height 0.3s ease-in-out",
         }}
         title="Booking Widget"
         allow="clipboard-read; clipboard-write"
