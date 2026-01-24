@@ -4,9 +4,8 @@ import { languages } from "../../i18n/settings";
 import { getT } from "../../i18n";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import BookingClient from "./BookingClient";
 import { SUPABASE_ANON_KEY, SUPABASE_URL } from "@/lib/supabase";
-import IframeWidget from "../widget-test/IframeWidget";
+import IframeWidget from "./IframeWidget";
 import { companyId } from "@/lib/company_id";
 
 interface PageProps {
