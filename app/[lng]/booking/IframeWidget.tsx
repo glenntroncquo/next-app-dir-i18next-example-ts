@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 interface IframeWidgetProps {
   companyId?: string;
@@ -35,7 +35,7 @@ export default function IframeWidget({
   const [iframeLoaded, setIframeLoaded] = useState(false);
 
   // Build the iframe URL with query parameters
-  const buildWidgetUrl = (useRoot = false) => {
+  const buildWidgetUrl = useCallback((useRoot = false) => {
     const params = new URLSearchParams();
 
     if (companyId) {
@@ -51,7 +51,7 @@ export default function IframeWidget({
     // Try /widget path first, fallback to root if needed
     const path = useRoot ? "" : "/widget";
     return `${widgetDomain}${path}?${params.toString()}`;
-  };
+  }, [companyId, supabaseUrl, supabaseKey, widgetDomain]);
 
   const [widgetUrl, setWidgetUrl] = useState(buildWidgetUrl());
   const [triedRoot, setTriedRoot] = useState(false);
@@ -261,7 +261,7 @@ export default function IframeWidget({
     return () => {
       window.removeEventListener("message", handleMessage);
     };
-  }, [widgetUrl, triedRoot, widgetDomain, iframeLoaded, widgetReady]);
+  }, [widgetUrl, triedRoot, widgetDomain, iframeLoaded, widgetReady, buildWidgetUrl]);
 
   if (hasError && errorMessage) {
     return (
