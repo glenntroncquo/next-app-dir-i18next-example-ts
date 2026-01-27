@@ -1,15 +1,13 @@
 {
-  "name": "D'Ana Hair - Professional Hair Salon",
+  "name": "D'Ana Hair - Keratine & Botox Behandelingen",
   "short_name": "D'Ana Hair",
-  "description": "Expert in Brazilian keratin and hair botox treatments in Merelbeke. Service for Gent, Oudenaarde and surrounding areas.",
+  "description": "Expert haarsalon in Merelbeke voor keratine & haarbotox behandelingen. Service voor Gent, Oudenaarde en omgeving.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#FF8FB2",
   "orientation": "portrait-primary",
   "scope": "/",
-  "lang": "en",
-  "categories": ["beauty", "health", "lifestyle"],
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -27,15 +25,6 @@
       "src": "/apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png"
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "/hero2.jpg",
-      "sizes": "1200x630",
-      "type": "image/jpeg",
-      "form_factor": "wide",
-      "label": "D'Ana Hair Salon - Professional Stylists"
     }
   ]
 }
