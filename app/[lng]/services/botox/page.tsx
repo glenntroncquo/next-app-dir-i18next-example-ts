@@ -29,15 +29,28 @@ export async function generateMetadata({
   const { lng } = await params;
   const { t } = await getT();
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://danahair.be";
+  const currentUrl = `${baseUrl}/${lng}/services/botox`;
+
   return {
     title: t("botoxSeoTitle"),
     description: t("botoxSeoDescription"),
     keywords: `botox treatment, hair botox, hair repair, damaged hair treatment, botox treatment Merelbeke, botox treatment Ghent, ${t(
       "seoKeywords"
     )}`,
+    alternates: {
+      canonical: currentUrl,
+      languages: {
+        nl: `${baseUrl}/nl/services/botox`,
+        en: `${baseUrl}/en/services/botox`,
+        fr: `${baseUrl}/fr/services/botox`,
+        pt: `${baseUrl}/pt/services/botox`,
+      },
+    },
     openGraph: {
       title: t("botoxSeoTitle"),
       description: t("botoxSeoDescription"),
+      url: currentUrl,
       siteName: t("siteName"),
       locale: lng,
       type: "website",
@@ -52,8 +65,11 @@ export async function generateMetadata({
         },
       ],
     },
-    alternates: {
-      canonical: `https://danahair.be/${lng}/services/botox`,
+    twitter: {
+      card: "summary_large_image",
+      title: t("botoxSeoTitle"),
+      description: t("botoxSeoDescription"),
+      images: [getImageUrl("/botox.mp4")],
     },
   };
 }
@@ -619,7 +635,7 @@ export default async function BotoxPage({ params }: PageProps) {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link
-                href={`/${lng}/contact`}
+                href={`/${lng}#contact`}
                 className="bg-white text-salon-pink px-8 py-4 rounded-full font-semibold hover:bg-salon-off-white transition-colors duration-200 inline-flex items-center justify-center text-lg shadow-lg"
               >
                 {t("bookAppointment")}

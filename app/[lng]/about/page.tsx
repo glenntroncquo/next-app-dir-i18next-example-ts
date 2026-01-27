@@ -15,17 +15,34 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { lng } = await params;
   const { t } = await getT();
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://danahair.be";
+  const currentUrl = `${baseUrl}/${lng}/about`;
 
   return {
     title: `${t("meetTeamDana")} - ${t("siteName")}`,
     description: t("teamDescription"),
     keywords: t("seoKeywords"),
+    alternates: {
+      canonical: currentUrl,
+      languages: {
+        nl: `${baseUrl}/nl/about`,
+        en: `${baseUrl}/en/about`,
+        fr: `${baseUrl}/fr/about`,
+        pt: `${baseUrl}/pt/about`,
+      },
+    },
     openGraph: {
       title: `${t("meetTeamDana")} - ${t("siteName")}`,
       description: t("teamDescription"),
+      url: currentUrl,
       siteName: t("siteName"),
       locale: lng,
       type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${t("meetTeamDana")} - ${t("siteName")}`,
+      description: t("teamDescription"),
     },
   };
 }

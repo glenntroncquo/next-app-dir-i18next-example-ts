@@ -17,17 +17,34 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { lng } = await params;
   const { t } = await getT();
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://danahair.be";
+  const currentUrl = `${baseUrl}/${lng}/services`;
 
   return {
     title: `${t("ourPremiumServices")} - ${t("siteName")}`,
     description: t("ourServicesDesc"),
     keywords: t("seoKeywords"),
+    alternates: {
+      canonical: currentUrl,
+      languages: {
+        nl: `${baseUrl}/nl/services`,
+        en: `${baseUrl}/en/services`,
+        fr: `${baseUrl}/fr/services`,
+        pt: `${baseUrl}/pt/services`,
+      },
+    },
     openGraph: {
       title: `${t("ourPremiumServices")} - ${t("siteName")}`,
       description: t("ourServicesDesc"),
+      url: currentUrl,
       siteName: t("siteName"),
       locale: lng,
       type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${t("ourPremiumServices")} - ${t("siteName")}`,
+      description: t("ourServicesDesc"),
     },
   };
 }
@@ -212,7 +229,7 @@ export default async function ServicesPage({ params }: PageProps) {
         <section className="pb-20">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <Link
-              href={`/${lng}/contact`}
+              href={`/${lng}#contact`}
               className="btn-primary px-8 py-3 inline-flex items-center"
             >
               {t("bookAppointment")}

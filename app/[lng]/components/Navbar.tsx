@@ -117,7 +117,7 @@ const Navbar = ({ currentLng: lng }: NavbarProps) => {
               {t("services")}
             </Link>
             <Link
-              href={`/${lng}/contact`}
+              href={`/${lng}#contact`}
               className={`highlight-link font-medium cursor-pointer ${
                 isActive("/contact")
                   ? "text-salon-pink"
@@ -194,7 +194,7 @@ const Navbar = ({ currentLng: lng }: NavbarProps) => {
             {t("services")}
           </Link>
           <Link
-            href={`/${lng}/contact`}
+            href={`/${lng}#contact`}
             className={`py-2 px-4 rounded-lg cursor-pointer ${
               isActive("/contact")
                 ? "bg-salon-softer-pink text-salon-pink"

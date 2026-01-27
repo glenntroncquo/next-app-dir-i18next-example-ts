@@ -29,15 +29,28 @@ export async function generateMetadata({
   const { lng } = await params;
   const { t } = await getT();
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://danahair.be";
+  const currentUrl = `${baseUrl}/${lng}/services/keratine`;
+
   return {
     title: t("keratinSeoTitle"),
     description: t("keratinSeoDescription"),
     keywords: `keratin treatment, Brazilian keratin, hair smoothing, frizz treatment, keratin treatment Merelbeke, keratin treatment Ghent, ${t(
       "seoKeywords"
     )}`,
+    alternates: {
+      canonical: currentUrl,
+      languages: {
+        nl: `${baseUrl}/nl/services/keratine`,
+        en: `${baseUrl}/en/services/keratine`,
+        fr: `${baseUrl}/fr/services/keratine`,
+        pt: `${baseUrl}/pt/services/keratine`,
+      },
+    },
     openGraph: {
       title: t("keratinSeoTitle"),
       description: t("keratinSeoDescription"),
+      url: currentUrl,
       siteName: t("siteName"),
       locale: lng,
       type: "website",
@@ -52,8 +65,11 @@ export async function generateMetadata({
         },
       ],
     },
-    alternates: {
-      canonical: `https://danahair.be/${lng}/services/keratine`,
+    twitter: {
+      card: "summary_large_image",
+      title: t("keratinSeoTitle"),
+      description: t("keratinSeoDescription"),
+      images: [getImageUrl("/keratine.webp")],
     },
   };
 }
@@ -619,7 +635,7 @@ export default async function KeratinePage({ params }: PageProps) {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link
-                href={`/${lng}/contact`}
+                href={`/${lng}#contact`}
                 className="bg-white text-salon-pink px-8 py-4 rounded-full font-semibold hover:bg-salon-off-white transition-colors duration-200 inline-flex items-center justify-center text-lg shadow-lg"
               >
                 {t("bookAppointment")}

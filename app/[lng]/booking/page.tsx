@@ -17,6 +17,8 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { lng } = await params;
   const { t } = await getT();
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://danahair.be";
+  const currentUrl = `${baseUrl}/${lng}/booking`;
 
   return {
     title: `${t("bookAppointment")} - D'Ana Hair Merelbeke`,
@@ -24,15 +26,27 @@ export async function generateMetadata({
     keywords: `book appointment hair salon Merelbeke, D'Ana Hair booking, keratin treatment appointment, hair salon online booking, Brazilian keratin booking Ghent, ${t(
       "seoKeywords",
     )}`,
+    alternates: {
+      canonical: currentUrl,
+      languages: {
+        nl: `${baseUrl}/nl/booking`,
+        en: `${baseUrl}/en/booking`,
+        fr: `${baseUrl}/fr/booking`,
+        pt: `${baseUrl}/pt/booking`,
+      },
+    },
     openGraph: {
       title: `Book Your Appointment - D'Ana Hair Merelbeke`,
       description: `Schedule your Brazilian keratin or botox treatment at D'Ana Hair. Professional hair care in Merelbeke, Ghent & Oudenaarde.`,
+      url: currentUrl,
       siteName: t("siteName"),
       locale: lng,
       type: "website",
     },
-    alternates: {
-      canonical: `https://danahair.be/${lng}/booking`,
+    twitter: {
+      card: "summary_large_image",
+      title: `Book Your Appointment - D'Ana Hair Merelbeke`,
+      description: `Schedule your Brazilian keratin or botox treatment at D'Ana Hair.`,
     },
   };
 }

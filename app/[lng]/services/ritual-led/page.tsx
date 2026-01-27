@@ -29,15 +29,28 @@ export async function generateMetadata({
   const { lng } = await params;
   const { t } = await getT();
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://danahair.be";
+  const currentUrl = `${baseUrl}/${lng}/services/ritual-led`;
+
   return {
     title: t("ritualSeoTitle"),
     description: t("ritualSeoDescription"),
     keywords: `ritual nutrition, LED therapy, hair nutrition, Brazilian nutrition, ritual treatment Merelbeke, ritual treatment Ghent, ${t(
       "seoKeywords"
     )}`,
+    alternates: {
+      canonical: currentUrl,
+      languages: {
+        nl: `${baseUrl}/nl/services/ritual-led`,
+        en: `${baseUrl}/en/services/ritual-led`,
+        fr: `${baseUrl}/fr/services/ritual-led`,
+        pt: `${baseUrl}/pt/services/ritual-led`,
+      },
+    },
     openGraph: {
       title: t("ritualSeoTitle"),
       description: t("ritualSeoDescription"),
+      url: currentUrl,
       siteName: t("siteName"),
       locale: lng,
       type: "website",
@@ -52,8 +65,11 @@ export async function generateMetadata({
         },
       ],
     },
-    alternates: {
-      canonical: `https://danahair.be/${lng}/services/ritual`,
+    twitter: {
+      card: "summary_large_image",
+      title: t("ritualSeoTitle"),
+      description: t("ritualSeoDescription"),
+      images: [getImageUrl("/led.jpg")],
     },
   };
 }
@@ -611,7 +627,7 @@ export default async function RitualPage({ params }: PageProps) {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link
-                href={`/${lng}/contact`}
+                href={`/${lng}#contact`}
                 className="bg-white text-salon-pink px-8 py-4 rounded-full font-semibold hover:bg-salon-off-white transition-colors duration-200 inline-flex items-center justify-center text-lg shadow-lg"
               >
                 {t("bookAppointment")}

@@ -2,196 +2,340 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
+  <!-- Homepage - Dutch (default) -->
+  <url>
+    <loc>https://danahair.be/nl</loc>
+    <lastmod>2026-01-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt"/>
+  </url>
+
   <!-- Homepage - English -->
   <url>
     <loc>https://danahair.be/en</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2026-01-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en"/>
-  </url>
-
-  <!-- Homepage - Dutch -->
-  <url>
-    <loc>https://danahair.be/nl</loc>
-    <lastmod>2024-01-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en"/>
   </url>
 
   <!-- Homepage - French -->
   <url>
     <loc>https://danahair.be/fr</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2026-01-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en"/>
   </url>
 
   <!-- Homepage - Portuguese -->
   <url>
     <loc>https://danahair.be/pt</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2026-01-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en"/>
-  </url>
-
-  <!-- Services Page - English -->
-  <url>
-    <loc>https://danahair.be/en/services</loc>
-    <lastmod>2024-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/services"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/services"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/services"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/services"/>
   </url>
 
   <!-- Services Page - Dutch -->
   <url>
     <loc>https://danahair.be/nl/services</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2026-01-24</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/services"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/services"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/services"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/services"/>
+  </url>
+
+  <!-- Services Page - English -->
+  <url>
+    <loc>https://danahair.be/en/services</loc>
+    <lastmod>2026-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/services"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/services"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/services"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/services"/>
   </url>
 
   <!-- Services Page - French -->
   <url>
     <loc>https://danahair.be/fr/services</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2026-01-24</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/services"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/services"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/services"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/services"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/services"/>
   </url>
 
   <!-- Services Page - Portuguese -->
   <url>
     <loc>https://danahair.be/pt/services</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2026-01-24</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/services"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/services"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/services"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/services"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/services"/>
   </url>
 
-  <!-- Appointment Page - English -->
+  <!-- Keratine Service - Dutch -->
   <url>
-    <loc>https://danahair.be/en/appointment</loc>
-    <lastmod>2024-01-15</lastmod>
+    <loc>https://danahair.be/nl/services/keratine</loc>
+    <lastmod>2026-01-24</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/services/keratine"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/services/keratine"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/services/keratine"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/services/keratine"/>
+  </url>
+
+  <!-- Keratine Service - English -->
+  <url>
+    <loc>https://danahair.be/en/services/keratine</loc>
+    <lastmod>2026-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/services/keratine"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/services/keratine"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/services/keratine"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/services/keratine"/>
+  </url>
+
+  <!-- Keratine Service - French -->
+  <url>
+    <loc>https://danahair.be/fr/services/keratine</loc>
+    <lastmod>2026-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/services/keratine"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/services/keratine"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/services/keratine"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/services/keratine"/>
+  </url>
+
+  <!-- Keratine Service - Portuguese -->
+  <url>
+    <loc>https://danahair.be/pt/services/keratine</loc>
+    <lastmod>2026-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/services/keratine"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/services/keratine"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/services/keratine"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/services/keratine"/>
+  </url>
+
+  <!-- Botox Service - Dutch -->
+  <url>
+    <loc>https://danahair.be/nl/services/botox</loc>
+    <lastmod>2026-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/services/botox"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/services/botox"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/services/botox"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/services/botox"/>
+  </url>
+
+  <!-- Botox Service - English -->
+  <url>
+    <loc>https://danahair.be/en/services/botox</loc>
+    <lastmod>2026-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/services/botox"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/services/botox"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/services/botox"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/services/botox"/>
+  </url>
+
+  <!-- Botox Service - French -->
+  <url>
+    <loc>https://danahair.be/fr/services/botox</loc>
+    <lastmod>2026-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/services/botox"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/services/botox"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/services/botox"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/services/botox"/>
+  </url>
+
+  <!-- Botox Service - Portuguese -->
+  <url>
+    <loc>https://danahair.be/pt/services/botox</loc>
+    <lastmod>2026-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/services/botox"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/services/botox"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/services/botox"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/services/botox"/>
+  </url>
+
+  <!-- Ritual-LED Service - Dutch -->
+  <url>
+    <loc>https://danahair.be/nl/services/ritual-led</loc>
+    <lastmod>2026-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/services/ritual-led"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/services/ritual-led"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/services/ritual-led"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/services/ritual-led"/>
+  </url>
+
+  <!-- Ritual-LED Service - English -->
+  <url>
+    <loc>https://danahair.be/en/services/ritual-led</loc>
+    <lastmod>2026-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/services/ritual-led"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/services/ritual-led"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/services/ritual-led"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/services/ritual-led"/>
+  </url>
+
+  <!-- Ritual-LED Service - French -->
+  <url>
+    <loc>https://danahair.be/fr/services/ritual-led</loc>
+    <lastmod>2026-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/services/ritual-led"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/services/ritual-led"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/services/ritual-led"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/services/ritual-led"/>
+  </url>
+
+  <!-- Ritual-LED Service - Portuguese -->
+  <url>
+    <loc>https://danahair.be/pt/services/ritual-led</loc>
+    <lastmod>2026-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/services/ritual-led"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/services/ritual-led"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/services/ritual-led"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/services/ritual-led"/>
+  </url>
+
+  <!-- Booking Page - Dutch -->
+  <url>
+    <loc>https://danahair.be/nl/booking</loc>
+    <lastmod>2026-01-24</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/appointment"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/appointment"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/appointment"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/appointment"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/booking"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/booking"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/booking"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/booking"/>
   </url>
 
-  <!-- Appointment Page - Dutch -->
+  <!-- Booking Page - English -->
   <url>
-    <loc>https://danahair.be/nl/appointment</loc>
-    <lastmod>2024-01-15</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://danahair.be/en/booking</loc>
+    <lastmod>2026-01-24</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/appointment"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/appointment"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/appointment"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/appointment"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/booking"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/booking"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/booking"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/booking"/>
   </url>
 
-  <!-- Appointment Page - French -->
+  <!-- Booking Page - French -->
   <url>
-    <loc>https://danahair.be/fr/appointment</loc>
-    <lastmod>2024-01-15</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://danahair.be/fr/booking</loc>
+    <lastmod>2026-01-24</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/appointment"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/appointment"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/appointment"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/appointment"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/booking"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/booking"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/booking"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/booking"/>
   </url>
 
-  <!-- Appointment Page - Portuguese -->
+  <!-- Booking Page - Portuguese -->
   <url>
-    <loc>https://danahair.be/pt/appointment</loc>
-    <lastmod>2024-01-15</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://danahair.be/pt/booking</loc>
+    <lastmod>2026-01-24</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/appointment"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/appointment"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/appointment"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/appointment"/>
-  </url>
-
-  <!-- About Page - English -->
-  <url>
-    <loc>https://danahair.be/en/wie-is-wie</loc>
-    <lastmod>2024-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/wie-is-wie"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/wie-is-wie"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/wie-is-wie"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/wie-is-wie"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/booking"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/booking"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/booking"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/booking"/>
   </url>
 
   <!-- About Page - Dutch -->
   <url>
-    <loc>https://danahair.be/nl/wie-is-wie</loc>
-    <lastmod>2024-01-15</lastmod>
+    <loc>https://danahair.be/nl/about</loc>
+    <lastmod>2026-01-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/wie-is-wie"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/wie-is-wie"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/wie-is-wie"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/nl/wie-is-wie"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/about"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/about"/>
+  </url>
+
+  <!-- About Page - English -->
+  <url>
+    <loc>https://danahair.be/en/about</loc>
+    <lastmod>2026-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/about"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/about"/>
   </url>
 
   <!-- About Page - French -->
   <url>
-    <loc>https://danahair.be/fr/wie-is-wie</loc>
-    <lastmod>2024-01-15</lastmod>
+    <loc>https://danahair.be/fr/about</loc>
+    <lastmod>2026-01-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/wie-is-wie"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/wie-is-wie"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/wie-is-wie"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/wie-is-wie"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/about"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/about"/>
   </url>
 
   <!-- About Page - Portuguese -->
   <url>
-    <loc>https://danahair.be/pt/wie-is-wie</loc>
-    <lastmod>2024-01-15</lastmod>
+    <loc>https://danahair.be/pt/about</loc>
+    <lastmod>2026-01-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/wie-is-wie"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/wie-is-wie"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/wie-is-wie"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/wie-is-wie"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://danahair.be/nl/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://danahair.be/en/about"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://danahair.be/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://danahair.be/pt/about"/>
   </url>
 
 </urlset>
