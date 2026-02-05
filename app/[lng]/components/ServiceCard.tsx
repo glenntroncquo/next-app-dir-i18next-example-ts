@@ -63,6 +63,7 @@ const ServiceCard = ({
               muted
               loop
               autoPlay
+              playsInline
               onError={(e) => {
                 const target = e.currentTarget;
                 target.style.display = "none";
