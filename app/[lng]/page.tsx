@@ -338,8 +338,8 @@ export default async function Page({
           </div>
 
           {/* Main Content */}
-          <div className="section-container relative z-10 pt-24 md:pt-32 flex flex-col md:flex-row items-center">
-            <div className="md:w-1/2 text-center md:text-left mb-12 md:mb-0">
+          <div className="section-container relative z-10 pt-24 md:pt-32 flex flex-col md:flex-row items-stretch md:items-center">
+            <div className="w-full md:w-1/2 text-center md:text-left mb-12 md:mb-0 min-w-0">
               <div className="inline-block mb-4 px-4 py-1.5 bg-white/70 backdrop-blur-md rounded-full shadow-soft">
                 <div className="flex items-center">
                   <div
@@ -386,14 +386,14 @@ export default async function Page({
               </div>
             </div>
 
-            <div className="md:w-1/2 relative">
-              <div className="relative z-10">
+            <div className="w-full md:w-1/2 relative min-w-0">
+              <div className="relative z-10 w-full">
                 {/* Main image with shadow and border */}
-                <div className="rounded-2xl overflow-hidden border-4 border-white shadow-soft-lg bg-white h-[600px]">
+                <div className="rounded-2xl overflow-hidden border-4 border-white shadow-soft-lg bg-white h-[600px] w-full min-w-0">
                   <Image
                     src={getImageUrl("/hero2.jpg")}
                     alt="Two professional hair stylists in pink blazers with positive affirmations in the background - D'Ana Hair Salon"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover min-w-0"
                     sizes="(max-width: 768px) 100vw, 50vw"
                     width={509}
                     height={592}
@@ -448,14 +448,14 @@ export default async function Page({
           ></div>
 
           <div className="section-container relative z-10">
-            <div className="flex flex-col-reverse md:flex-row items-center gap-12">
-              <div className="md:w-1/2 relative">
-                <div className="relative z-10">
-                  <div className="rounded-2xl overflow-hidden border-4 border-white shadow-soft-lg">
+            <div className="flex flex-col-reverse md:flex-row items-stretch md:items-center gap-12">
+              <div className="w-full md:w-1/2 relative min-w-0">
+                <div className="relative z-10 w-full">
+                  <div className="rounded-2xl overflow-hidden border-4 border-white shadow-soft-lg w-full">
                     <Image
                       src={getImageUrl("/placeholdertest.jpg")}
                       alt="Professional hair salon stylists at D'Ana Hair Salon working with clients"
-                      className="w-full max-h-[550px] h-auto object-cover"
+                      className="w-full max-h-[550px] h-auto object-cover min-w-0"
                       sizes="(max-width: 768px) 100vw, 50vw"
                       width={600}
                       height={550}
@@ -941,7 +941,7 @@ export default async function Page({
                           src={image.url}
                           poster={image.url.replace(
                             /\.(mp4|webm|ogg|mov)$/i,
-                            ".jpg"
+                            ".jpg",
                           )}
                           className="w-full h-full object-cover transition-transform duration-700 ease-bounce-soft group-hover:scale-110"
                           muted
