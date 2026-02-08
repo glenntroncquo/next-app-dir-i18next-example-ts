@@ -42,6 +42,7 @@ interface Resources {
     serviceBotoxFooter: "Botox Treatment";
     serviceRitualFooter: "Ritual Nutrition – Nuance Brazil + LED Light Therapy";
     allRightsReserved: "All rights reserved";
+    vatLabel: "VAT";
     privacyPolicy: "Privacy Policy";
     termsOfService: "Terms of Service";
     cookiePolicy: "Cookie Policy";
