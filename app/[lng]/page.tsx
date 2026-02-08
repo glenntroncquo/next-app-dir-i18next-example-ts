@@ -539,6 +539,7 @@ export default async function Page({
                 title={t("serviceKeratinTitle")}
                 description={t("serviceKeratinDescription")}
                 price="€150"
+                priceLabel={t("fromPrice", { price: "€150" })}
                 imageSrc={getImageUrl("/keratine.webp")}
                 iconSrc={
                   <Scissors
@@ -557,6 +558,7 @@ export default async function Page({
                 title={t("serviceBotoxTitle")}
                 description={t("serviceBotoxDescription")}
                 price="€150"
+                priceLabel={t("fromPrice", { price: "€150" })}
                 imageSrc=""
                 videoSrc={getImageUrl("/botox.mp4")}
                 iconSrc={
@@ -576,6 +578,7 @@ export default async function Page({
                 title={t("serviceRitualTitle")}
                 description={t("serviceRitualDescription")}
                 price="€60"
+                priceLabel={t("fromPrice", { price: "€60" })}
                 imageSrc={getImageUrl("/led.jpg")}
                 iconSrc={
                   <Sparkles
@@ -709,9 +712,14 @@ export default async function Page({
                           <p className="font-medium text-salon-text-dark">
                             {t("address")}
                           </p>
-                          <p className="text-salon-text-medium">
+                          <a
+                            href="https://maps.google.com/maps?q=51.01490464198777,3.7532758684587"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-salon-text-medium hover:text-salon-pink transition-colors duration-200 cursor-pointer"
+                          >
                             Hundelgemsesteenweg 73, 9820 Merelbeke-Melle
-                          </p>
+                          </a>
                         </div>
                       </div>
                       <div className="flex items-start space-x-3">
@@ -735,14 +743,12 @@ export default async function Page({
                           <p className="font-medium text-salon-text-dark">
                             {t("phone")}
                           </p>
-                          <p className="text-salon-text-medium">
-                            <a
-                              href="tel:+32477371071"
-                              className="hover:text-salon-pink transition-colors"
-                            >
-                              +32 477 37 10 71
-                            </a>
-                          </p>
+                          <a
+                            href="tel:+32477371071"
+                            className="text-salon-text-medium hover:text-salon-pink transition-colors duration-200 cursor-pointer"
+                          >
+                            +32 477 37 10 71
+                          </a>
                         </div>
                       </div>
                       <div className="flex items-start space-x-3">
@@ -766,14 +772,12 @@ export default async function Page({
                           <p className="font-medium text-salon-text-dark">
                             {t("email")}
                           </p>
-                          <p className="text-salon-text-medium">
-                            <a
-                              href="mailto:info.danahair@gmail.com"
-                              className="hover:text-salon-pink transition-colors"
-                            >
-                              info.danahair@gmail.com
-                            </a>
-                          </p>
+                          <a
+                            href="mailto:info.danahair@gmail.com"
+                            className="text-salon-text-medium hover:text-salon-pink transition-colors duration-200 cursor-pointer"
+                          >
+                            info.danahair@gmail.com
+                          </a>
                         </div>
                       </div>
                     </address>
@@ -811,6 +815,14 @@ export default async function Page({
                       </div>
                       <div className="flex justify-between items-center py-2 border-b border-salon-pink/20">
                         <dt className="text-salon-text-medium">
+                          {t("thursday")}
+                        </dt>
+                        <dd className="font-medium text-salon-text-dark">
+                          17:00 - 21:00
+                        </dd>
+                      </div>
+                      <div className="flex justify-between items-center py-2 border-b border-salon-pink/20">
+                        <dt className="text-salon-text-medium">
                           {t("friday")}
                         </dt>
                         <dd className="font-medium text-salon-text-dark">
@@ -823,6 +835,14 @@ export default async function Page({
                         </dt>
                         <dd className="font-medium text-salon-text-dark">
                           9:00 - 16:00
+                        </dd>
+                      </div>
+                      <div className="flex justify-between items-center py-2">
+                        <dt className="text-salon-text-medium">
+                          {t("sunday")}
+                        </dt>
+                        <dd className="font-medium text-salon-text-dark">
+                          {t("closed")}
                         </dd>
                       </div>
                     </dl>
@@ -847,6 +867,9 @@ export default async function Page({
                     aria-label="Interactive map showing D'Ana Hair Salon location"
                   ></iframe>
                 </div>
+                <p className="text-sm text-salon-text-medium mt-3 text-center">
+                  {t("locationDescription")}
+                </p>
               </div>
             </div>
           </div>

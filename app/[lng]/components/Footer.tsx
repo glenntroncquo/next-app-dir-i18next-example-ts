@@ -193,10 +193,15 @@ const Footer = ({ lng }: FooterProps) => {
 
         <div className="mt-12 pt-8 border-t border-salon-pink/20">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-salon-text-medium text-sm">
-              © {new Date().getFullYear()} D&apos;Ana Hair.{" "}
-              {t("allRightsReserved")}.
-            </p>
+            <div className="text-center md:text-left">
+              <p className="text-salon-text-medium text-sm">
+                © {new Date().getFullYear()} D&apos;Ana Hair.{" "}
+                {t("allRightsReserved")}.
+              </p>
+              <p className="text-salon-text-medium text-sm mt-1">
+                {t("vatLabel")}: BE1021.422.173
+              </p>
+            </div>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a
                 href="#"

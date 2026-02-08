@@ -8,6 +8,7 @@ interface ServiceCardProps {
   title: string;
   description: string;
   price: string;
+  priceLabel?: string;
   imageSrc: string;
   videoSrc?: string;
   iconSrc?: React.ReactNode;
@@ -21,6 +22,7 @@ const ServiceCard = ({
   title,
   description,
   price,
+  priceLabel,
   imageSrc,
   videoSrc,
   iconSrc,
@@ -91,7 +93,7 @@ const ServiceCard = ({
 
         {/* Price tag */}
         <div className="absolute top-4 right-4 bg-white/80 backdrop-blur-sm rounded-full px-4 py-1 shadow-soft">
-          <span className="font-medium text-salon-pink">From {price}</span>
+          <span className="font-medium text-salon-pink">{priceLabel ?? `From ${price}`}</span>
         </div>
       </div>
 
