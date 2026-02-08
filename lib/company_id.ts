@@ -1,1 +1,0 @@
-export const companyId = process.env.NEXT_PUBLIC_COMPANY_ID;
