@@ -55,6 +55,20 @@ export default function IframeWidget({
 
   const [widgetUrl, setWidgetUrl] = useState(buildWidgetUrl());
   const [triedRoot, setTriedRoot] = useState(false);
+  const [retryKey, setRetryKey] = useState(0);
+
+  const missingConfig =
+    !companyId || !supabaseUrl || !supabaseKey;
+
+  const handleRetry = useCallback(() => {
+    setHasError(false);
+    setErrorMessage(null);
+    setIframeLoaded(false);
+    setWidgetReady(false);
+    setTriedRoot(false);
+    setWidgetUrl(buildWidgetUrl());
+    setRetryKey((k) => k + 1);
+  }, [buildWidgetUrl]);
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
@@ -263,6 +277,26 @@ export default function IframeWidget({
     };
   }, [widgetUrl, triedRoot, widgetDomain, iframeLoaded, widgetReady, buildWidgetUrl]);
 
+  if (missingConfig) {
+    return (
+      <div className="w-full border-2 border-amber-200 rounded-lg p-8 bg-amber-50">
+        <div className="text-center">
+          <h3 className="text-lg font-semibold text-amber-900 mb-2">
+            Booking widget not configured
+          </h3>
+          <p className="text-amber-800 text-sm mb-4">
+            Add the following to <code className="bg-amber-100 px-1 rounded">.env.local</code> and restart the dev server:
+          </p>
+          <ul className="text-left text-sm text-amber-900 list-disc list-inside space-y-1 max-w-md mx-auto">
+            {!companyId && <li><code>NEXT_PUBLIC_COMPANY_ID</code></li>}
+            {!supabaseUrl && <li><code>NEXT_PUBLIC_SUPABASE_URL</code></li>}
+            {!supabaseKey && <li><code>NEXT_PUBLIC_SUPABASE_ANON_KEY</code></li>}
+          </ul>
+        </div>
+      </div>
+    );
+  }
+
   if (hasError && errorMessage) {
     return (
       <div className="w-full border-2 border-red-200 rounded-lg p-8 bg-red-50">
@@ -271,24 +305,58 @@ export default function IframeWidget({
           <h3 className="text-lg font-semibold text-red-900 mb-2">
             Widget Failed to Load
           </h3>
-          <p className="text-red-800 text-sm mb-4">{errorMessage}</p>
+          <p className="text-red-800 text-sm mb-4 whitespace-pre-line">
+            {errorMessage}
+          </p>
+          <div className="flex flex-wrap gap-3 justify-center mb-4">
+            <button
+              type="button"
+              onClick={handleRetry}
+              className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+            >
+              Retry
+            </button>
+            <a
+              href={widgetUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-800 transition-colors inline-block"
+            >
+              Open widget in new tab
+            </a>
+          </div>
           <div className="bg-white p-4 rounded-lg text-left text-xs">
             <p className="font-semibold mb-2">Possible solutions:</p>
             <ul className="list-disc list-inside space-y-1 text-gray-700">
+              <li>
+                Use &quot;Open widget in new tab&quot; to see if the widget
+                loads there (if it does, the issue may be iframe embedding).
+              </li>
               <li>
                 Verify the widget is deployed at:{" "}
                 <code className="bg-gray-100 px-1 rounded">{widgetDomain}</code>
               </li>
               <li>
-                Check if the widget domain is correct in your environment
-                variables
+                Check that{" "}
+                <code className="bg-gray-100 px-1 rounded">
+                  NEXT_PUBLIC_COMPANY_ID
+                </code>
+                ,{" "}
+                <code className="bg-gray-100 px-1 rounded">
+                  NEXT_PUBLIC_SUPABASE_URL
+                </code>
+                , and{" "}
+                <code className="bg-gray-100 px-1 rounded">
+                  NEXT_PUBLIC_SUPABASE_ANON_KEY
+                </code>{" "}
+                are set in <code className="bg-gray-100 px-1 rounded">.env.local</code>.
               </li>
               <li>
                 Ensure the widget supports the{" "}
                 <code className="bg-gray-100 px-1 rounded">/widget</code> path
-                or root path
+                or root path.
               </li>
-              <li>Check browser console for detailed error messages</li>
+              <li>Check browser console for CORS or X-Frame-Options errors.</li>
             </ul>
             <p className="mt-3 text-gray-600">
               <strong>Current URL:</strong>{" "}
@@ -298,11 +366,12 @@ export default function IframeWidget({
             </p>
             <div className="mt-3 p-3 bg-blue-50 rounded border border-blue-200">
               <p className="text-xs text-blue-900">
-                <strong>💡 Tip:</strong> Set{" "}
+                <strong>Tip:</strong> Set{" "}
                 <code className="bg-blue-100 px-1 rounded">
                   NEXT_PUBLIC_WIDGET_DOMAIN
                 </code>{" "}
-                environment variable to configure the widget domain.
+                in <code className="bg-blue-100 px-1 rounded">.env.local</code>{" "}
+                to point to your widget deployment.
               </p>
             </div>
           </div>
@@ -314,6 +383,7 @@ export default function IframeWidget({
   return (
     <div className="w-full">
       <iframe
+        key={retryKey}
         ref={iframeRef}
         src={widgetUrl}
         width="100%"
