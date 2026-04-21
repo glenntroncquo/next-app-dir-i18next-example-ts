@@ -17,6 +17,15 @@ export const config = {
 };
 
 export function proxy(req: NextRequest) {
+  // Redirect www to non-www (canonical host) so both URLs resolve to the same site
+  const host = req.headers.get("host") || "";
+  if (host.startsWith("www.")) {
+    const canonicalHost = host.replace(/^www\./, "");
+    const url = new URL(req.url);
+    url.host = canonicalHost;
+    return NextResponse.redirect(url, { status: 301 });
+  }
+
   if (
     req.nextUrl.pathname.indexOf("icon") > -1 ||
     req.nextUrl.pathname.indexOf("chrome") > -1
