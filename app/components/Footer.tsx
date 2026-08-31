@@ -80,6 +80,8 @@ const Footer = () => {
                 { href: ROUTES.keratine, label: "Keratinebehandeling" },
                 { href: ROUTES.haarbotox, label: "Haarbotox" },
                 { href: ROUTES.ritual, label: "Ritual Nutrition + LED" },
+                { href: ROUTES.kleuren, label: "Kleuren" },
+                { href: ROUTES.diensten, label: "Alle diensten" },
                 {
                   href: ROUTES.keratineMerelbeke,
                   label: "Keratine in Merelbeke",

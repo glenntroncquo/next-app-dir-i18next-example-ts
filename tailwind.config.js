@@ -24,6 +24,7 @@ module.exports = {
         sans: ["Inter", "sans-serif"],
         display: ["Montserrat", "sans-serif"],
         handwritten: ["Dancing Script", "cursive"],
+        editorial: ["Cormorant Garamond", "Georgia", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -80,6 +81,16 @@ module.exports = {
           "text-dark": "#4A3F45",
           "text-medium": "#84777F",
           "text-light": "#AEA3AA",
+        },
+        atelier: {
+          cream: "#F4EDE4",
+          paper: "#FBF6F0",
+          ink: "#2C2420",
+          muted: "#6E5F58",
+          dusty: "#C4A4A0",
+          rose: "#A87872",
+          brass: "#B08D57",
+          "brass-light": "#D4BC8A",
         },
       },
       borderRadius: {

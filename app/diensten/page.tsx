@@ -1,20 +1,19 @@
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import { Breadcrumbs } from "../components/Breadcrumbs";
-import { JsonLd } from "../components/JsonLd";
-import { getImageUrl } from "../../lib/imageUrl";
-import { pageMetadata } from "../../lib/metadata";
-import { breadcrumbJsonLd } from "../../lib/schema";
-import { ROUTES } from "../../lib/site";
-import { EXTRA_SERVICES } from "../../lib/extra-services";
+import { JsonLd } from "@/app/components/JsonLd";
+import { Breadcrumbs } from "@/app/components/Breadcrumbs";
+import { ServiceTile } from "./components/ServiceTile";
+import { pageMetadata } from "@/lib/metadata";
+import { breadcrumbJsonLd } from "@/lib/schema";
+import { ROUTES } from "@/lib/site";
+import { HUB_COPY, SERVICES } from "@/lib/content/services";
+import { getImageUrl } from "@/lib/imageUrl";
 
 export const metadata = pageMetadata({
-  title: "Diensten",
-  description:
-    "Keratine, haarbotox, Ritual Nutrition, kleuren, knippen en meer bij D'Ana Hair in Merelbeke-Melle.",
+  title: HUB_COPY.seoTitle,
+  description: HUB_COPY.seoDescription,
   path: ROUTES.diensten,
+  image: "/keratine.webp",
+  imageAlt: "Keratinebehandeling bij D'Ana Hair in Merelbeke",
   keywords: "haarsalon diensten Merelbeke, keratine, haarbotox, knippen, kleuren",
 });
 
@@ -23,154 +22,80 @@ const crumbs = [
   { name: "Diensten", href: ROUTES.diensten },
 ];
 
-const featured = [
-  {
-    href: ROUTES.keratine,
-    title: "Keratinebehandeling",
-    description:
-      "Braziliaanse keratine voor glad, pluisvrij haar. Vanaf €150.",
-    image: getImageUrl("/keratine.webp"),
-    price: "€150",
-  },
-  {
-    href: ROUTES.haarbotox,
-    title: "Haarbotox",
-    description: "Herstel voor beschadigd haar. Vanaf €150.",
-    image: getImageUrl("/botox.mp4"),
-    price: "€150",
-  },
-  {
-    href: ROUTES.ritual,
-    title: "Ritual Nutrition + LED",
-    description: "Braziliaanse voeding en LED-therapie. Vanaf €60.",
-    image: getImageUrl("/led.jpg"),
-    price: "€60",
-  },
-];
+const featured = SERVICES.find((service) => service.hubLayout === "featured");
+const rest = SERVICES.filter((service) => service.hubLayout !== "featured");
 
 export default function DienstenPage() {
   return (
     <>
       <JsonLd data={breadcrumbJsonLd(crumbs)} />
-      <div className="min-h-screen">
-        <Navbar />
-        <section className="md:pt-32 pt-24 pb-12">
-          <div className="max-w-4xl mx-auto px-6">
-            <Breadcrumbs items={crumbs} />
-            <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-display font-bold text-salon-text-dark mb-6">
-                Onze <span className="text-salon-pink">diensten</span>
-              </h1>
-              <p className="text-lg text-salon-text-medium leading-relaxed max-w-3xl mx-auto">
-                Gezond en glanzend haar is onze passie. Keratine is onze
-                specialiteit; daarnaast knippen, kleuren en verzorgen we in
-                dezelfde salon in Merelbeke-Melle.
-              </p>
-            </div>
+      <div className="relative isolate min-h-[88vh] overflow-hidden bg-atelier-ink">
+        <img
+          src={getImageUrl("/keratine.webp")}
+          alt=""
+          className="atelier-photo absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="atelier-photo-veil pointer-events-none absolute inset-0" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-atelier-cream/85 via-atelier-cream/15 to-atelier-ink/80" />
+        <div className="relative z-10 mx-auto flex min-h-[88vh] max-w-5xl flex-col justify-end px-6 pb-16 pt-36 md:pb-24">
+          <p className="mb-4 text-[0.7rem] uppercase tracking-[0.32em] text-atelier-brass-light">
+            {HUB_COPY.eyebrow}
+          </p>
+          <h1 className="font-editorial text-5xl font-medium leading-[0.92] text-atelier-cream md:text-7xl lg:text-8xl">
+            {HUB_COPY.title}
+          </h1>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-atelier-cream/85 md:text-xl">
+            {HUB_COPY.intro}
+          </p>
+          {featured ? (
+            <Link
+              href={featured.path}
+              className="mt-8 inline-flex text-[0.7rem] uppercase tracking-[0.26em] text-atelier-brass-light underline decoration-atelier-brass/60 underline-offset-8 hover:text-atelier-cream"
+            >
+              Begin bij keratine
+            </Link>
+          ) : null}
+        </div>
+      </div>
+
+      <div className="bg-atelier-cream">
+        <div className="mx-auto max-w-6xl px-6 pt-10">
+          <Breadcrumbs items={crumbs} variant="editorial" />
+        </div>
+        <section className="px-0 pb-0 pt-4 md:px-6 md:pb-6 md:pt-6">
+          <div className="mx-auto grid max-w-[1400px] grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {featured ? <ServiceTile service={featured} featured /> : null}
+            {rest.map((service) => (
+              <ServiceTile key={service.slug} service={service} />
+            ))}
           </div>
         </section>
 
-        <section className="pb-12">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {featured.map((service) => (
-                <div
-                  key={service.href}
-                  className="group bg-white rounded-2xl shadow-soft hover:shadow-glow-pink transition-all duration-300 overflow-hidden"
-                >
-                  <div className="relative h-48 overflow-hidden">
-                    {service.image.endsWith(".mp4") ? (
-                      <video
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      >
-                        <source src={service.image} type="video/mp4" />
-                      </video>
-                    ) : (
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    )}
-                  </div>
-                  <div className="p-6">
-                    <h2 className="text-xl font-display font-bold text-salon-text-dark mb-3 group-hover:text-salon-pink transition-colors">
-                      {service.title}
-                    </h2>
-                    <p className="text-salon-text-medium text-sm mb-4">
-                      {service.description}
-                    </p>
-                    <div className="font-semibold text-salon-pink mb-4">
-                      Vanaf {service.price}
-                    </div>
-                    <Link
-                      href={service.href}
-                      className="w-full btn-outline text-sm py-2 px-4 rounded-full inline-flex items-center justify-center"
-                    >
-                      Zie meer
-                      <ChevronRight size={14} className="ml-1" />
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+        <section className="mx-auto max-w-3xl px-6 py-20 text-center">
+          <p className="text-[0.68rem] uppercase tracking-[0.28em] text-atelier-brass">
+            Locatie
+          </p>
+          <p className="mt-4 leading-relaxed text-atelier-muted">
+            Keratine zoek je in{" "}
+            <Link
+              href={ROUTES.keratineMerelbeke}
+              className="text-atelier-ink underline decoration-atelier-brass/50 underline-offset-4 hover:decoration-atelier-brass"
+            >
+              Merelbeke
+            </Link>{" "}
+            of{" "}
+            <Link
+              href={ROUTES.keratineGent}
+              className="text-atelier-ink underline decoration-atelier-brass/50 underline-offset-4 hover:decoration-atelier-brass"
+            >
+              nabij Gent
+            </Link>
+            . De salon zelf is één adres.
+          </p>
+          <Link href={ROUTES.afspraak} className="btn-atelier btn-atelier-solid mt-8 inline-flex">
+            Afspraak maken
+          </Link>
         </section>
-
-        <section className="pb-20">
-          <div className="max-w-6xl mx-auto px-6">
-            <h2 className="text-2xl font-display font-bold text-salon-text-dark mb-8 text-center">
-              Meer diensten
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {EXTRA_SERVICES.map((s) => (
-                <Link
-                  key={s.slug}
-                  href={s.path}
-                  className="glass-card-hover p-6 block"
-                >
-                  <h3 className="text-lg font-display font-semibold text-salon-text-dark mb-2">
-                    {s.title}
-                  </h3>
-                  <p className="text-sm text-salon-text-medium mb-3">
-                    {s.heroSubtitle}
-                  </p>
-                  <span className="text-salon-pink text-sm font-medium">
-                    Prijs op aanvraag →
-                  </span>
-                </Link>
-              ))}
-            </div>
-            <p className="text-center text-salon-text-medium mt-10">
-              Keratine zoek je in{" "}
-              <Link
-                href={ROUTES.keratineMerelbeke}
-                className="text-salon-pink underline"
-              >
-                Merelbeke
-              </Link>{" "}
-              of{" "}
-              <Link
-                href={ROUTES.keratineGent}
-                className="text-salon-pink underline"
-              >
-                nabij Gent
-              </Link>
-              .
-            </p>
-            <div className="text-center mt-8">
-              <Link href={ROUTES.afspraak} className="btn-primary inline-flex">
-                Afspraak maken
-                <ChevronRight size={18} className="ml-2" />
-              </Link>
-            </div>
-          </div>
-        </section>
-        <Footer />
       </div>
     </>
   );

@@ -7,7 +7,8 @@ Nederlandstalige Next.js-site (App Router) voor salon D'Ana Hair in Merelbeke-Me
 | Pad | Inhoud |
 | --- | --- |
 | `/` | Homepage |
-| `/diensten` | Overzicht |
+| `/diensten` | Editorial overzicht (foto-grid, keratine uitgelicht) |
+| `/diensten/[slug]` | Detailpagina’s uit `lib/content/services.ts` |
 | `/diensten/keratine-behandeling` | Keratine (money page) |
 | `/diensten/haarbotox` | Haarbotox |
 | `/diensten/ritual-nutrition` | Ritual Nutrition + LED |
@@ -25,6 +26,15 @@ Nederlandstalige Next.js-site (App Router) voor salon D'Ana Hair in Merelbeke-Me
 | `/privacy` `/cookiebeleid` `/voorwaarden` | Juridisch |
 
 Canonical host: **danahair.be** (www → non-www, 301). `html lang="nl-BE"`.
+
+## Diensten (Origin-architectuur)
+
+`/diensten` is een apart editorial blok (crème, dusty rose, brass, foto-grid). Homepage blijft salon-roze.
+
+- Copy, beelden, prijzen, FAQ en SEO-titels: `lib/content/services.ts`
+- Hub: `app/diensten/page.tsx`
+- Detail: `app/diensten/[slug]/page.tsx` (`generateMetadata`, canonical, Service JSON-LD; keratin ook FAQPage)
+
 
 ## 410 Gone
 
