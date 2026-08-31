@@ -1,84 +1,78 @@
-# Next.js app router feature in combination with i18next
+# D'Ana Hair — danahair.be
 
-This example shows a basic way to use [i18next](https://www.i18next.com) (and [react-i18next](https://react.i18next.com)) in a [Next.js](https://nextjs.org/) app with the new app router features.
-[next-i18next](https://next.i18next.com) is not needed anymore for this setup.
+Nederlandstalige Next.js-site (App Router) voor salon D'Ana Hair in Merelbeke-Melle. Geen i18n, geen locale-prefixen.
 
-It shows i18next integration on some server side pages and some client side pages.
+## URL-kaart (Nederlands, zonder `/nl`)
 
-There is also an example proxy with language detection and persistence via cookie.
+| Pad | Inhoud |
+| --- | --- |
+| `/` | Homepage |
+| `/diensten` | Overzicht |
+| `/diensten/keratine-behandeling` | Keratine (money page) |
+| `/diensten/haarbotox` | Haarbotox |
+| `/diensten/ritual-nutrition` | Ritual Nutrition + LED |
+| `/diensten/kleuren` | Kleuren |
+| `/diensten/balayage` | Balayage |
+| `/diensten/knippen` | Knippen |
+| `/diensten/brushing` | Brushing |
+| `/diensten/extensions` | Extensions |
+| `/diensten/opsteekkapsel` | Opsteekkapsel |
+| `/over-ons` | Team |
+| `/contact` | NAP + uren |
+| `/keratine-behandeling-merelbeke` | Lokale landing (echt adres) |
+| `/keratine-behandeling-gent` | Eerlijk: salon in Merelbeke, ~15 min van Gent |
+| `/afspraak` | Boekingswidget (iframe) |
+| `/privacy` `/cookiebeleid` `/voorwaarden` | Juridisch |
 
-*This example has been created out of [this discussion](https://github.com/i18next/next-i18next/discussions/1993).*
+Canonical host: **danahair.be** (www → non-www, 301). `html lang="nl-BE"`.
 
-## There's also a [blog post](https://www.locize.com/blog/i18n-next-app-router) describing this with more detail information.
+## 410 Gone
 
-[![](https://cdn.prod.website-files.com/67a323e323a50df7f24f0a94/67f268673fcfae53e5d4697c_i18n-next-app-router.jpg)](https://www.locize.com/blog/i18n-next-app-router)
+Verwijderde doorway-pagina's blijven **410** (niet 301), met en zonder oude locale:
 
-### Static Site Generation (SSG)
+- `/gent`, `/merelbeke`, `/oudenaarde`
+- `/nl/gent`, `/en/merelbeke`, `/fr/oudenaarde`, …
 
-If you like to have all this hosted on a static server, you can add the `output: 'export'` options and optionally the `trailingSlash: true` option:
+Zie `proxy.ts` + `lib/redirects.ts`.
 
-```javascript
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: 'export',
-  trailingSlash: true,
-  reactStrictMode: true
-}
-module.exports = nextConfig
+## Redirects (301)
+
+Oude paden en locale-prefixen gaan in één hop naar de Nederlandse URL, o.a.:
+
+- `/booking`, `/appointment`, `/nl/booking`, `/en/booking` → `/afspraak`
+- `/services`, `/nl/services` → `/diensten`
+- `/services/keratine`, `/nl/services/keratine` → `/diensten/keratine-behandeling`
+- `/services/botox` → `/diensten/haarbotox`
+- `/services/ritual-led` → `/diensten/ritual-nutrition`
+- `/about`, `/wie-is-wie` → `/over-ons`
+- `/nl`, `/en`, `/fr`, `/pt` → `/`
+
+Root `/` is Nederlands. Geen Accept-Language- of cookie-redirect meer.
+
+## NAP (één adres)
+
+- Hundelgemsesteenweg **73**, 9820 Merelbeke-Melle, BE
+- Tel. **+32 477 37 10 71**
+- E-mail **info.danahair@gmail.com**
+
+Niet gebruiken: Hundelgemsesteenweg 1A of +32 9 222 00 00.
+
+Uren (UI + JSON-LD): wo 13:30–21:00, do 17:00–21:00, vr 09:00–18:00, za 09:00–16:00. Ma/di/zo gesloten.
+
+## Ontwikkelen
+
+```bash
+npm install
+cp .env.local.example .env.local
+npm run dev
 ```
 
-Also make sure you adapt the server side i18next `getT` helper to not use the headers feature - since this is not compatible with SSG.
-Pass the lng to the `getT` function from withing your server side pages, components and layouts.
+Boekingswidget: `NEXT_PUBLIC_COMPANY_ID`, `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, optioneel `NEXT_PUBLIC_WIDGET_DOMAIN`.
 
-```js
-import i18next from  './i18next'
+Beeld-CDN: `NEXT_PUBLIC_CLOUDFLARE_URL` (R2). Bestaande foto's en `keratine.webp` blijven via `lib/imageUrl.ts`.
 
-export async function getT(lng, ns, options) {
-  if (lng && i18next.resolvedLanguage !== lng) {
-    await i18next.changeLanguage(lng)
-  }
-  if (ns && !i18next.hasLoadedNamespace(ns)) {
-    await i18next.loadNamespaces(ns)
-  }
-  return {
-    t: i18next.getFixedT(lng ?? i18next.resolvedLanguage, Array.isArray(ns) ? ns[0] : ns, options?.keyPrefix),
-    i18n: i18next
-  }
-}
+```bash
+npm run build
 ```
 
-```js
-export default async function Page({ params }) {
-  const { lng } = await params
-  const { t } = await getT(lng, 'second-page')
-  // ...
-}
-```
-
-And the just run `npm run build` and you should see the out folder.
-
-Additionally, I recommend adding a root index.html file that detects the browser language and redirects to the corresponding sub-page.
-i.e.:
-
-```html
-<!-- out/index.html -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charSet="utf-8"/>
-    <meta name="viewport" content="width=device-width"/>
-    <title>redirect</title>
-  </head>
-  <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next-browser-languagedetector/7.0.2/i18nextBrowserLanguageDetector.min.js"></script>
-    <!-- <script src="https://unpkg.com/i18next-browser-languagedetector@7.0.2/dist/umd/i18nextBrowserLanguageDetector.min.js"></script> -->
-    <script>
-      var lngDetector = new window.i18nextBrowserLanguageDetector()
-      var lng = lngDetector.detect()
-      if (lng.indexOf('it') === 0) window.location.href = '/it/'
-      else if (lng.indexOf('de') === 0) window.location.href = '/de/'
-      else window.location.href = '/en/'
-    </script>
-  </body>
-</html>
-```
+`app/sitemap.ts` en `app/robots.ts` vervangen de oude statische January-sitemap. Geen crawl-delay. `public/llms.txt` is een korte samenvatting voor AI-crawlers.
