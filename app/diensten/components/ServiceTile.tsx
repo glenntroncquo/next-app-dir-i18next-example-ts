@@ -1,55 +1,79 @@
 import Link from "next/link";
+import { ChevronRight } from "lucide-react";
+import { getImageUrl } from "@/lib/imageUrl";
 import type { ServiceContent } from "@/lib/content/types";
-import { ServiceMedia } from "./ServiceMedia";
 
-export function ServiceTile({
-  service,
-  featured = false,
-}: {
-  service: ServiceContent;
-  featured?: boolean;
-}) {
+export function ServiceTile({ service }: { service: ServiceContent }) {
+  const imageUrl = getImageUrl(service.image);
+  const isVideo = service.media === "video" || service.image.endsWith(".mp4");
+  const features = service.benefits.map((b) => b.title);
+
   return (
-    <Link
-      href={service.path}
-      className={`group relative isolate block overflow-hidden rounded-2xl bg-white shadow-soft transition-all duration-300 hover:shadow-glow-pink ${
-        featured
-          ? "min-h-[28rem] md:col-span-2 md:min-h-[36rem] lg:col-span-2 lg:row-span-2 lg:min-h-[40rem]"
-          : "min-h-[22rem] md:min-h-[24rem]"
-      }`}
-    >
-      <ServiceMedia
-        src={service.image}
-        alt={service.imageAlt}
-        kind={service.media}
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-bounce-soft group-hover:scale-105"
-        priority={featured}
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-salon-text-dark/80 via-salon-text-dark/25 to-transparent" />
-      <div
-        className={`absolute inset-x-0 bottom-0 z-10 ${
-          featured ? "p-8 md:p-10" : "p-6 md:p-7"
-        }`}
-      >
-        <p className="mb-2 text-sm font-medium text-salon-light-pink">
-          {service.eyebrow}
-        </p>
-        <h2
-          className={`font-display font-bold leading-tight text-white ${
-            featured ? "text-4xl md:text-5xl lg:text-6xl" : "text-2xl md:text-3xl"
-          }`}
-        >
+    <div className="group overflow-hidden rounded-2xl bg-white shadow-soft transition-all duration-300 hover:shadow-glow-pink">
+      <div className="relative h-48 overflow-hidden">
+        {isVideo ? (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          >
+            <source src={imageUrl} type="video/mp4" />
+          </video>
+        ) : (
+          <img
+            src={imageUrl}
+            alt={service.imageAlt}
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      </div>
+
+      <div className="p-6">
+        <h2 className="mb-3 font-display text-xl font-bold text-salon-text-dark transition-colors duration-300 group-hover:text-salon-pink">
           {service.hubTitle}
         </h2>
-        <p
-          className={`mt-3 max-w-md text-white/90 ${
-            featured ? "text-base md:text-lg" : "text-sm"
-          }`}
-        >
+        <p className="mb-4 line-clamp-3 text-sm leading-relaxed text-salon-text-medium">
           {service.hubBlurb}
         </p>
-        <p className="mt-4 font-semibold text-salon-pink">{service.priceLabel}</p>
+
+        <div className="mb-4 flex items-center justify-between text-sm">
+          <div>
+            <div className="font-semibold text-salon-pink">{service.priceLabel}</div>
+            <div className="text-xs text-salon-text-light">Prijs</div>
+          </div>
+          {service.duration ? (
+            <div className="text-right">
+              <div className="font-semibold text-salon-pink">{service.duration}</div>
+              <div className="text-xs text-salon-text-light">Duur</div>
+            </div>
+          ) : null}
+        </div>
+
+        <div className="mb-6 space-y-2">
+          {features.slice(0, 3).map((feature) => (
+            <div key={feature} className="flex items-center text-xs">
+              <div className="mr-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-salon-pink" />
+              <span className="text-salon-text-medium">{feature}</span>
+            </div>
+          ))}
+          {features.length > 3 ? (
+            <div className="text-xs text-salon-text-light">
+              +{features.length - 3} meer
+            </div>
+          ) : null}
+        </div>
+
+        <Link
+          href={service.path}
+          className="btn-outline inline-flex w-full items-center justify-center rounded-full px-4 py-2 text-sm"
+        >
+          Zie meer
+          <ChevronRight size={14} className="ml-1" />
+        </Link>
       </div>
-    </Link>
+    </div>
   );
 }
