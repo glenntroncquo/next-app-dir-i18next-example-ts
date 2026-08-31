@@ -27,9 +27,9 @@ Nederlandstalige Next.js-site (App Router) voor salon D'Ana Hair in Merelbeke-Me
 
 Canonical host: **danahair.be** (www → non-www, 301). `html lang="nl-BE"`.
 
-## Diensten (Origin-architectuur)
+## Diensten
 
-`/diensten` is een apart editorial blok (crème, dusty rose, brass, foto-grid). Homepage blijft salon-roze.
+Foto-eerst hub met keratine uitgelicht, plus `[slug]`-detailpagina’s. Zelfde salon-roze design als de rest van de site (Montserrat, `btn-primary` / `btn-outline`, `shadow-soft`).
 
 - Copy, beelden, prijzen, FAQ en SEO-titels: `lib/content/services.ts`
 - Hub: `app/diensten/page.tsx`

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -138,46 +138,4 @@
   .smooth-image-load:hover {
     @apply scale-105;
   }
-
-  .atelier-photo {
-    filter: saturate(0.72) contrast(1.12) sepia(0.2) brightness(0.96);
-  }
-
-  .atelier-photo-veil {
-    background: linear-gradient(
-      180deg,
-      rgba(196, 164, 160, 0.18) 0%,
-      rgba(44, 36, 32, 0.28) 100%
-    );
-    mix-blend-mode: multiply;
-  }
-
-  .btn-atelier {
-    @apply inline-flex items-center justify-center border px-7 py-3 text-[0.68rem] font-medium uppercase tracking-[0.22em] transition-colors duration-300;
-    border-color: #b08d57;
-    color: #2c2420;
-  }
-
-  .btn-atelier:hover {
-    background: #b08d57;
-    color: #f4ede4;
-  }
-
-  .btn-atelier-solid {
-    background: #b08d57;
-    color: #f4ede4;
-  }
-
-  .btn-atelier-solid:hover {
-    background: #2c2420;
-    border-color: #2c2420;
-    color: #f4ede4;
-  }
-}
-
-.editorial-diensten h1,
-.editorial-diensten h2,
-.editorial-diensten h3,
-.editorial-diensten .font-editorial {
-  font-family: "Cormorant Garamond", Georgia, serif;
 }

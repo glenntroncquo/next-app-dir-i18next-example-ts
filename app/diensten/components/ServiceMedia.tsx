@@ -23,7 +23,7 @@ export function ServiceMedia({
         muted
         loop
         playsInline
-        className={`atelier-photo ${className}`}
+        className={className}
         aria-label={alt}
       >
         <source src={url} type="video/mp4" />
@@ -35,7 +35,7 @@ export function ServiceMedia({
     <img
       src={url}
       alt={alt}
-      className={`atelier-photo ${className}`}
+      className={className}
       fetchPriority={priority ? "high" : "auto"}
     />
   );

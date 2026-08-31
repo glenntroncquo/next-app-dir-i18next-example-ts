@@ -7,7 +7,7 @@ export default function DienstenLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="editorial-diensten min-h-screen bg-atelier-cream">
+    <div className="min-h-screen">
       <Navbar />
       {children}
       <Footer />

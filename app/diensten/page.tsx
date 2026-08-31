@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 import { JsonLd } from "@/app/components/JsonLd";
 import { Breadcrumbs } from "@/app/components/Breadcrumbs";
 import { ServiceTile } from "./components/ServiceTile";
@@ -29,41 +30,41 @@ export default function DienstenPage() {
   return (
     <>
       <JsonLd data={breadcrumbJsonLd(crumbs)} />
-      <div className="relative isolate min-h-[88vh] overflow-hidden bg-atelier-ink">
+      <div className="relative isolate min-h-[88vh] overflow-hidden">
         <img
           src={getImageUrl("/keratine.webp")}
           alt=""
-          className="atelier-photo absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="atelier-photo-veil pointer-events-none absolute inset-0" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-atelier-cream/85 via-atelier-cream/15 to-atelier-ink/80" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-salon-softer-pink/85 via-white/20 to-salon-text-dark/75" />
+        <div className="pointer-events-none absolute top-1/4 -left-10 h-56 w-56 rounded-full bg-salon-light-pink opacity-40 blur-3xl" />
+        <div className="pointer-events-none absolute bottom-1/4 right-0 h-64 w-64 rounded-full bg-salon-lavender opacity-30 blur-3xl" />
         <div className="relative z-10 mx-auto flex min-h-[88vh] max-w-5xl flex-col justify-end px-6 pb-16 pt-36 md:pb-24">
-          <p className="mb-4 text-[0.7rem] uppercase tracking-[0.32em] text-atelier-brass-light">
+          <p className="mb-4 inline-flex w-fit rounded-full bg-white/80 px-4 py-1.5 text-sm font-medium text-salon-pink shadow-soft backdrop-blur-md">
             {HUB_COPY.eyebrow}
           </p>
-          <h1 className="font-editorial text-5xl font-medium leading-[0.92] text-atelier-cream md:text-7xl lg:text-8xl">
-            {HUB_COPY.title}
+          <h1 className="font-display text-5xl font-bold leading-tight tracking-tight text-white md:text-7xl">
+            Haarwerk,{" "}
+            <span className="text-salon-pink">geen menukaart</span>
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-atelier-cream/85 md:text-xl">
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/90 md:text-xl">
             {HUB_COPY.intro}
           </p>
           {featured ? (
-            <Link
-              href={featured.path}
-              className="mt-8 inline-flex text-[0.7rem] uppercase tracking-[0.26em] text-atelier-brass-light underline decoration-atelier-brass/60 underline-offset-8 hover:text-atelier-cream"
-            >
+            <Link href={featured.path} className="btn-outline mt-8 inline-flex w-fit bg-white/80">
               Begin bij keratine
+              <ChevronRight size={18} aria-hidden="true" />
             </Link>
           ) : null}
         </div>
       </div>
 
-      <div className="bg-atelier-cream">
+      <div>
         <div className="mx-auto max-w-6xl px-6 pt-10">
-          <Breadcrumbs items={crumbs} variant="editorial" />
+          <Breadcrumbs items={crumbs} />
         </div>
-        <section className="px-0 pb-0 pt-4 md:px-6 md:pb-6 md:pt-6">
-          <div className="mx-auto grid max-w-[1400px] grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <section className="px-6 pb-8 pt-2">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {featured ? <ServiceTile service={featured} featured /> : null}
             {rest.map((service) => (
               <ServiceTile key={service.slug} service={service} />
@@ -72,28 +73,26 @@ export default function DienstenPage() {
         </section>
 
         <section className="mx-auto max-w-3xl px-6 py-20 text-center">
-          <p className="text-[0.68rem] uppercase tracking-[0.28em] text-atelier-brass">
+          <div className="mb-4 inline-block rounded-full bg-white px-4 py-1 text-sm font-medium text-salon-pink">
             Locatie
-          </p>
-          <p className="mt-4 leading-relaxed text-atelier-muted">
+          </div>
+          <p className="mt-4 leading-relaxed text-salon-text-medium">
             Keratine zoek je in{" "}
             <Link
               href={ROUTES.keratineMerelbeke}
-              className="text-atelier-ink underline decoration-atelier-brass/50 underline-offset-4 hover:decoration-atelier-brass"
+              className="text-salon-pink underline"
             >
               Merelbeke
             </Link>{" "}
             of{" "}
-            <Link
-              href={ROUTES.keratineGent}
-              className="text-atelier-ink underline decoration-atelier-brass/50 underline-offset-4 hover:decoration-atelier-brass"
-            >
+            <Link href={ROUTES.keratineGent} className="text-salon-pink underline">
               nabij Gent
             </Link>
             . De salon zelf is één adres.
           </p>
-          <Link href={ROUTES.afspraak} className="btn-atelier btn-atelier-solid mt-8 inline-flex">
+          <Link href={ROUTES.afspraak} className="btn-primary mt-8 inline-flex">
             Afspraak maken
+            <ChevronRight size={18} aria-hidden="true" />
           </Link>
         </section>
       </div>
