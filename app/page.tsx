@@ -137,7 +137,7 @@ export default function Page() {
               ongeveer 15 minuten van Gent.
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <Link href={ROUTES.afspraak} className="btn-ghost-light">
+              <Link href={ROUTES.afspraak} className="btn-primary">
                 Afspraak maken
               </Link>
               <Link href={ROUTES.diensten} className="btn-ghost-light">

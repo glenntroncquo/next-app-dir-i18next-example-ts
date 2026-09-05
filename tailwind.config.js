@@ -74,6 +74,7 @@ module.exports = {
         paper: "#FBF8F4",
         stone: "#C4B8A8",
         salon: {
+          pink: "#FF8FB2",
           cream: "#F7F3EE",
           "off-white": "#FBF8F4",
           "text-dark": "#1A1A1A",

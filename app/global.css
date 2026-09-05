@@ -82,18 +82,18 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 border-2 border-ink bg-ink px-8 py-3 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-cream transition-colors duration-200 hover:bg-transparent hover:text-ink;
+    @apply inline-flex items-center justify-center gap-2 border-2 border-salon-pink bg-salon-pink px-8 py-3 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-white transition-colors duration-200 hover:bg-transparent hover:text-salon-pink;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 border-2 border-stone bg-transparent px-8 py-3 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-ink transition-colors duration-200 hover:border-ink;
+    @apply inline-flex items-center justify-center gap-2 border-2 border-stone bg-transparent px-8 py-3 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-ink transition-colors duration-200 hover:border-salon-pink hover:text-salon-pink;
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 border-2 border-ink bg-transparent px-8 py-3 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-ink transition-colors duration-200 hover:bg-ink hover:text-cream;
+    @apply inline-flex items-center justify-center gap-2 border-2 border-salon-pink bg-transparent px-8 py-3 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-salon-pink transition-colors duration-200 hover:bg-salon-pink hover:text-white;
   }
 
   .btn-ghost-light {
-    @apply inline-flex items-center justify-center gap-2 border-2 border-white bg-transparent px-8 py-3 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-white transition-colors duration-200 hover:bg-white hover:text-ink;
+    @apply inline-flex items-center justify-center gap-2 border-2 border-white bg-transparent px-8 py-3 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-white transition-colors duration-200 hover:border-salon-pink hover:bg-salon-pink hover:text-white;
   }
 }

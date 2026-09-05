@@ -11,13 +11,13 @@ interface IframeWidgetProps {
 
 // Salon theme matching the BookingClient component
 const salonTheme = {
-  primary: "#1A1A1A",
-  primaryHover: "#333333",
+  primary: "#FF8FB2",
+  primaryHover: "#E56F98",
   primaryLight: "#F7F3EE",
   secondary: "#C4B8A8",
   text: "#1A1A1A",
   background: "#FBF8F4",
-  buttonText: "#F7F3EE",
+  buttonText: "#FFFFFF",
 };
 
 export default function IframeWidget({
