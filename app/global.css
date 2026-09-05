@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 36 33% 95%;
+    --foreground: 0 0% 10%;
+
+    --card: 36 33% 97%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 36 33% 97%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 0 0% 10%;
+    --primary-foreground: 36 33% 95%;
+
+    --secondary: 36 20% 90%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 36 20% 90%;
+    --muted-foreground: 20 8% 35%;
+
+    --accent: 32 18% 72%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 32 18% 72%;
+    --input: 32 18% 72%;
+    --ring: 0 0% 10%;
+
+    --radius: 0;
+  }
+
+  * {
+    @apply border-border scroll-smooth;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-ink antialiased bg-cream;
+    font-family: "Inter", sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-medium;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+  }
+
+  .eyebrow {
+    @apply text-[0.68rem] font-medium uppercase tracking-[0.28em] text-stone;
+  }
+
+  .highlight-link {
+    @apply relative inline-block overflow-hidden;
+  }
+
+  .highlight-link::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-px bg-ink transition-all duration-300;
+  }
+
+  .highlight-link:hover::after {
+    @apply w-full;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 border-2 border-salon-pink bg-salon-pink px-8 py-3 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-white transition-colors duration-200 hover:bg-transparent hover:text-salon-pink;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 border-2 border-stone bg-transparent px-8 py-3 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-ink transition-colors duration-200 hover:border-salon-pink hover:text-salon-pink;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 border-2 border-salon-pink bg-transparent px-8 py-3 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-salon-pink transition-colors duration-200 hover:bg-salon-pink hover:text-white;
+  }
+
+  .btn-ghost-light {
+    @apply inline-flex items-center justify-center gap-2 border-2 border-white bg-transparent px-8 py-3 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-white transition-colors duration-200 hover:border-salon-pink hover:bg-salon-pink hover:text-white;
+  }
+}

@@ -22,8 +22,8 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["Inter", "sans-serif"],
-        display: ["Montserrat", "sans-serif"],
-        handwritten: ["Dancing Script", "cursive"],
+        display: ["Cormorant Garamond", "Georgia", "serif"],
+        handwritten: ["Cormorant Garamond", "Georgia", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -69,17 +69,17 @@ module.exports = {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        ink: "#1A1A1A",
+        cream: "#F7F3EE",
+        paper: "#FBF8F4",
+        stone: "#C4B8A8",
         salon: {
           pink: "#FF8FB2",
-          "light-pink": "#FFD0EC",
-          "softer-pink": "#FFF0F7",
-          rose: "#FFBDD4",
-          lavender: "#E5DEFF",
-          cream: "#FEF9F7",
-          "off-white": "#FFFCFD",
-          "text-dark": "#4A3F45",
-          "text-medium": "#84777F",
-          "text-light": "#AEA3AA",
+          cream: "#F7F3EE",
+          "off-white": "#FBF8F4",
+          "text-dark": "#1A1A1A",
+          "text-medium": "#5C534C",
+          "text-light": "#C4B8A8",
         },
       },
       borderRadius: {
@@ -135,17 +135,10 @@ module.exports = {
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "soft-pink-gradient":
-          "linear-gradient(135deg, #FFEBF5 0%, #FFCFE0 100%)",
-        "softer-pink-gradient":
-          "linear-gradient(135deg, #FFF0F7 0%, #FFDAEC 100%)",
-        "pastel-gradient": "linear-gradient(135deg, #FFF0F7 0%, #E5DEFF 100%)",
       },
       boxShadow: {
-        soft: "0 8px 30px rgba(0, 0, 0, 0.04)",
-        "soft-lg": "0 10px 40px rgba(0, 0, 0, 0.06)",
-        "glow-pink": "0 0 20px rgba(255, 143, 178, 0.25)",
-        "glow-pink-lg": "0 0 30px rgba(255, 143, 178, 0.35)",
+        soft: "0 1px 0 rgba(26, 26, 26, 0.06)",
+        "soft-lg": "0 12px 40px rgba(26, 26, 26, 0.08)",
       },
       transitionTimingFunction: {
         "bounce-soft": "cubic-bezier(0.34, 1.56, 0.64, 1)",
