@@ -116,8 +116,8 @@ export default function Page() {
       <main>
         <section className="relative isolate min-h-[92vh] overflow-hidden bg-ink">
           <Image
-            src={getImageUrl("/placeholdertest.jpg")}
-            alt="Salon D'Ana Hair in Merelbeke"
+            src={getImageUrl("/led.jpg")}
+            alt="Behandeling in de salon van D'Ana Hair in Merelbeke"
             fill
             priority
             quality={90}
