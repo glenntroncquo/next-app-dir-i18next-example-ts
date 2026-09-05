@@ -1,5 +1,3 @@
-import { ChevronRight } from "lucide-react";
-
 export type FaqItem = { question: string; answer: string };
 
 export function FaqList({
@@ -12,34 +10,27 @@ export function FaqList({
   description?: string;
 }) {
   return (
-    <section className="py-20 bg-salon-off-white">
-      <div className="max-w-4xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-salon-text-dark mb-6">
-            {title}
-          </h2>
-          {description ? (
-            <p className="text-xl text-salon-text-dark">{description}</p>
-          ) : null}
-        </div>
-
-        <div className="space-y-4">
+    <section className="bg-cream py-20">
+      <div className="mx-auto max-w-3xl px-6">
+        <p className="eyebrow mb-4">FAQ</p>
+        <h2 className="font-display text-4xl text-ink md:text-5xl">{title}</h2>
+        {description ? (
+          <p className="mt-4 text-salon-text-medium">{description}</p>
+        ) : null}
+        <div className="mt-10 divide-y divide-stone/50 border-y border-stone/50">
           {faqs.map((faq) => (
-            <details
-              key={faq.question}
-              className="group bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-glow-pink transition-shadow duration-300"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer hover:bg-salon-off-white transition-colors duration-200">
-                <h3 className="text-lg font-display font-semibold text-salon-text-dark pr-4">
+            <details key={faq.question} className="group py-5">
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-6 [&::-webkit-details-marker]:hidden">
+                <h3 className="font-display text-xl text-ink md:text-2xl">
                   {faq.question}
                 </h3>
-                <ChevronRight className="w-6 h-6 text-salon-pink transform group-open:rotate-90 transition-transform duration-200 flex-shrink-0" />
+                <span aria-hidden="true" className="mt-1 text-stone group-open:rotate-45">
+                  +
+                </span>
               </summary>
-              <div className="px-6 pb-6">
-                <p className="text-salon-text-medium leading-relaxed text-base">
-                  {faq.answer}
-                </p>
-              </div>
+              <p className="mt-3 max-w-2xl leading-relaxed text-salon-text-medium">
+                {faq.answer}
+              </p>
             </details>
           ))}
         </div>

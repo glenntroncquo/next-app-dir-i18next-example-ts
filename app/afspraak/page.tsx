@@ -33,12 +33,13 @@ export default function AfspraakPage() {
       />
       <JsonLd data={breadcrumbJsonLd(crumbs)} />
 
-      <div className="min-h-screen bg-gradient-to-b from-salon-off-white to-salon-softer-pink">
+      <div className="min-h-screen bg-cream">
         <Navbar />
         <div className="section-container pt-20 lg:pt-32">
           <div className="max-w-4xl mx-auto">
             <Breadcrumbs items={crumbs} />
-            <h1 className="text-3xl md:text-4xl font-display font-bold text-salon-text-dark mb-2">
+            <p className="eyebrow mb-3">Boeken</p>
+            <h1 className="mb-2 font-display text-4xl text-ink md:text-5xl">
               Afspraak maken
             </h1>
             <p className="text-salon-text-medium mb-8">

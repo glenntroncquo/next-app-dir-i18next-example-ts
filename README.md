@@ -29,7 +29,7 @@ Canonical host: **danahair.be** (www → non-www, 301). `html lang="nl-BE"`.
 
 ## Diensten
 
-Hub in de oorspronkelijke Jakob-kaartlayout (tekst-hero, gelijke witte kaarten, foto `h-48` bovenaan), plus `[slug]`-detailpagina’s. Salon-roze, `btn-primary` / `btn-outline`.
+Hub als editorial strips (foto + copy, keratin eerst), plus `[slug]`-detailpagina’s. Visueel systeem: cream / ink / stone (Sematelier-achtig), rechthoekige outline-CTA’s. Geen salon-roze.
 
 - Copy, beelden, prijzen, FAQ en SEO-titels: `lib/content/services.ts`
 - Hub: `app/diensten/page.tsx`

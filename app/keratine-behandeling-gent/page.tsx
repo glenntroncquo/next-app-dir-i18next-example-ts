@@ -63,13 +63,16 @@ export default function KeratineGentPage() {
             <p className="text-salon-text-dark mb-8">
               Route: N60 richting Merelbeke. Telefoon {NAP.telephone}. Details
               over de behandeling:{" "}
-              <Link href={ROUTES.keratine} className="text-salon-pink underline">
+              <Link
+                href={ROUTES.keratine}
+                className="underline decoration-stone underline-offset-4 hover:text-ink"
+              >
                 keratinebehandeling
               </Link>
               . Lokaal in Merelbeke:{" "}
               <Link
                 href={ROUTES.keratineMerelbeke}
-                className="text-salon-pink underline"
+                className="underline decoration-stone underline-offset-4 hover:text-ink"
               >
                 keratine in Merelbeke
               </Link>
