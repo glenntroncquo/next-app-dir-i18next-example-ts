@@ -45,18 +45,18 @@ const ServiceCard = ({
 
   return (
     <div
-      className="overflow-hidden border border-stone/40 bg-cream"
+      className="glass-card-hover overflow-hidden"
       style={{ animationDelay: `${delay}ms` }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="relative overflow-hidden group">
-        <div className="h-52 overflow-hidden bg-ink">
+        <div className="h-52 overflow-hidden">
           {shouldShowVideo ? (
             <video
               src={videoSrc!}
               poster={imageSrc}
-              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-700 ease-bounce-soft group-hover:scale-110"
               muted
               loop
               autoPlay
@@ -73,7 +73,7 @@ const ServiceCard = ({
           <Image
             src={mediaSrc || "/placeholder-service.jpg"}
             alt={title}
-            className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 ${
+            className={`w-full h-full object-cover transition-transform duration-700 ease-bounce-soft group-hover:scale-110 ${
               shouldShowVideo ? "hidden" : ""
             }`}
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -85,20 +85,20 @@ const ServiceCard = ({
           />
         </div>
 
-        <div className="absolute top-4 right-4 border border-ink bg-cream px-3 py-1">
-          <span className="text-[0.65rem] font-medium uppercase tracking-[0.16em] text-ink">
+        <div className="absolute top-4 right-4 bg-white/80 backdrop-blur-sm rounded-full px-4 py-1 shadow-soft">
+          <span className="font-medium text-salon-pink">
             {priceLabel ?? `Vanaf ${price}`}
           </span>
         </div>
       </div>
 
       <div className="p-6 pt-8">
-        <h3 className="mb-3 font-display text-2xl text-ink">{title}</h3>
-        <p className="mb-4 text-salon-text-medium">{description}</p>
+        <h3 className="text-xl font-display font-semibold mb-3">{title}</h3>
+        <p className="text-salon-text-medium mb-4">{description}</p>
 
         <Link
           href={href}
-          className="flex items-center text-[0.7rem] font-medium uppercase tracking-[0.16em] text-ink"
+          className="flex items-center font-medium text-salon-pink transition-all duration-300 ease-bounce-soft"
         >
           {learnMoreText}
           <ChevronRight

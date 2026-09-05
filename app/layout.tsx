@@ -21,14 +21,14 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   other: {
-    "theme-color": "#F7F3EE",
+    "theme-color": "#FF8FB2",
     "color-scheme": "light",
     "apple-mobile-web-app-capable": "yes",
     "apple-mobile-web-app-status-bar-style": "default",
     "apple-mobile-web-app-title": SITE_NAME,
     "format-detection": "telephone=no",
     "mobile-web-app-capable": "yes",
-    "msapplication-TileColor": "#1A1A1A",
+    "msapplication-TileColor": "#FF8FB2",
     "msapplication-config": "/browserconfig.xml",
   },
 };

@@ -38,10 +38,7 @@ export default function CookiesPage() {
           </p>
           <p className="text-salon-text-dark">
             Vragen: zie het{" "}
-            <a
-              href={ROUTES.privacy}
-              className="underline decoration-stone underline-offset-4 hover:text-ink"
-            >
+            <a href={ROUTES.privacy} className="text-salon-pink underline">
               privacybeleid
             </a>
             .
