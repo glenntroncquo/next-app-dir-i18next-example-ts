@@ -8,49 +8,46 @@ import { NAP, ROUTES, WEEKDAY_HOURS, fullAddress } from "../../lib/site";
 
 const Footer = () => {
   return (
-    <footer className="bg-salon-softer-pink pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <footer className="border-t border-stone/40 bg-ink text-cream">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="flex items-center space-x-2 mb-6">
-              <Image
-                src={getImageUrl("/logo.svg")}
-                alt="D'Ana Hair"
-                className="w-[200px]"
-                width={200}
-                height={60}
-                priority
-              />
-            </div>
-            <p className="text-salon-text-medium mb-6">
-              Jouw specialist in Braziliaanse keratine- en haarbotoxbehandelingen
-              in Merelbeke. Ongeveer 15 minuten van Gent.
+            <Image
+              src={getImageUrl("/logo.svg")}
+              alt="D'Ana Hair"
+              className="mb-6 w-[180px] brightness-0 invert"
+              width={180}
+              height={54}
+            />
+            <p className="mb-6 text-sm leading-relaxed text-cream/70">
+              Specialist in Braziliaanse keratine- en haarbotoxbehandelingen in
+              Merelbeke. Ongeveer 15 minuten van Gent.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex gap-3">
               <a
                 href={NAP.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-white flex items-center justify-center shadow-soft transition-all hover:shadow-glow-pink"
+                className="border border-stone/50 p-2 text-cream hover:border-cream"
+                aria-label="Instagram"
               >
-                <Instagram size={18} className="text-salon-pink" />
+                <Instagram size={16} />
               </a>
               <a
                 href={NAP.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-white flex items-center justify-center shadow-soft transition-all hover:shadow-glow-pink"
+                className="border border-stone/50 p-2 text-cream hover:border-cream"
+                aria-label="Facebook"
               >
-                <Facebook size={18} className="text-salon-pink" />
+                <Facebook size={16} />
               </a>
             </div>
           </div>
 
           <div>
-            <h3 className="font-display font-semibold text-lg mb-6">
-              Snelle links
-            </h3>
-            <ul className="space-y-3">
+            <h3 className="eyebrow mb-6 text-stone">Navigatie</h3>
+            <ul className="space-y-3 text-sm">
               {[
                 { href: ROUTES.home, label: "Home" },
                 { href: ROUTES.overOns, label: "Over ons" },
@@ -59,11 +56,7 @@ const Footer = () => {
                 { href: ROUTES.afspraak, label: "Afspraak maken" },
               ].map((item) => (
                 <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-salon-text-medium hover:text-salon-pink transition-colors flex items-center"
-                  >
-                    <span className="w-1.5 h-1.5 bg-salon-pink rounded-full mr-2"></span>
+                  <Link href={item.href} className="text-cream/75 hover:text-cream">
                     {item.label}
                   </Link>
                 </li>
@@ -72,28 +65,18 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="font-display font-semibold text-lg mb-6">
-              Diensten
-            </h3>
-            <ul className="space-y-3">
+            <h3 className="eyebrow mb-6 text-stone">Diensten</h3>
+            <ul className="space-y-3 text-sm">
               {[
                 { href: ROUTES.keratine, label: "Keratinebehandeling" },
                 { href: ROUTES.haarbotox, label: "Haarbotox" },
                 { href: ROUTES.ritual, label: "Ritual Nutrition + LED" },
-                { href: ROUTES.kleuren, label: "Kleuren" },
                 { href: ROUTES.diensten, label: "Alle diensten" },
-                {
-                  href: ROUTES.keratineMerelbeke,
-                  label: "Keratine in Merelbeke",
-                },
+                { href: ROUTES.keratineMerelbeke, label: "Keratine in Merelbeke" },
                 { href: ROUTES.keratineGent, label: "Keratine nabij Gent" },
               ].map((item) => (
                 <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-salon-text-medium hover:text-salon-pink transition-colors flex items-center"
-                  >
-                    <span className="w-1.5 h-1.5 bg-salon-pink rounded-full mr-2"></span>
+                  <Link href={item.href} className="text-cream/75 hover:text-cream">
                     {item.label}
                   </Link>
                 </li>
@@ -102,56 +85,31 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="font-display font-semibold text-lg mb-6">
-              Contactgegevens
-            </h3>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <MapPin
-                  size={18}
-                  className="text-salon-pink mt-1 mr-3 flex-shrink-0"
-                />
-                <a
-                  href={NAP.mapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-salon-text-medium hover:text-salon-pink transition-colors"
-                >
+            <h3 className="eyebrow mb-6 text-stone">Contact</h3>
+            <ul className="space-y-4 text-sm text-cream/75">
+              <li className="flex items-start gap-3">
+                <MapPin size={16} className="mt-0.5 shrink-0 text-stone" />
+                <a href={NAP.mapsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-cream">
                   {fullAddress()}
                 </a>
               </li>
-              <li className="flex items-center">
-                <Phone
-                  size={18}
-                  className="text-salon-pink mr-3 flex-shrink-0"
-                />
-                <a
-                  href={`tel:${NAP.telephoneHref}`}
-                  className="text-salon-text-medium hover:text-salon-pink transition-colors"
-                >
+              <li className="flex items-center gap-3">
+                <Phone size={16} className="shrink-0 text-stone" />
+                <a href={`tel:${NAP.telephoneHref}`} className="hover:text-cream">
                   {NAP.telephone}
                 </a>
               </li>
-              <li className="flex items-center">
-                <Mail
-                  size={18}
-                  className="text-salon-pink mr-3 flex-shrink-0"
-                />
-                <a
-                  href={`mailto:${NAP.email}`}
-                  className="text-salon-text-medium hover:text-salon-pink transition-colors"
-                >
+              <li className="flex items-center gap-3">
+                <Mail size={16} className="shrink-0 text-stone" />
+                <a href={`mailto:${NAP.email}`} className="hover:text-cream">
                   {NAP.email}
                 </a>
               </li>
-              <li className="flex items-start">
-                <Clock
-                  size={18}
-                  className="text-salon-pink mt-1 mr-3 flex-shrink-0"
-                />
+              <li className="flex items-start gap-3">
+                <Clock size={16} className="mt-0.5 shrink-0 text-stone" />
                 <div>
                   {WEEKDAY_HOURS.map((row) => (
-                    <p key={row.labelNl} className="text-salon-text-medium">
+                    <p key={row.labelNl}>
                       {row.labelNl}: {row.display}
                     </p>
                   ))}
@@ -161,37 +119,21 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-salon-pink/20">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-center md:text-left">
-              <p className="text-salon-text-medium text-sm">
-                © {new Date().getFullYear()} D&apos;Ana Hair. Alle rechten
-                voorbehouden.
-              </p>
-              <p className="text-salon-text-medium text-sm mt-1">
-                BTW: {NAP.vat}
-              </p>
-            </div>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link
-                href={ROUTES.privacy}
-                className="text-sm text-salon-text-medium hover:text-salon-pink transition-colors"
-              >
-                Privacybeleid
-              </Link>
-              <Link
-                href={ROUTES.voorwaarden}
-                className="text-sm text-salon-text-medium hover:text-salon-pink transition-colors"
-              >
-                Algemene voorwaarden
-              </Link>
-              <Link
-                href={ROUTES.cookies}
-                className="text-sm text-salon-text-medium hover:text-salon-pink transition-colors"
-              >
-                Cookiebeleid
-              </Link>
-            </div>
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-stone/30 pt-8 text-xs text-cream/55 md:flex-row">
+          <div>
+            <p>© {new Date().getFullYear()} D&apos;Ana Hair. Alle rechten voorbehouden.</p>
+            <p className="mt-1">BTW: {NAP.vat}</p>
+          </div>
+          <div className="flex gap-6 uppercase tracking-[0.16em]">
+            <Link href={ROUTES.privacy} className="hover:text-cream">
+              Privacy
+            </Link>
+            <Link href={ROUTES.voorwaarden} className="hover:text-cream">
+              Voorwaarden
+            </Link>
+            <Link href={ROUTES.cookies} className="hover:text-cream">
+              Cookies
+            </Link>
           </div>
         </div>
       </div>

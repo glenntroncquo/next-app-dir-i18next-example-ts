@@ -32,81 +32,66 @@ export default function ContactPage() {
     <>
       <JsonLd data={hairSalonJsonLd(absoluteUrl(ROUTES.contact))} />
       <JsonLd data={breadcrumbJsonLd(crumbs)} />
-      <div className="min-h-screen">
+      <div className="min-h-screen bg-cream">
         <Navbar />
-        <section className="md:pt-32 pt-24 pb-20">
-          <div className="max-w-6xl mx-auto px-6">
+        <section className="pb-20 pt-28 md:pt-36">
+          <div className="mx-auto max-w-6xl px-6">
             <Breadcrumbs items={crumbs} />
-            <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-display font-bold text-salon-text-dark mb-4">
-                Contact
-              </h1>
-              <p className="text-lg text-salon-text-medium max-w-2xl mx-auto">
-                Onze salon ligt in Merelbeke-Melle, niet in Gent. Vanuit Gent is
-                het ongeveer 15 minuten. Bel, mail of kom langs op afspraak.
-              </p>
-            </div>
+            <p className="eyebrow mb-4">Bezoek</p>
+            <h1 className="font-display text-5xl text-ink md:text-6xl">Contact</h1>
+            <p className="mt-4 max-w-2xl text-lg text-salon-text-medium">
+              Onze salon ligt in Merelbeke-Melle, niet in Gent. Vanuit Gent is
+              het ongeveer 15 minuten. Bel, mail of kom langs op afspraak.
+            </p>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6">
-                <h2 className="font-display font-semibold text-xl mb-6 text-salon-pink">
-                  Contactgegevens
-                </h2>
+            <div className="mt-14 grid grid-cols-1 gap-16 lg:grid-cols-2">
+              <div>
+                <h2 className="eyebrow mb-6">Gegevens</h2>
                 <address className="not-italic space-y-4 text-salon-text-medium">
                   <p>
-                    <strong className="text-salon-text-dark">Adres</strong>
+                    <strong className="text-ink">Adres</strong>
                     <br />
-                    <a href={NAP.mapsUrl} className="hover:text-salon-pink">
+                    <a href={NAP.mapsUrl} className="underline decoration-stone underline-offset-4 hover:text-ink">
                       {fullAddress()}
                     </a>
                   </p>
                   <p>
-                    <strong className="text-salon-text-dark">Telefoon</strong>
+                    <strong className="text-ink">Telefoon</strong>
                     <br />
-                    <a
-                      href={`tel:${NAP.telephoneHref}`}
-                      className="hover:text-salon-pink"
-                    >
+                    <a href={`tel:${NAP.telephoneHref}`} className="hover:text-ink">
                       {NAP.telephone}
                     </a>
                   </p>
                   <p>
-                    <strong className="text-salon-text-dark">E-mail</strong>
+                    <strong className="text-ink">E-mail</strong>
                     <br />
-                    <a
-                      href={`mailto:${NAP.email}`}
-                      className="hover:text-salon-pink"
-                    >
+                    <a href={`mailto:${NAP.email}`} className="hover:text-ink">
                       {NAP.email}
                     </a>
                   </p>
                 </address>
 
-                <h2 className="font-display font-semibold text-xl mt-10 mb-6 text-salon-pink">
-                  Openingsuren
-                </h2>
-                <dl className="space-y-2">
+                <h2 className="eyebrow mb-4 mt-12">Openingsuren</h2>
+                <dl className="max-w-sm space-y-2">
                   {WEEKDAY_HOURS.map((row) => (
                     <div
                       key={row.labelNl}
-                      className="flex justify-between py-2 border-b border-salon-pink/20"
+                      className="flex justify-between border-b border-stone/40 py-2 text-sm"
                     >
                       <dt>{row.labelNl}</dt>
-                      <dd className="font-medium">{row.display}</dd>
+                      <dd className="text-ink">{row.display}</dd>
                     </div>
                   ))}
                 </dl>
 
-                <Link href={ROUTES.afspraak} className="btn-primary mt-8 inline-flex">
+                <Link href={ROUTES.afspraak} className="btn-primary mt-10 inline-flex">
                   Afspraak maken
                 </Link>
               </div>
 
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6">
-                <h2 className="font-display font-semibold text-xl mb-6 text-salon-pink">
-                  Route
-                </h2>
-                <div className="rounded-lg overflow-hidden h-80 bg-salon-cream/20 mb-4">
+              <div>
+                <h2 className="eyebrow mb-6">Route</h2>
+                <div className="mb-4 h-80 overflow-hidden border border-stone/40">
                   <iframe
                     src={NAP.mapsEmbed}
                     width="100%"

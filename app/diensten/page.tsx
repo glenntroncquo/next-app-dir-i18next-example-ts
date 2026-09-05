@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
 import { JsonLd } from "@/app/components/JsonLd";
 import { Breadcrumbs } from "@/app/components/Breadcrumbs";
 import { ServiceTile } from "./components/ServiceTile";
@@ -27,51 +26,46 @@ export default function DienstenPage() {
     <>
       <JsonLd data={breadcrumbJsonLd(crumbs)} />
 
-      <section className="pb-20 pt-24 md:pt-32">
+      <section className="bg-cream pb-16 pt-28 md:pt-36">
         <div className="mx-auto max-w-4xl px-6">
           <Breadcrumbs items={crumbs} />
-          <div className="mb-12 text-center">
-            <h1 className="mb-6 font-display text-4xl font-bold text-salon-text-dark md:text-5xl">
-              Onze <span className="text-salon-pink">diensten</span>
-            </h1>
-            <p className="mx-auto max-w-3xl text-lg leading-relaxed text-salon-text-medium">
-              {HUB_COPY.intro}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="pb-20">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.map((service) => (
-              <ServiceTile key={service.slug} service={service} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="pb-20">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <p className="mb-8 text-salon-text-medium">
-            Keratine zoek je in{" "}
-            <Link
-              href={ROUTES.keratineMerelbeke}
-              className="text-salon-pink underline"
-            >
-              Merelbeke
-            </Link>{" "}
-            of{" "}
-            <Link href={ROUTES.keratineGent} className="text-salon-pink underline">
-              nabij Gent
-            </Link>
-            . De salon zelf is één adres.
+          <p className="eyebrow mb-4">{HUB_COPY.eyebrow}</p>
+          <h1 className="font-display text-5xl text-ink md:text-6xl">
+            {HUB_COPY.title}
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-salon-text-medium">
+            {HUB_COPY.intro}
           </p>
-          <Link href={ROUTES.afspraak} className="btn-primary inline-flex items-center px-8 py-3">
-            Afspraak maken
-            <ChevronRight size={18} className="ml-2" />
-          </Link>
         </div>
+      </section>
+
+      <section className="border-t border-stone/40">
+        {SERVICES.map((service, index) => (
+          <ServiceTile key={service.slug} service={service} index={index} />
+        ))}
+      </section>
+
+      <section className="bg-cream py-20 text-center">
+        <p className="mx-auto mb-8 max-w-xl px-6 text-salon-text-medium">
+          Keratine zoek je in{" "}
+          <Link
+            href={ROUTES.keratineMerelbeke}
+            className="text-ink underline decoration-stone underline-offset-4"
+          >
+            Merelbeke
+          </Link>{" "}
+          of{" "}
+          <Link
+            href={ROUTES.keratineGent}
+            className="text-ink underline decoration-stone underline-offset-4"
+          >
+            nabij Gent
+          </Link>
+          . De salon zelf is één adres.
+        </p>
+        <Link href={ROUTES.afspraak} className="btn-primary">
+          Afspraak maken
+        </Link>
       </section>
     </>
   );

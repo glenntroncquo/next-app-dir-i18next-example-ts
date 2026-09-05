@@ -38,89 +38,54 @@ export default function AboutPage() {
   return (
     <>
       <JsonLd data={breadcrumbJsonLd(crumbs)} />
-      <div>
+      <div className="bg-cream">
         <Navbar />
-        <section className="relative flex items-center justify-center overflow-hidden mt-28">
-          <div className="relative z-20 text-center px-4 max-w-6xl mx-auto">
-            <div className="mb-6 max-w-4xl mx-auto text-left">
-              <Breadcrumbs items={crumbs} />
-            </div>
-            <h1 className="text-5xl md:text-7xl font-display font-bold mb-8">
-              <span className="text-salon-text-dark">Maak kennis met</span>
-              <br />
-              <span className="text-salon-pink bg-gradient-to-r from-salon-pink via-salon-rose to-salon-pink bg-clip-text text-transparent">
-                team D&apos;Ana
-              </span>
+        <section className="px-6 pb-12 pt-28 md:pt-36">
+          <div className="mx-auto max-w-5xl">
+            <Breadcrumbs items={crumbs} />
+            <p className="eyebrow mb-4">Moeder en dochter</p>
+            <h1 className="font-display text-5xl text-ink md:text-7xl">
+              Team D&apos;Ana
             </h1>
-
-            <div className="mb-8 max-w-3xl mx-auto">
-              <div className="relative group">
-                <div className="absolute -inset-6 bg-gradient-to-br from-salon-pink via-salon-rose to-salon-lavender rounded-3xl opacity-15 blur-xl group-hover:opacity-25 transition-opacity duration-500"></div>
-                <div className="relative bg-white rounded-3xl overflow-hidden shadow-soft-lg border border-white/50">
-                  <div className="aspect-[16/10]">
-                    <img
-                      src={getImageUrl("/team.jpg")}
-                      alt="Daniela en Ana Paula — team D'Ana Hair"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                  </div>
-                </div>
-              </div>
+            <div className="mt-10 overflow-hidden">
+              <img
+                src={getImageUrl("/team.jpg")}
+                alt="Daniela en Ana Paula — team D'Ana Hair"
+                className="w-full object-cover"
+              />
             </div>
           </div>
         </section>
 
-        <section className="relative bg-white/50 py-16">
+        <section className="border-t border-stone/40 py-16">
           <div className="section-container">
-            <div className="text-center mb-16">
-              <div className="inline-block bg-gradient-to-r from-salon-pink to-salon-rose text-white px-8 py-3 rounded-full mb-6 font-medium tracking-wide uppercase text-sm shadow-soft">
-                ★ Ons team ★
-              </div>
-              <h2 className="text-4xl md:text-5xl font-display font-bold text-salon-text-dark mb-6">
-                Het team achter D&apos;Ana Hair
-              </h2>
-              <p className="text-lg text-salon-text-medium max-w-2xl mx-auto">
-                Wij zijn Daniela & Ana Paula, het hart van D&apos;Ana Hair.
-                Daniela — oprichtster en keratinespecialiste met meer dan 10
-                jaar ervaring. Ana Paula — medezaakvoerder, gedreven door
-                selfcare & positiviteit. Samen delen we onze passie voor
-                natuurlijk, gezond en stralend haar. Welkom in onze wereld vol
-                good vibes, glow-ups & groei.
-              </p>
-            </div>
+            <p className="eyebrow mb-4">Het atelier</p>
+            <h2 className="max-w-3xl font-display text-4xl text-ink md:text-5xl">
+              Daniela en Ana Paula
+            </h2>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-salon-text-medium">
+              Daniela — oprichtster en keratinespecialiste met meer dan 10 jaar
+              ervaring. Ana Paula — medezaakvoerder, gedreven door selfcare.
+              Samen: natuurlijk, gezond haar in Merelbeke-Melle.
+            </p>
 
-            <div className="flex justify-center">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl">
-                {teamMembers.map((member) => (
-                  <div key={member.name} className="text-center group">
-                    <div className="relative mb-6">
-                      <div className="relative aspect-[3/4] max-h-[600px] rounded-2xl overflow-hidden shadow-soft bg-salon-cream/20 group-hover:shadow-glow-pink transition-all duration-300">
-                        <img
-                          src={member.imageSrc}
-                          alt={`${member.name} — ${member.role}`}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                      </div>
-                      <div className="absolute -bottom-3 -right-3 bg-gradient-to-br from-salon-pink to-salon-rose text-white rounded-full w-16 h-16 flex items-center justify-center shadow-glow-pink border-2 border-white">
-                        <div className="text-center">
-                          <div className="text-sm font-bold leading-tight">
-                            {member.experience}
-                          </div>
-                          <div className="text-[9px] uppercase tracking-wide">
-                            jaar
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <h3 className="text-xl font-display font-bold text-salon-text-dark group-hover:text-salon-pink">
-                      {member.name}
-                    </h3>
-                    <p className="text-sm text-salon-text-medium">
-                      {member.role}
-                    </p>
+            <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-2">
+              {teamMembers.map((member) => (
+                <div key={member.name}>
+                  <div className="relative aspect-[3/4] max-h-[560px] overflow-hidden bg-ink">
+                    <img
+                      src={member.imageSrc}
+                      alt={`${member.name} — ${member.role}`}
+                      className="h-full w-full object-cover"
+                    />
                   </div>
-                ))}
-              </div>
+                  <p className="eyebrow mt-5">{member.experience} jaar</p>
+                  <h3 className="mt-2 font-display text-3xl text-ink">
+                    {member.name}
+                  </h3>
+                  <p className="mt-1 text-sm text-salon-text-medium">{member.role}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>

@@ -64,13 +64,16 @@ export default function KeratineMerelbekePage() {
             <p className="text-salon-text-dark mb-8">
               Meer over de behandeling zelf — duur, nazorg, gekleurd en afro
               haar — staat op de{" "}
-              <Link href={ROUTES.keratine} className="text-salon-pink underline">
+              <Link
+                href={ROUTES.keratine}
+                className="underline decoration-stone underline-offset-4 hover:text-ink"
+              >
                 keratinepagina
               </Link>
               . Kom je uit Gent? Lees{" "}
               <Link
                 href={ROUTES.keratineGent}
-                className="text-salon-pink underline"
+                className="underline decoration-stone underline-offset-4 hover:text-ink"
               >
                 keratine nabij Gent
               </Link>
